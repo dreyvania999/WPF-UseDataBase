@@ -1,0 +1,1205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Table_Chemicals_Delivery">
+          <Key>
+            <PropertyRef Name="id_product_in_delivery" />
+          </Key>
+          <Property Name="id_product_in_delivery" Type="int" Nullable="false" />
+          <Property Name="product_code" Type="int" Nullable="false" />
+          <Property Name="delivery_code" Type="int" Nullable="false" />
+          <Property Name="quantity_goods" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Contact_Persons">
+          <Key>
+            <PropertyRef Name="id_contact_person" />
+          </Key>
+          <Property Name="id_contact_person" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Delivery">
+          <Key>
+            <PropertyRef Name="id_delivery" />
+          </Key>
+          <Property Name="id_delivery" Type="int" Nullable="false" />
+          <Property Name="provider_code" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Gender">
+          <Key>
+            <PropertyRef Name="id_gender" />
+          </Key>
+          <Property Name="id_gender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Household_Chemicals">
+          <Key>
+            <PropertyRef Name="id_chemicals" />
+          </Key>
+          <Property Name="id_chemicals" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="manufacturer_code" Type="int" Nullable="false" />
+          <Property Name="destination_code" Type="int" Nullable="false" />
+          <Property Name="cost" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Household_Delivery">
+          <Key>
+            <PropertyRef Name="id_product_in_delivery" />
+          </Key>
+          <Property Name="id_product_in_delivery" Type="int" Nullable="false" />
+          <Property Name="product_code" Type="int" Nullable="false" />
+          <Property Name="delivery_code" Type="int" Nullable="false" />
+          <Property Name="quantity_goods" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Household_Goods">
+          <Key>
+            <PropertyRef Name="id_household_goods" />
+          </Key>
+          <Property Name="id_household_goods" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="manufacturer_code" Type="int" Nullable="false" />
+          <Property Name="cost" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Manufacturer">
+          <Key>
+            <PropertyRef Name="id_manufacturer" />
+          </Key>
+          <Property Name="id_manufacturer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="code_contact_person" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Product_Stock">
+          <Key>
+            <PropertyRef Name="id_product_in_stock" />
+          </Key>
+          <Property Name="id_product_in_stock" Type="int" Nullable="false" />
+          <Property Name="product_code" Type="int" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="chemical_code" Type="int" />
+        </EntityType>
+        <EntityType Name="Table_Purpose_Chemistry">
+          <Key>
+            <PropertyRef Name="id_purpose" />
+          </Key>
+          <Property Name="id_purpose" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="purpose_chemistry" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Role">
+          <Key>
+            <PropertyRef Name="id_role" />
+          </Key>
+          <Property Name="id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Sale_Chemicals">
+          <Key>
+            <PropertyRef Name="id_sale_inform" />
+          </Key>
+          <Property Name="id_sale_inform" Type="int" Nullable="false" />
+          <Property Name="sales_code" Type="int" Nullable="false" />
+          <Property Name="product_code" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Sale_Houshould">
+          <Key>
+            <PropertyRef Name="id_sale_inform" />
+          </Key>
+          <Property Name="id_sale_inform" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sales_code" Type="int" Nullable="false" />
+          <Property Name="product_code" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Sales">
+          <Key>
+            <PropertyRef Name="id_sales" />
+          </Key>
+          <Property Name="id_sales" Type="int" Nullable="false" />
+          <Property Name="staff_code" Type="int" Nullable="false" />
+          <Property Name="date_sales" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Staff">
+          <Key>
+            <PropertyRef Name="id_staff" />
+          </Key>
+          <Property Name="id_staff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
+          <Property Name="date_birth" Type="date" Nullable="false" />
+          <Property Name="employee_photo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="gender" Type="int" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Suppliers">
+          <Key>
+            <PropertyRef Name="id_suppliers" />
+          </Key>
+          <Property Name="id_suppliers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_supplier" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="code_contact_person" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Table_Chemicals_Delivery_Table_Delivery">
+          <End Role="Table_Delivery" Type="Self.Table_Delivery" Multiplicity="1" />
+          <End Role="Table_Chemicals_Delivery" Type="Self.Table_Chemicals_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Delivery">
+              <PropertyRef Name="id_delivery" />
+            </Principal>
+            <Dependent Role="Table_Chemicals_Delivery">
+              <PropertyRef Name="delivery_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Chemicals_Delivery_Table_Household_Chemicals">
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="1" />
+          <End Role="Table_Chemicals_Delivery" Type="Self.Table_Chemicals_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Chemicals">
+              <PropertyRef Name="id_chemicals" />
+            </Principal>
+            <Dependent Role="Table_Chemicals_Delivery">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Delivery_Table_Suppliers">
+          <End Role="Table_Suppliers" Type="Self.Table_Suppliers" Multiplicity="1" />
+          <End Role="Table_Delivery" Type="Self.Table_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Suppliers">
+              <PropertyRef Name="id_suppliers" />
+            </Principal>
+            <Dependent Role="Table_Delivery">
+              <PropertyRef Name="provider_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Chemicals_Table_Manufacturer">
+          <End Role="Table_Manufacturer" Type="Self.Table_Manufacturer" Multiplicity="1" />
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Manufacturer">
+              <PropertyRef Name="id_manufacturer" />
+            </Principal>
+            <Dependent Role="Table_Household_Chemicals">
+              <PropertyRef Name="manufacturer_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Chemicals_Table_Purpose_Chemistry">
+          <End Role="Table_Purpose_Chemistry" Type="Self.Table_Purpose_Chemistry" Multiplicity="1" />
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Purpose_Chemistry">
+              <PropertyRef Name="id_purpose" />
+            </Principal>
+            <Dependent Role="Table_Household_Chemicals">
+              <PropertyRef Name="destination_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Delivery_Table_Delivery">
+          <End Role="Table_Delivery" Type="Self.Table_Delivery" Multiplicity="1" />
+          <End Role="Table_Household_Delivery" Type="Self.Table_Household_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Delivery">
+              <PropertyRef Name="id_delivery" />
+            </Principal>
+            <Dependent Role="Table_Household_Delivery">
+              <PropertyRef Name="delivery_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Delivery_Table_Household_Goods">
+          <End Role="Table_Household_Goods" Type="Self.Table_Household_Goods" Multiplicity="1" />
+          <End Role="Table_Household_Delivery" Type="Self.Table_Household_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Goods">
+              <PropertyRef Name="id_household_goods" />
+            </Principal>
+            <Dependent Role="Table_Household_Delivery">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Goods_Table_Manufacturer">
+          <End Role="Table_Manufacturer" Type="Self.Table_Manufacturer" Multiplicity="1" />
+          <End Role="Table_Household_Goods" Type="Self.Table_Household_Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Manufacturer">
+              <PropertyRef Name="id_manufacturer" />
+            </Principal>
+            <Dependent Role="Table_Household_Goods">
+              <PropertyRef Name="manufacturer_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Manufacturer_Table_Contact_Persons">
+          <End Role="Table_Contact_Persons" Type="Self.Table_Contact_Persons" Multiplicity="1" />
+          <End Role="Table_Manufacturer" Type="Self.Table_Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Contact_Persons">
+              <PropertyRef Name="id_contact_person" />
+            </Principal>
+            <Dependent Role="Table_Manufacturer">
+              <PropertyRef Name="code_contact_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Product_Stock_Table_Household_Chemicals">
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="0..1" />
+          <End Role="Table_Product_Stock" Type="Self.Table_Product_Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Chemicals">
+              <PropertyRef Name="id_chemicals" />
+            </Principal>
+            <Dependent Role="Table_Product_Stock">
+              <PropertyRef Name="chemical_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Product_Stock_Table_Household_Goods">
+          <End Role="Table_Household_Goods" Type="Self.Table_Household_Goods" Multiplicity="0..1" />
+          <End Role="Table_Product_Stock" Type="Self.Table_Product_Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Goods">
+              <PropertyRef Name="id_household_goods" />
+            </Principal>
+            <Dependent Role="Table_Product_Stock">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sale_Chemicals_Table_Household_Chemicals">
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="1" />
+          <End Role="Table_Sale_Chemicals" Type="Self.Table_Sale_Chemicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Chemicals">
+              <PropertyRef Name="id_chemicals" />
+            </Principal>
+            <Dependent Role="Table_Sale_Chemicals">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sale_Chemicals_Table_Sales">
+          <End Role="Table_Sales" Type="Self.Table_Sales" Multiplicity="1" />
+          <End Role="Table_Sale_Chemicals" Type="Self.Table_Sale_Chemicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Sales">
+              <PropertyRef Name="id_sales" />
+            </Principal>
+            <Dependent Role="Table_Sale_Chemicals">
+              <PropertyRef Name="sales_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sale_Houshould_Table_Household_Goods">
+          <End Role="Table_Household_Goods" Type="Self.Table_Household_Goods" Multiplicity="1" />
+          <End Role="Table_Sale_Houshould" Type="Self.Table_Sale_Houshould" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Goods">
+              <PropertyRef Name="id_household_goods" />
+            </Principal>
+            <Dependent Role="Table_Sale_Houshould">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sale_Houshould_Table_Sales">
+          <End Role="Table_Sales" Type="Self.Table_Sales" Multiplicity="1" />
+          <End Role="Table_Sale_Houshould" Type="Self.Table_Sale_Houshould" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Sales">
+              <PropertyRef Name="id_sales" />
+            </Principal>
+            <Dependent Role="Table_Sale_Houshould">
+              <PropertyRef Name="sales_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sales_Table_Staff">
+          <End Role="Table_Staff" Type="Self.Table_Staff" Multiplicity="1" />
+          <End Role="Table_Sales" Type="Self.Table_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Staff">
+              <PropertyRef Name="id_staff" />
+            </Principal>
+            <Dependent Role="Table_Sales">
+              <PropertyRef Name="staff_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Staff_Table_Gender">
+          <End Role="Table_Gender" Type="Self.Table_Gender" Multiplicity="1" />
+          <End Role="Table_Staff" Type="Self.Table_Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Gender">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="Table_Staff">
+              <PropertyRef Name="gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Staff_Table_Role">
+          <End Role="Table_Role" Type="Self.Table_Role" Multiplicity="1" />
+          <End Role="Table_Staff" Type="Self.Table_Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Role">
+              <PropertyRef Name="id_role" />
+            </Principal>
+            <Dependent Role="Table_Staff">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Suppliers_Table_Contact_Persons">
+          <End Role="Table_Contact_Persons" Type="Self.Table_Contact_Persons" Multiplicity="1" />
+          <End Role="Table_Suppliers" Type="Self.Table_Suppliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Contact_Persons">
+              <PropertyRef Name="id_contact_person" />
+            </Principal>
+            <Dependent Role="Table_Suppliers">
+              <PropertyRef Name="code_contact_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Chemicals_Delivery" EntityType="Self.Table_Chemicals_Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Contact_Persons" EntityType="Self.Table_Contact_Persons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Delivery" EntityType="Self.Table_Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Gender" EntityType="Self.Table_Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Household_Chemicals" EntityType="Self.Table_Household_Chemicals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Household_Delivery" EntityType="Self.Table_Household_Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Household_Goods" EntityType="Self.Table_Household_Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Manufacturer" EntityType="Self.Table_Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Product_Stock" EntityType="Self.Table_Product_Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Purpose_Chemistry" EntityType="Self.Table_Purpose_Chemistry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Role" EntityType="Self.Table_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Sale_Chemicals" EntityType="Self.Table_Sale_Chemicals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Sale_Houshould" EntityType="Self.Table_Sale_Houshould" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Sales" EntityType="Self.Table_Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Staff" EntityType="Self.Table_Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Suppliers" EntityType="Self.Table_Suppliers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Table_Chemicals_Delivery_Table_Delivery" Association="Self.FK_Table_Chemicals_Delivery_Table_Delivery">
+            <End Role="Table_Delivery" EntitySet="Table_Delivery" />
+            <End Role="Table_Chemicals_Delivery" EntitySet="Table_Chemicals_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Chemicals_Delivery_Table_Household_Chemicals" Association="Self.FK_Table_Chemicals_Delivery_Table_Household_Chemicals">
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+            <End Role="Table_Chemicals_Delivery" EntitySet="Table_Chemicals_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Delivery_Table_Suppliers" Association="Self.FK_Table_Delivery_Table_Suppliers">
+            <End Role="Table_Suppliers" EntitySet="Table_Suppliers" />
+            <End Role="Table_Delivery" EntitySet="Table_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Chemicals_Table_Manufacturer" Association="Self.FK_Table_Household_Chemicals_Table_Manufacturer">
+            <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Chemicals_Table_Purpose_Chemistry" Association="Self.FK_Table_Household_Chemicals_Table_Purpose_Chemistry">
+            <End Role="Table_Purpose_Chemistry" EntitySet="Table_Purpose_Chemistry" />
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Delivery_Table_Delivery" Association="Self.FK_Table_Household_Delivery_Table_Delivery">
+            <End Role="Table_Delivery" EntitySet="Table_Delivery" />
+            <End Role="Table_Household_Delivery" EntitySet="Table_Household_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Delivery_Table_Household_Goods" Association="Self.FK_Table_Household_Delivery_Table_Household_Goods">
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+            <End Role="Table_Household_Delivery" EntitySet="Table_Household_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Goods_Table_Manufacturer" Association="Self.FK_Table_Household_Goods_Table_Manufacturer">
+            <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Manufacturer_Table_Contact_Persons" Association="Self.FK_Table_Manufacturer_Table_Contact_Persons">
+            <End Role="Table_Contact_Persons" EntitySet="Table_Contact_Persons" />
+            <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Product_Stock_Table_Household_Chemicals" Association="Self.FK_Table_Product_Stock_Table_Household_Chemicals">
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+            <End Role="Table_Product_Stock" EntitySet="Table_Product_Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Product_Stock_Table_Household_Goods" Association="Self.FK_Table_Product_Stock_Table_Household_Goods">
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+            <End Role="Table_Product_Stock" EntitySet="Table_Product_Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sale_Chemicals_Table_Household_Chemicals" Association="Self.FK_Table_Sale_Chemicals_Table_Household_Chemicals">
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+            <End Role="Table_Sale_Chemicals" EntitySet="Table_Sale_Chemicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sale_Chemicals_Table_Sales" Association="Self.FK_Table_Sale_Chemicals_Table_Sales">
+            <End Role="Table_Sales" EntitySet="Table_Sales" />
+            <End Role="Table_Sale_Chemicals" EntitySet="Table_Sale_Chemicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sale_Houshould_Table_Household_Goods" Association="Self.FK_Table_Sale_Houshould_Table_Household_Goods">
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+            <End Role="Table_Sale_Houshould" EntitySet="Table_Sale_Houshould" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sale_Houshould_Table_Sales" Association="Self.FK_Table_Sale_Houshould_Table_Sales">
+            <End Role="Table_Sales" EntitySet="Table_Sales" />
+            <End Role="Table_Sale_Houshould" EntitySet="Table_Sale_Houshould" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sales_Table_Staff" Association="Self.FK_Table_Sales_Table_Staff">
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+            <End Role="Table_Sales" EntitySet="Table_Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Staff_Table_Gender" Association="Self.FK_Table_Staff_Table_Gender">
+            <End Role="Table_Gender" EntitySet="Table_Gender" />
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Staff_Table_Role" Association="Self.FK_Table_Staff_Table_Role">
+            <End Role="Table_Role" EntitySet="Table_Role" />
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Suppliers_Table_Contact_Persons" Association="Self.FK_Table_Suppliers_Table_Contact_Persons">
+            <End Role="Table_Contact_Persons" EntitySet="Table_Contact_Persons" />
+            <End Role="Table_Suppliers" EntitySet="Table_Suppliers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Table_Chemicals_Delivery">
+          <Key>
+            <PropertyRef Name="id_product_in_delivery" />
+          </Key>
+          <Property Name="id_product_in_delivery" Type="Int32" Nullable="false" />
+          <Property Name="product_code" Type="Int32" Nullable="false" />
+          <Property Name="delivery_code" Type="Int32" Nullable="false" />
+          <Property Name="quantity_goods" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Delivery" Relationship="Self.FK_Table_Chemicals_Delivery_Table_Delivery" FromRole="Table_Chemicals_Delivery" ToRole="Table_Delivery" />
+          <NavigationProperty Name="Table_Household_Chemicals" Relationship="Self.FK_Table_Chemicals_Delivery_Table_Household_Chemicals" FromRole="Table_Chemicals_Delivery" ToRole="Table_Household_Chemicals" />
+        </EntityType>
+        <EntityType Name="Table_Contact_Persons">
+          <Key>
+            <PropertyRef Name="id_contact_person" />
+          </Key>
+          <Property Name="id_contact_person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Table_Manufacturer" Relationship="Self.FK_Table_Manufacturer_Table_Contact_Persons" FromRole="Table_Contact_Persons" ToRole="Table_Manufacturer" />
+          <NavigationProperty Name="Table_Suppliers" Relationship="Self.FK_Table_Suppliers_Table_Contact_Persons" FromRole="Table_Contact_Persons" ToRole="Table_Suppliers" />
+        </EntityType>
+        <EntityType Name="Table_Delivery">
+          <Key>
+            <PropertyRef Name="id_delivery" />
+          </Key>
+          <Property Name="id_delivery" Type="Int32" Nullable="false" />
+          <Property Name="provider_code" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Chemicals_Delivery" Relationship="Self.FK_Table_Chemicals_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Chemicals_Delivery" />
+          <NavigationProperty Name="Table_Suppliers" Relationship="Self.FK_Table_Delivery_Table_Suppliers" FromRole="Table_Delivery" ToRole="Table_Suppliers" />
+          <NavigationProperty Name="Table_Household_Delivery" Relationship="Self.FK_Table_Household_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Household_Delivery" />
+        </EntityType>
+        <EntityType Name="Table_Gender">
+          <Key>
+            <PropertyRef Name="id_gender" />
+          </Key>
+          <Property Name="id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Table_Staff" Relationship="Self.FK_Table_Staff_Table_Gender" FromRole="Table_Gender" ToRole="Table_Staff" />
+        </EntityType>
+        <EntityType Name="Table_Household_Chemicals">
+          <Key>
+            <PropertyRef Name="id_chemicals" />
+          </Key>
+          <Property Name="id_chemicals" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="manufacturer_code" Type="Int32" Nullable="false" />
+          <Property Name="destination_code" Type="Int32" Nullable="false" />
+          <Property Name="cost" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Table_Chemicals_Delivery" Relationship="Self.FK_Table_Chemicals_Delivery_Table_Household_Chemicals" FromRole="Table_Household_Chemicals" ToRole="Table_Chemicals_Delivery" />
+          <NavigationProperty Name="Table_Manufacturer" Relationship="Self.FK_Table_Household_Chemicals_Table_Manufacturer" FromRole="Table_Household_Chemicals" ToRole="Table_Manufacturer" />
+          <NavigationProperty Name="Table_Purpose_Chemistry" Relationship="Self.FK_Table_Household_Chemicals_Table_Purpose_Chemistry" FromRole="Table_Household_Chemicals" ToRole="Table_Purpose_Chemistry" />
+          <NavigationProperty Name="Table_Product_Stock" Relationship="Self.FK_Table_Product_Stock_Table_Household_Chemicals" FromRole="Table_Household_Chemicals" ToRole="Table_Product_Stock" />
+          <NavigationProperty Name="Table_Sale_Chemicals" Relationship="Self.FK_Table_Sale_Chemicals_Table_Household_Chemicals" FromRole="Table_Household_Chemicals" ToRole="Table_Sale_Chemicals" />
+        </EntityType>
+        <EntityType Name="Table_Household_Delivery">
+          <Key>
+            <PropertyRef Name="id_product_in_delivery" />
+          </Key>
+          <Property Name="id_product_in_delivery" Type="Int32" Nullable="false" />
+          <Property Name="product_code" Type="Int32" Nullable="false" />
+          <Property Name="delivery_code" Type="Int32" Nullable="false" />
+          <Property Name="quantity_goods" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Delivery" Relationship="Self.FK_Table_Household_Delivery_Table_Delivery" FromRole="Table_Household_Delivery" ToRole="Table_Delivery" />
+          <NavigationProperty Name="Table_Household_Goods" Relationship="Self.FK_Table_Household_Delivery_Table_Household_Goods" FromRole="Table_Household_Delivery" ToRole="Table_Household_Goods" />
+        </EntityType>
+        <EntityType Name="Table_Household_Goods">
+          <Key>
+            <PropertyRef Name="id_household_goods" />
+          </Key>
+          <Property Name="id_household_goods" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="manufacturer_code" Type="Int32" Nullable="false" />
+          <Property Name="cost" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Table_Household_Delivery" Relationship="Self.FK_Table_Household_Delivery_Table_Household_Goods" FromRole="Table_Household_Goods" ToRole="Table_Household_Delivery" />
+          <NavigationProperty Name="Table_Manufacturer" Relationship="Self.FK_Table_Household_Goods_Table_Manufacturer" FromRole="Table_Household_Goods" ToRole="Table_Manufacturer" />
+          <NavigationProperty Name="Table_Product_Stock" Relationship="Self.FK_Table_Product_Stock_Table_Household_Goods" FromRole="Table_Household_Goods" ToRole="Table_Product_Stock" />
+          <NavigationProperty Name="Table_Sale_Houshould" Relationship="Self.FK_Table_Sale_Houshould_Table_Household_Goods" FromRole="Table_Household_Goods" ToRole="Table_Sale_Houshould" />
+        </EntityType>
+        <EntityType Name="Table_Manufacturer">
+          <Key>
+            <PropertyRef Name="id_manufacturer" />
+          </Key>
+          <Property Name="id_manufacturer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="code_contact_person" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Contact_Persons" Relationship="Self.FK_Table_Manufacturer_Table_Contact_Persons" FromRole="Table_Manufacturer" ToRole="Table_Contact_Persons" />
+          <NavigationProperty Name="Table_Household_Chemicals" Relationship="Self.FK_Table_Household_Chemicals_Table_Manufacturer" FromRole="Table_Manufacturer" ToRole="Table_Household_Chemicals" />
+          <NavigationProperty Name="Table_Household_Goods" Relationship="Self.FK_Table_Household_Goods_Table_Manufacturer" FromRole="Table_Manufacturer" ToRole="Table_Household_Goods" />
+        </EntityType>
+        <EntityType Name="Table_Product_Stock">
+          <Key>
+            <PropertyRef Name="id_product_in_stock" />
+          </Key>
+          <Property Name="id_product_in_stock" Type="Int32" Nullable="false" />
+          <Property Name="product_code" Type="Int32" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="chemical_code" Type="Int32" />
+          <NavigationProperty Name="Table_Household_Chemicals" Relationship="Self.FK_Table_Product_Stock_Table_Household_Chemicals" FromRole="Table_Product_Stock" ToRole="Table_Household_Chemicals" />
+          <NavigationProperty Name="Table_Household_Goods" Relationship="Self.FK_Table_Product_Stock_Table_Household_Goods" FromRole="Table_Product_Stock" ToRole="Table_Household_Goods" />
+        </EntityType>
+        <EntityType Name="Table_Purpose_Chemistry">
+          <Key>
+            <PropertyRef Name="id_purpose" />
+          </Key>
+          <Property Name="id_purpose" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purpose_chemistry" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Table_Household_Chemicals" Relationship="Self.FK_Table_Household_Chemicals_Table_Purpose_Chemistry" FromRole="Table_Purpose_Chemistry" ToRole="Table_Household_Chemicals" />
+        </EntityType>
+        <EntityType Name="Table_Role">
+          <Key>
+            <PropertyRef Name="id_role" />
+          </Key>
+          <Property Name="id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Table_Staff" Relationship="Self.FK_Table_Staff_Table_Role" FromRole="Table_Role" ToRole="Table_Staff" />
+        </EntityType>
+        <EntityType Name="Table_Sale_Chemicals">
+          <Key>
+            <PropertyRef Name="id_sale_inform" />
+          </Key>
+          <Property Name="id_sale_inform" Type="Int32" Nullable="false" />
+          <Property Name="sales_code" Type="Int32" Nullable="false" />
+          <Property Name="product_code" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Household_Chemicals" Relationship="Self.FK_Table_Sale_Chemicals_Table_Household_Chemicals" FromRole="Table_Sale_Chemicals" ToRole="Table_Household_Chemicals" />
+          <NavigationProperty Name="Table_Sales" Relationship="Self.FK_Table_Sale_Chemicals_Table_Sales" FromRole="Table_Sale_Chemicals" ToRole="Table_Sales" />
+        </EntityType>
+        <EntityType Name="Table_Sale_Houshould">
+          <Key>
+            <PropertyRef Name="id_sale_inform" />
+          </Key>
+          <Property Name="id_sale_inform" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sales_code" Type="Int32" Nullable="false" />
+          <Property Name="product_code" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Household_Goods" Relationship="Self.FK_Table_Sale_Houshould_Table_Household_Goods" FromRole="Table_Sale_Houshould" ToRole="Table_Household_Goods" />
+          <NavigationProperty Name="Table_Sales" Relationship="Self.FK_Table_Sale_Houshould_Table_Sales" FromRole="Table_Sale_Houshould" ToRole="Table_Sales" />
+        </EntityType>
+        <EntityType Name="Table_Sales">
+          <Key>
+            <PropertyRef Name="id_sales" />
+          </Key>
+          <Property Name="id_sales" Type="Int32" Nullable="false" />
+          <Property Name="staff_code" Type="Int32" Nullable="false" />
+          <Property Name="date_sales" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Table_Sale_Chemicals" Relationship="Self.FK_Table_Sale_Chemicals_Table_Sales" FromRole="Table_Sales" ToRole="Table_Sale_Chemicals" />
+          <NavigationProperty Name="Table_Sale_Houshould" Relationship="Self.FK_Table_Sale_Houshould_Table_Sales" FromRole="Table_Sales" ToRole="Table_Sale_Houshould" />
+          <NavigationProperty Name="Table_Staff" Relationship="Self.FK_Table_Sales_Table_Staff" FromRole="Table_Sales" ToRole="Table_Staff" />
+        </EntityType>
+        <EntityType Name="Table_Staff">
+          <Key>
+            <PropertyRef Name="id_staff" />
+          </Key>
+          <Property Name="id_staff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <Property Name="date_birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="employee_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gender" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Gender" Relationship="Self.FK_Table_Staff_Table_Gender" FromRole="Table_Staff" ToRole="Table_Gender" />
+          <NavigationProperty Name="Table_Role" Relationship="Self.FK_Table_Staff_Table_Role" FromRole="Table_Staff" ToRole="Table_Role" />
+          <NavigationProperty Name="Table_Sales" Relationship="Self.FK_Table_Sales_Table_Staff" FromRole="Table_Staff" ToRole="Table_Sales" />
+        </EntityType>
+        <EntityType Name="Table_Suppliers">
+          <Key>
+            <PropertyRef Name="id_suppliers" />
+          </Key>
+          <Property Name="id_suppliers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="code_contact_person" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Contact_Persons" Relationship="Self.FK_Table_Suppliers_Table_Contact_Persons" FromRole="Table_Suppliers" ToRole="Table_Contact_Persons" />
+          <NavigationProperty Name="Table_Delivery" Relationship="Self.FK_Table_Delivery_Table_Suppliers" FromRole="Table_Suppliers" ToRole="Table_Delivery" />
+        </EntityType>
+        <Association Name="FK_Table_Chemicals_Delivery_Table_Delivery">
+          <End Role="Table_Delivery" Type="Self.Table_Delivery" Multiplicity="1" />
+          <End Role="Table_Chemicals_Delivery" Type="Self.Table_Chemicals_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Delivery">
+              <PropertyRef Name="id_delivery" />
+            </Principal>
+            <Dependent Role="Table_Chemicals_Delivery">
+              <PropertyRef Name="delivery_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Chemicals_Delivery_Table_Household_Chemicals">
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="1" />
+          <End Role="Table_Chemicals_Delivery" Type="Self.Table_Chemicals_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Chemicals">
+              <PropertyRef Name="id_chemicals" />
+            </Principal>
+            <Dependent Role="Table_Chemicals_Delivery">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Manufacturer_Table_Contact_Persons">
+          <End Role="Table_Contact_Persons" Type="Self.Table_Contact_Persons" Multiplicity="1" />
+          <End Role="Table_Manufacturer" Type="Self.Table_Manufacturer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Contact_Persons">
+              <PropertyRef Name="id_contact_person" />
+            </Principal>
+            <Dependent Role="Table_Manufacturer">
+              <PropertyRef Name="code_contact_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Suppliers_Table_Contact_Persons">
+          <End Role="Table_Contact_Persons" Type="Self.Table_Contact_Persons" Multiplicity="1" />
+          <End Role="Table_Suppliers" Type="Self.Table_Suppliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Contact_Persons">
+              <PropertyRef Name="id_contact_person" />
+            </Principal>
+            <Dependent Role="Table_Suppliers">
+              <PropertyRef Name="code_contact_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Delivery_Table_Suppliers">
+          <End Role="Table_Suppliers" Type="Self.Table_Suppliers" Multiplicity="1" />
+          <End Role="Table_Delivery" Type="Self.Table_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Suppliers">
+              <PropertyRef Name="id_suppliers" />
+            </Principal>
+            <Dependent Role="Table_Delivery">
+              <PropertyRef Name="provider_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Delivery_Table_Delivery">
+          <End Role="Table_Delivery" Type="Self.Table_Delivery" Multiplicity="1" />
+          <End Role="Table_Household_Delivery" Type="Self.Table_Household_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Delivery">
+              <PropertyRef Name="id_delivery" />
+            </Principal>
+            <Dependent Role="Table_Household_Delivery">
+              <PropertyRef Name="delivery_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Staff_Table_Gender">
+          <End Role="Table_Gender" Type="Self.Table_Gender" Multiplicity="1" />
+          <End Role="Table_Staff" Type="Self.Table_Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Gender">
+              <PropertyRef Name="id_gender" />
+            </Principal>
+            <Dependent Role="Table_Staff">
+              <PropertyRef Name="gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Chemicals_Table_Manufacturer">
+          <End Role="Table_Manufacturer" Type="Self.Table_Manufacturer" Multiplicity="1" />
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Manufacturer">
+              <PropertyRef Name="id_manufacturer" />
+            </Principal>
+            <Dependent Role="Table_Household_Chemicals">
+              <PropertyRef Name="manufacturer_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Chemicals_Table_Purpose_Chemistry">
+          <End Role="Table_Purpose_Chemistry" Type="Self.Table_Purpose_Chemistry" Multiplicity="1" />
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Purpose_Chemistry">
+              <PropertyRef Name="id_purpose" />
+            </Principal>
+            <Dependent Role="Table_Household_Chemicals">
+              <PropertyRef Name="destination_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Product_Stock_Table_Household_Chemicals">
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="0..1" />
+          <End Role="Table_Product_Stock" Type="Self.Table_Product_Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Chemicals">
+              <PropertyRef Name="id_chemicals" />
+            </Principal>
+            <Dependent Role="Table_Product_Stock">
+              <PropertyRef Name="chemical_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sale_Chemicals_Table_Household_Chemicals">
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="1" />
+          <End Role="Table_Sale_Chemicals" Type="Self.Table_Sale_Chemicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Chemicals">
+              <PropertyRef Name="id_chemicals" />
+            </Principal>
+            <Dependent Role="Table_Sale_Chemicals">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Delivery_Table_Household_Goods">
+          <End Role="Table_Household_Goods" Type="Self.Table_Household_Goods" Multiplicity="1" />
+          <End Role="Table_Household_Delivery" Type="Self.Table_Household_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Goods">
+              <PropertyRef Name="id_household_goods" />
+            </Principal>
+            <Dependent Role="Table_Household_Delivery">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Household_Goods_Table_Manufacturer">
+          <End Role="Table_Manufacturer" Type="Self.Table_Manufacturer" Multiplicity="1" />
+          <End Role="Table_Household_Goods" Type="Self.Table_Household_Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Manufacturer">
+              <PropertyRef Name="id_manufacturer" />
+            </Principal>
+            <Dependent Role="Table_Household_Goods">
+              <PropertyRef Name="manufacturer_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Product_Stock_Table_Household_Goods">
+          <End Role="Table_Household_Goods" Type="Self.Table_Household_Goods" Multiplicity="0..1" />
+          <End Role="Table_Product_Stock" Type="Self.Table_Product_Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Goods">
+              <PropertyRef Name="id_household_goods" />
+            </Principal>
+            <Dependent Role="Table_Product_Stock">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sale_Houshould_Table_Household_Goods">
+          <End Role="Table_Household_Goods" Type="Self.Table_Household_Goods" Multiplicity="1" />
+          <End Role="Table_Sale_Houshould" Type="Self.Table_Sale_Houshould" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Goods">
+              <PropertyRef Name="id_household_goods" />
+            </Principal>
+            <Dependent Role="Table_Sale_Houshould">
+              <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Staff_Table_Role">
+          <End Role="Table_Role" Type="Self.Table_Role" Multiplicity="1" />
+          <End Role="Table_Staff" Type="Self.Table_Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Role">
+              <PropertyRef Name="id_role" />
+            </Principal>
+            <Dependent Role="Table_Staff">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sale_Chemicals_Table_Sales">
+          <End Role="Table_Sales" Type="Self.Table_Sales" Multiplicity="1" />
+          <End Role="Table_Sale_Chemicals" Type="Self.Table_Sale_Chemicals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Sales">
+              <PropertyRef Name="id_sales" />
+            </Principal>
+            <Dependent Role="Table_Sale_Chemicals">
+              <PropertyRef Name="sales_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sale_Houshould_Table_Sales">
+          <End Role="Table_Sales" Type="Self.Table_Sales" Multiplicity="1" />
+          <End Role="Table_Sale_Houshould" Type="Self.Table_Sale_Houshould" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Sales">
+              <PropertyRef Name="id_sales" />
+            </Principal>
+            <Dependent Role="Table_Sale_Houshould">
+              <PropertyRef Name="sales_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Sales_Table_Staff">
+          <End Role="Table_Staff" Type="Self.Table_Staff" Multiplicity="1" />
+          <End Role="Table_Sales" Type="Self.Table_Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Staff">
+              <PropertyRef Name="id_staff" />
+            </Principal>
+            <Dependent Role="Table_Sales">
+              <PropertyRef Name="staff_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Table_Chemicals_Delivery" EntityType="Self.Table_Chemicals_Delivery" />
+          <EntitySet Name="Table_Contact_Persons" EntityType="Self.Table_Contact_Persons" />
+          <EntitySet Name="Table_Delivery" EntityType="Self.Table_Delivery" />
+          <EntitySet Name="Table_Gender" EntityType="Self.Table_Gender" />
+          <EntitySet Name="Table_Household_Chemicals" EntityType="Self.Table_Household_Chemicals" />
+          <EntitySet Name="Table_Household_Delivery" EntityType="Self.Table_Household_Delivery" />
+          <EntitySet Name="Table_Household_Goods" EntityType="Self.Table_Household_Goods" />
+          <EntitySet Name="Table_Manufacturer" EntityType="Self.Table_Manufacturer" />
+          <EntitySet Name="Table_Product_Stock" EntityType="Self.Table_Product_Stock" />
+          <EntitySet Name="Table_Purpose_Chemistry" EntityType="Self.Table_Purpose_Chemistry" />
+          <EntitySet Name="Table_Role" EntityType="Self.Table_Role" />
+          <EntitySet Name="Table_Sale_Chemicals" EntityType="Self.Table_Sale_Chemicals" />
+          <EntitySet Name="Table_Sale_Houshould" EntityType="Self.Table_Sale_Houshould" />
+          <EntitySet Name="Table_Sales" EntityType="Self.Table_Sales" />
+          <EntitySet Name="Table_Staff" EntityType="Self.Table_Staff" />
+          <EntitySet Name="Table_Suppliers" EntityType="Self.Table_Suppliers" />
+          <AssociationSet Name="FK_Table_Chemicals_Delivery_Table_Delivery" Association="Self.FK_Table_Chemicals_Delivery_Table_Delivery">
+            <End Role="Table_Delivery" EntitySet="Table_Delivery" />
+            <End Role="Table_Chemicals_Delivery" EntitySet="Table_Chemicals_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Chemicals_Delivery_Table_Household_Chemicals" Association="Self.FK_Table_Chemicals_Delivery_Table_Household_Chemicals">
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+            <End Role="Table_Chemicals_Delivery" EntitySet="Table_Chemicals_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Manufacturer_Table_Contact_Persons" Association="Self.FK_Table_Manufacturer_Table_Contact_Persons">
+            <End Role="Table_Contact_Persons" EntitySet="Table_Contact_Persons" />
+            <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Suppliers_Table_Contact_Persons" Association="Self.FK_Table_Suppliers_Table_Contact_Persons">
+            <End Role="Table_Contact_Persons" EntitySet="Table_Contact_Persons" />
+            <End Role="Table_Suppliers" EntitySet="Table_Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Delivery_Table_Suppliers" Association="Self.FK_Table_Delivery_Table_Suppliers">
+            <End Role="Table_Suppliers" EntitySet="Table_Suppliers" />
+            <End Role="Table_Delivery" EntitySet="Table_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Delivery_Table_Delivery" Association="Self.FK_Table_Household_Delivery_Table_Delivery">
+            <End Role="Table_Delivery" EntitySet="Table_Delivery" />
+            <End Role="Table_Household_Delivery" EntitySet="Table_Household_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Staff_Table_Gender" Association="Self.FK_Table_Staff_Table_Gender">
+            <End Role="Table_Gender" EntitySet="Table_Gender" />
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Chemicals_Table_Manufacturer" Association="Self.FK_Table_Household_Chemicals_Table_Manufacturer">
+            <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Chemicals_Table_Purpose_Chemistry" Association="Self.FK_Table_Household_Chemicals_Table_Purpose_Chemistry">
+            <End Role="Table_Purpose_Chemistry" EntitySet="Table_Purpose_Chemistry" />
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Product_Stock_Table_Household_Chemicals" Association="Self.FK_Table_Product_Stock_Table_Household_Chemicals">
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+            <End Role="Table_Product_Stock" EntitySet="Table_Product_Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sale_Chemicals_Table_Household_Chemicals" Association="Self.FK_Table_Sale_Chemicals_Table_Household_Chemicals">
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+            <End Role="Table_Sale_Chemicals" EntitySet="Table_Sale_Chemicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Delivery_Table_Household_Goods" Association="Self.FK_Table_Household_Delivery_Table_Household_Goods">
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+            <End Role="Table_Household_Delivery" EntitySet="Table_Household_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Household_Goods_Table_Manufacturer" Association="Self.FK_Table_Household_Goods_Table_Manufacturer">
+            <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Product_Stock_Table_Household_Goods" Association="Self.FK_Table_Product_Stock_Table_Household_Goods">
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+            <End Role="Table_Product_Stock" EntitySet="Table_Product_Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sale_Houshould_Table_Household_Goods" Association="Self.FK_Table_Sale_Houshould_Table_Household_Goods">
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+            <End Role="Table_Sale_Houshould" EntitySet="Table_Sale_Houshould" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Staff_Table_Role" Association="Self.FK_Table_Staff_Table_Role">
+            <End Role="Table_Role" EntitySet="Table_Role" />
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sale_Chemicals_Table_Sales" Association="Self.FK_Table_Sale_Chemicals_Table_Sales">
+            <End Role="Table_Sales" EntitySet="Table_Sales" />
+            <End Role="Table_Sale_Chemicals" EntitySet="Table_Sale_Chemicals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sale_Houshould_Table_Sales" Association="Self.FK_Table_Sale_Houshould_Table_Sales">
+            <End Role="Table_Sales" EntitySet="Table_Sales" />
+            <End Role="Table_Sale_Houshould" EntitySet="Table_Sale_Houshould" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Sales_Table_Staff" Association="Self.FK_Table_Sales_Table_Staff">
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+            <End Role="Table_Sales" EntitySet="Table_Sales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Chemicals_Delivery">
+            <EntityTypeMapping TypeName="Model.Table_Chemicals_Delivery">
+              <MappingFragment StoreEntitySet="Table_Chemicals_Delivery">
+                <ScalarProperty Name="id_product_in_delivery" ColumnName="id_product_in_delivery" />
+                <ScalarProperty Name="product_code" ColumnName="product_code" />
+                <ScalarProperty Name="delivery_code" ColumnName="delivery_code" />
+                <ScalarProperty Name="quantity_goods" ColumnName="quantity_goods" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Contact_Persons">
+            <EntityTypeMapping TypeName="Model.Table_Contact_Persons">
+              <MappingFragment StoreEntitySet="Table_Contact_Persons">
+                <ScalarProperty Name="id_contact_person" ColumnName="id_contact_person" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Delivery">
+            <EntityTypeMapping TypeName="Model.Table_Delivery">
+              <MappingFragment StoreEntitySet="Table_Delivery">
+                <ScalarProperty Name="id_delivery" ColumnName="id_delivery" />
+                <ScalarProperty Name="provider_code" ColumnName="provider_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Gender">
+            <EntityTypeMapping TypeName="Model.Table_Gender">
+              <MappingFragment StoreEntitySet="Table_Gender">
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Household_Chemicals">
+            <EntityTypeMapping TypeName="Model.Table_Household_Chemicals">
+              <MappingFragment StoreEntitySet="Table_Household_Chemicals">
+                <ScalarProperty Name="id_chemicals" ColumnName="id_chemicals" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="manufacturer_code" ColumnName="manufacturer_code" />
+                <ScalarProperty Name="destination_code" ColumnName="destination_code" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Household_Delivery">
+            <EntityTypeMapping TypeName="Model.Table_Household_Delivery">
+              <MappingFragment StoreEntitySet="Table_Household_Delivery">
+                <ScalarProperty Name="id_product_in_delivery" ColumnName="id_product_in_delivery" />
+                <ScalarProperty Name="product_code" ColumnName="product_code" />
+                <ScalarProperty Name="delivery_code" ColumnName="delivery_code" />
+                <ScalarProperty Name="quantity_goods" ColumnName="quantity_goods" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Household_Goods">
+            <EntityTypeMapping TypeName="Model.Table_Household_Goods">
+              <MappingFragment StoreEntitySet="Table_Household_Goods">
+                <ScalarProperty Name="id_household_goods" ColumnName="id_household_goods" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="manufacturer_code" ColumnName="manufacturer_code" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Manufacturer">
+            <EntityTypeMapping TypeName="Model.Table_Manufacturer">
+              <MappingFragment StoreEntitySet="Table_Manufacturer">
+                <ScalarProperty Name="id_manufacturer" ColumnName="id_manufacturer" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="code_contact_person" ColumnName="code_contact_person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Product_Stock">
+            <EntityTypeMapping TypeName="Model.Table_Product_Stock">
+              <MappingFragment StoreEntitySet="Table_Product_Stock">
+                <ScalarProperty Name="id_product_in_stock" ColumnName="id_product_in_stock" />
+                <ScalarProperty Name="product_code" ColumnName="product_code" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="chemical_code" ColumnName="chemical_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Purpose_Chemistry">
+            <EntityTypeMapping TypeName="Model.Table_Purpose_Chemistry">
+              <MappingFragment StoreEntitySet="Table_Purpose_Chemistry">
+                <ScalarProperty Name="id_purpose" ColumnName="id_purpose" />
+                <ScalarProperty Name="purpose_chemistry" ColumnName="purpose_chemistry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Role">
+            <EntityTypeMapping TypeName="Model.Table_Role">
+              <MappingFragment StoreEntitySet="Table_Role">
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Sale_Chemicals">
+            <EntityTypeMapping TypeName="Model.Table_Sale_Chemicals">
+              <MappingFragment StoreEntitySet="Table_Sale_Chemicals">
+                <ScalarProperty Name="id_sale_inform" ColumnName="id_sale_inform" />
+                <ScalarProperty Name="sales_code" ColumnName="sales_code" />
+                <ScalarProperty Name="product_code" ColumnName="product_code" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Sale_Houshould">
+            <EntityTypeMapping TypeName="Model.Table_Sale_Houshould">
+              <MappingFragment StoreEntitySet="Table_Sale_Houshould">
+                <ScalarProperty Name="id_sale_inform" ColumnName="id_sale_inform" />
+                <ScalarProperty Name="sales_code" ColumnName="sales_code" />
+                <ScalarProperty Name="product_code" ColumnName="product_code" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Sales">
+            <EntityTypeMapping TypeName="Model.Table_Sales">
+              <MappingFragment StoreEntitySet="Table_Sales">
+                <ScalarProperty Name="id_sales" ColumnName="id_sales" />
+                <ScalarProperty Name="staff_code" ColumnName="staff_code" />
+                <ScalarProperty Name="date_sales" ColumnName="date_sales" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Staff">
+            <EntityTypeMapping TypeName="Model.Table_Staff">
+              <MappingFragment StoreEntitySet="Table_Staff">
+                <ScalarProperty Name="id_staff" ColumnName="id_staff" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="date_birth" ColumnName="date_birth" />
+                <ScalarProperty Name="employee_photo" ColumnName="employee_photo" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Suppliers">
+            <EntityTypeMapping TypeName="Model.Table_Suppliers">
+              <MappingFragment StoreEntitySet="Table_Suppliers">
+                <ScalarProperty Name="id_suppliers" ColumnName="id_suppliers" />
+                <ScalarProperty Name="name_supplier" ColumnName="name_supplier" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="code_contact_person" ColumnName="code_contact_person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

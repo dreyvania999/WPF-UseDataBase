@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af7a0b9d323f4ef99e0d75df08a2b9a1" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Chemicals_Delivery" Width="1.5" PointX="10.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Contact_Persons" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Delivery" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Gender" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Household_Chemicals" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Household_Delivery" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Household_Goods" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Manufacturer" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Product_Stock" Width="1.5" PointX="7.875" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Purpose_Chemistry" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Role" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Sale_Chemicals" Width="1.5" PointX="10.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Sale_Houshould" Width="1.5" PointX="7.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Sales" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Staff" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Table_Suppliers" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Table_Chemicals_Delivery_Table_Delivery" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Chemicals_Delivery_Table_Household_Chemicals" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Manufacturer_Table_Contact_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Suppliers_Table_Contact_Persons" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Delivery_Table_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Household_Delivery_Table_Delivery" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Staff_Table_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Household_Chemicals_Table_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Household_Chemicals_Table_Purpose_Chemistry" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Product_Stock_Table_Household_Chemicals" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Sale_Chemicals_Table_Household_Chemicals" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Household_Delivery_Table_Household_Goods" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Household_Goods_Table_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Product_Stock_Table_Household_Goods" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Sale_Houshould_Table_Household_Goods" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Staff_Table_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Sale_Chemicals_Table_Sales" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Sale_Houshould_Table_Sales" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_Sales_Table_Staff" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
