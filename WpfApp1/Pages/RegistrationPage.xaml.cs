@@ -92,11 +92,12 @@ namespace WpfApp1.Pages
                     name = tboxName.Text,
                     patronymic = tboxPatronymic.Text,
                     gender = currentGender,
-                    date_birth = Convert.ToDateTime(dpBirthday.SelectedDate),
+                    date_birth = Convert.ToDateTime(dpBirthday.SelectedDate.ToString()),
                     login = tboxLogin.Text,
                     password = pbPassword.Password.GetHashCode(),
-                    role = 1
+                    role = 2
                 };
+                StaffClass.CurrentStaffEmploe = staffMan;
                 DBaseClass.BD.Table_Staff.Add(staffMan);
                 DBaseClass.BD.SaveChanges();
                 MessageBox.Show("Вы успешно зарегистрировались");

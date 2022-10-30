@@ -16,7 +16,7 @@ namespace WpfApp1
             InitializeComponent();
             FrameClass.MainFrame = fMain;
             FrameClass.MainFrame.Navigate(new ActivatedPage());
-            DBaseClass.BD = new Entities();
+            DBaseClass.BD = new Entities1();
         }
 
 

@@ -35,25 +35,26 @@ namespace WpfApp1.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int p = pbRassword.Password.GetHashCode();
-            Table_Staff employees = DBaseClass.BD.Table_Staff.FirstOrDefault(x => x.login == tboxLogin.Text && x.password == p);
-            if (employees == null)
+            Table_Staff staffMan = DBaseClass.BD.Table_Staff.FirstOrDefault(x => x.login == tboxLogin.Text && x.password == p);
+            if (staffMan == null)
             {
                 MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
             }
             else
             {
-                switch (employees.Table_Role.role)
+                StaffClass.CurrentStaffEmploe = staffMan;
+                switch (staffMan.role)
                 {
-                    case "Администратор":
-                        MessageBox.Show("Администратор");
-                        FrameClass.MainFrame.Navigate(new AutarizationPage());
+                    case 1:
+                        MessageBox.Show("Вы вошли как Администратор");
+                        FrameClass.MainFrame.Navigate(new MainPage());
                         break;
-                    case "Пользователь":
-                        MessageBox.Show("Пользователь");
-                        FrameClass.MainFrame.Navigate(new AutarizationPage());
+                    case 2:
+                        MessageBox.Show("Вы вошли как Пользователь");
+                        FrameClass.MainFrame.Navigate(new MainPage());
                         break;
                     default:
-                        MessageBox.Show("");
+                        MessageBox.Show("Произошла не предвиденная ситуация, повторите ввод логина и пароля");
                         break;
                 }
             }

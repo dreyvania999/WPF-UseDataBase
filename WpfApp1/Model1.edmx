@@ -4,17 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
+      <Schema Namespace="Хранилище DataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Table_Chemicals_Delivery">
           <Key>
             <PropertyRef Name="id_product_in_delivery" />
@@ -145,7 +135,7 @@
           <Property Name="patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="role" Type="int" Nullable="false" />
           <Property Name="date_birth" Type="date" Nullable="false" />
-          <Property Name="employee_photo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="employee_photo" Type="nvarchar(max)" />
           <Property Name="gender" Type="int" Nullable="false" />
           <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="int" Nullable="false" />
@@ -387,8 +377,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище ModelContainer">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="Хранилище DataBaseModelContainer">
           <EntitySet Name="Table_Chemicals_Delivery" EntityType="Self.Table_Chemicals_Delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Contact_Persons" EntityType="Self.Table_Contact_Persons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Delivery" EntityType="Self.Table_Delivery" Schema="dbo" store:Type="Tables" />
@@ -486,17 +475,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
+      <Schema Namespace="DataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Table_Chemicals_Delivery">
           <Key>
             <PropertyRef Name="id_product_in_delivery" />
@@ -660,7 +639,7 @@
           <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="role" Type="Int32" Nullable="false" />
           <Property Name="date_birth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="employee_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="employee_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="gender" Type="Int32" Nullable="false" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="Int32" Nullable="false" />
@@ -907,8 +886,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Table_Chemicals_Delivery" EntityType="Self.Table_Chemicals_Delivery" />
           <EntitySet Name="Table_Contact_Persons" EntityType="Self.Table_Contact_Persons" />
           <EntitySet Name="Table_Delivery" EntityType="Self.Table_Delivery" />
@@ -1007,20 +985,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="Хранилище DataBaseModelContainer" CdmEntityContainer="Entities1">
           <EntitySetMapping Name="Table_Chemicals_Delivery">
-            <EntityTypeMapping TypeName="Model.Table_Chemicals_Delivery">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Chemicals_Delivery">
               <MappingFragment StoreEntitySet="Table_Chemicals_Delivery">
                 <ScalarProperty Name="id_product_in_delivery" ColumnName="id_product_in_delivery" />
                 <ScalarProperty Name="product_code" ColumnName="product_code" />
@@ -1030,7 +997,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Contact_Persons">
-            <EntityTypeMapping TypeName="Model.Table_Contact_Persons">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Contact_Persons">
               <MappingFragment StoreEntitySet="Table_Contact_Persons">
                 <ScalarProperty Name="id_contact_person" ColumnName="id_contact_person" />
                 <ScalarProperty Name="surname" ColumnName="surname" />
@@ -1042,7 +1009,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Delivery">
-            <EntityTypeMapping TypeName="Model.Table_Delivery">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Delivery">
               <MappingFragment StoreEntitySet="Table_Delivery">
                 <ScalarProperty Name="id_delivery" ColumnName="id_delivery" />
                 <ScalarProperty Name="provider_code" ColumnName="provider_code" />
@@ -1050,7 +1017,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Gender">
-            <EntityTypeMapping TypeName="Model.Table_Gender">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Gender">
               <MappingFragment StoreEntitySet="Table_Gender">
                 <ScalarProperty Name="id_gender" ColumnName="id_gender" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
@@ -1058,7 +1025,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Household_Chemicals">
-            <EntityTypeMapping TypeName="Model.Table_Household_Chemicals">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Household_Chemicals">
               <MappingFragment StoreEntitySet="Table_Household_Chemicals">
                 <ScalarProperty Name="id_chemicals" ColumnName="id_chemicals" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1069,7 +1036,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Household_Delivery">
-            <EntityTypeMapping TypeName="Model.Table_Household_Delivery">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Household_Delivery">
               <MappingFragment StoreEntitySet="Table_Household_Delivery">
                 <ScalarProperty Name="id_product_in_delivery" ColumnName="id_product_in_delivery" />
                 <ScalarProperty Name="product_code" ColumnName="product_code" />
@@ -1079,7 +1046,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Household_Goods">
-            <EntityTypeMapping TypeName="Model.Table_Household_Goods">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Household_Goods">
               <MappingFragment StoreEntitySet="Table_Household_Goods">
                 <ScalarProperty Name="id_household_goods" ColumnName="id_household_goods" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1089,7 +1056,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Manufacturer">
-            <EntityTypeMapping TypeName="Model.Table_Manufacturer">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Manufacturer">
               <MappingFragment StoreEntitySet="Table_Manufacturer">
                 <ScalarProperty Name="id_manufacturer" ColumnName="id_manufacturer" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1099,7 +1066,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Product_Stock">
-            <EntityTypeMapping TypeName="Model.Table_Product_Stock">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Product_Stock">
               <MappingFragment StoreEntitySet="Table_Product_Stock">
                 <ScalarProperty Name="id_product_in_stock" ColumnName="id_product_in_stock" />
                 <ScalarProperty Name="product_code" ColumnName="product_code" />
@@ -1109,7 +1076,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Purpose_Chemistry">
-            <EntityTypeMapping TypeName="Model.Table_Purpose_Chemistry">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Purpose_Chemistry">
               <MappingFragment StoreEntitySet="Table_Purpose_Chemistry">
                 <ScalarProperty Name="id_purpose" ColumnName="id_purpose" />
                 <ScalarProperty Name="purpose_chemistry" ColumnName="purpose_chemistry" />
@@ -1117,7 +1084,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Role">
-            <EntityTypeMapping TypeName="Model.Table_Role">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Role">
               <MappingFragment StoreEntitySet="Table_Role">
                 <ScalarProperty Name="id_role" ColumnName="id_role" />
                 <ScalarProperty Name="role" ColumnName="role" />
@@ -1125,7 +1092,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Sale_Chemicals">
-            <EntityTypeMapping TypeName="Model.Table_Sale_Chemicals">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Sale_Chemicals">
               <MappingFragment StoreEntitySet="Table_Sale_Chemicals">
                 <ScalarProperty Name="id_sale_inform" ColumnName="id_sale_inform" />
                 <ScalarProperty Name="sales_code" ColumnName="sales_code" />
@@ -1135,7 +1102,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Sale_Houshould">
-            <EntityTypeMapping TypeName="Model.Table_Sale_Houshould">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Sale_Houshould">
               <MappingFragment StoreEntitySet="Table_Sale_Houshould">
                 <ScalarProperty Name="id_sale_inform" ColumnName="id_sale_inform" />
                 <ScalarProperty Name="sales_code" ColumnName="sales_code" />
@@ -1145,7 +1112,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Sales">
-            <EntityTypeMapping TypeName="Model.Table_Sales">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Sales">
               <MappingFragment StoreEntitySet="Table_Sales">
                 <ScalarProperty Name="id_sales" ColumnName="id_sales" />
                 <ScalarProperty Name="staff_code" ColumnName="staff_code" />
@@ -1154,7 +1121,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Staff">
-            <EntityTypeMapping TypeName="Model.Table_Staff">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Staff">
               <MappingFragment StoreEntitySet="Table_Staff">
                 <ScalarProperty Name="id_staff" ColumnName="id_staff" />
                 <ScalarProperty Name="surname" ColumnName="surname" />
@@ -1170,7 +1137,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table_Suppliers">
-            <EntityTypeMapping TypeName="Model.Table_Suppliers">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Suppliers">
               <MappingFragment StoreEntitySet="Table_Suppliers">
                 <ScalarProperty Name="id_suppliers" ColumnName="id_suppliers" />
                 <ScalarProperty Name="name_supplier" ColumnName="name_supplier" />

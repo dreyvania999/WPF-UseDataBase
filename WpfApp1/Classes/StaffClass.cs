@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WpfApp1.Classes
 {
-    internal class DBaseClass
+    internal class StaffClass
     {
-        public static Entities1 BD;
+        public static Table_Staff CurrentStaffEmploe;
     }
 }
