@@ -17,6 +17,9 @@
                 <GroupBox Header="Введите имя">
                     <TextBox Name="tboxName"/>
                 </GroupBox>
+                <GroupBox Header="Введите отчество">
+                    <TextBox Name="tboxPatronymic"/>
+                </GroupBox>
                 <GroupBox Header="Введите дату рождения">
                     <DatePicker Name="dpBirthday"/>
                 </GroupBox>
@@ -24,7 +27,7 @@
                     <TextBox Name="tboxLogin"/>
                 </GroupBox>
                 <GroupBox Header="Введите пароль">
-                    <PasswordBox Name="pbPassword"/>
+                    <PasswordBox Name="pbPassword" PreviewTextInput="TextInPasswordBox"/>
                 </GroupBox>
                 <GroupBox Header="Выберите пол">
                     <StackPanel>
@@ -32,11 +35,9 @@
                         <RadioButton Name="rbWomen">Женский</RadioButton>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="Выберите роль">
-                    <ComboBox Name="cbRole"/>
-                </GroupBox>
-                <Button Name="btnReg" >Регистрация</Button>
-                <Button Name="btnBackMain">Вернуться на главную</Button>
+                <Button Name="btnReg" Click="btnReg_Click" >Регистрация</Button>
+                <Button Name="btnBackMain">Вернуться назад</Button>
+                <Button Name="btnGoToAAutoriz">Перейти к авторизации</Button>
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -14,9 +14,9 @@
                 <TextBox Name="tboxLogin"></TextBox>
             </GroupBox>
             <GroupBox Header="Введите пароль">
-                <PasswordBox Name="pbRassword" ></PasswordBox>
+                <PasswordBox Name="pbRassword" PreviewTextInput="TextInPasswordBox" ></PasswordBox>
             </GroupBox>
-            <Button >Авторизация</Button>
+            <Button Click="Button_Click" >Авторизация</Button>
             <Button Name="btnBackMain" >Вернуться на главную</Button>
         </StackPanel>
     </Grid>
