@@ -97,7 +97,7 @@ namespace WpfApp1.Pages
                     password = pbPassword.Password.GetHashCode(),
                     role = 2
                 };
-                StaffClass.CurrentStaffEmploe = staffMan;
+                
                 DBaseClass.BD.Table_Staff.Add(staffMan);
                 DBaseClass.BD.SaveChanges();
                 MessageBox.Show("Вы успешно зарегистрировались");

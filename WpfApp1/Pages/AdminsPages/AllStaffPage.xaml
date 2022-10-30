@@ -50,7 +50,7 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <TextBlock x:Name="tbInitialState" HorizontalAlignment="Center" FontSize="18" Margin="0,0,0,10" Visibility="Collapsed" PreviewMouseDown="tbInitialState_PreviewMouseDown">Удалить все критерии поиска, вернуть исходное состояние таблицы</TextBlock>
+            <Button x:Name="btInitialState" HorizontalAlignment="Center" FontSize="18" Margin="0,0,0,10" Template="{StaticResource btnStyle}" Click="btInitialState_Click" Width="341">Удалить все критерии поиска, вернуть исходное состояние таблицы</Button>
             <DataGrid x:Name="dgUsers" FontSize="18" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Фамилия" Binding="{Binding surname}" Width="*"></DataGridTextColumn>

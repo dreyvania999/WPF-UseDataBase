@@ -27,7 +27,7 @@ namespace WpfApp1.Pages.AdminsPages
             cbGender.ItemsSource = DBaseClass.BD.Table_Gender.ToList();
             cbGender.DisplayMemberPath = "gender";
             cbGender.SelectedIndex = 0;
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Role.role != "Администратор");
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList();
 
         }
 
@@ -42,53 +42,53 @@ namespace WpfApp1.Pages.AdminsPages
             {
                 if (tbSurname.Text != "")
                 {
-                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname == tbSurname.Text && x.login == tbLogin.Text && x.Table_Role.role != "Администратор");
+                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname.Contains(tbSurname.Text) && x.login.Contains(tbLogin.Text ));
                 }
                 else
                 {
-                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.login == tbLogin.Text && x.Table_Role.role != "Администратор");
+                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.login.Contains(tbLogin.Text ));
                 }
             }
             else
             {
                 if (tbSurname.Text != "")
                 {
-                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname == tbSurname.Text && x.Table_Role.role != "Администратор");
+                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname.Contains(tbSurname.Text));
                 }
                 else
                 {
-                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Role.role != "Администратор");
+                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList();
                     return;
                 }
             }
-            tbInitialState.Visibility = Visibility.Visible;
+            
         }
 
-        private void tbInitialState_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            tbLogin.Text = "";
-            tbSurname.Text = "";
-            cbGender.SelectedIndex = 0;
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Role.role != "Администратор");
-            tbInitialState.Visibility = Visibility.Collapsed;
-        }
 
         private void btnFiltering_Click(object sender, RoutedEventArgs e)
         {
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text && x.Table_Role.role != "Администратор");
-            tbInitialState.Visibility = Visibility.Visible;
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text );
+            
         }
 
         private void btnSortAsc_Click(object sender, RoutedEventArgs e)
         {
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text && x.Table_Role.role != "Администратор").OrderBy(x => x.surname);
-            tbInitialState.Visibility = Visibility.Visible;
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text ).OrderBy(x => x.surname);
+           
         }
 
         private void btnSortDesc_Click(object sender, RoutedEventArgs e)
         {
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text && x.Table_Role.role != "Администратор").OrderByDescending(x => x.surname);
-            tbInitialState.Visibility = Visibility.Visible;
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text ).OrderByDescending(x => x.surname);
+            
+        }
+
+        private void btInitialState_Click(object sender, RoutedEventArgs e)
+        {
+            tbLogin.Text = "";
+            tbSurname.Text = "";
+            cbGender.SelectedIndex = 0;
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList();
         }
     }
 }

@@ -26,21 +26,30 @@ namespace WpfApp1.Pages
         public MainPage()
         {
             InitializeComponent();
-            
+            try
+            {
                 switch (StaffClass.CurrentStaffEmploe.Table_Role.role)
                 {
                     case "Администратор":
-                        
+
 
                         break;
                     case "Пользователь":
-                        
+                        btnSeeUsers.Visibility = Visibility.Collapsed;
+
 
                         break;
                     default:
                         MessageBox.Show("Что-то пошло не по плану");
                         break;
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Что-то пошло не по плану");
+                FrameClass.MainFrame.Navigate(new ActivatedPage());
+            }
+                
         }
 
         private void btnSeeUsers_Click(object sender, RoutedEventArgs e)

@@ -36,27 +36,27 @@ namespace WpfApp1.Pages
         {
             int p = pbRassword.Password.GetHashCode();
             Table_Staff staffMan = DBaseClass.BD.Table_Staff.FirstOrDefault(x => x.login == tboxLogin.Text && x.password == p);
-            if (staffMan == null)
-            {
-                MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
-            }
-            else
+            if (staffMan != null)
             {
                 StaffClass.CurrentStaffEmploe = staffMan;
                 switch (staffMan.role)
                 {
                     case 1:
-                        MessageBox.Show("Вы вошли как Администратор");
+                        
                         FrameClass.MainFrame.Navigate(new MainPage());
                         break;
                     case 2:
-                        MessageBox.Show("Вы вошли как Пользователь");
+                        
                         FrameClass.MainFrame.Navigate(new MainPage());
                         break;
                     default:
                         MessageBox.Show("Произошла не предвиденная ситуация, повторите ввод логина и пароля");
                         break;
                 }
+            }
+            else
+            {
+                 MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
             }
         }
 
