@@ -109,5 +109,15 @@ namespace WpfApp1.Pages
             }
 
         }
+
+        private void btnBackMain_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new ActivatedPage());
+        }
+
+        private void btnGoToAAutoriz_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new AutarizationPage());
+        }
     }
 }

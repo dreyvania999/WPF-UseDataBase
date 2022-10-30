@@ -47,5 +47,10 @@ namespace WpfApp1.Pages
         {
             FrameClass.MainFrame.Navigate(new AllStaffPage());
         }
+
+        private void btnExitMainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new ActivatedPage());
+        }
     }
 }

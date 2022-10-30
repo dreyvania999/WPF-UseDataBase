@@ -16,8 +16,8 @@
             <GroupBox Header="Введите пароль">
                 <PasswordBox Name="pbRassword" PreviewTextInput="TextInPasswordBox" ></PasswordBox>
             </GroupBox>
-            <Button Click="Button_Click" >Авторизация</Button>
-            <Button Name="btnBackMain" >Вернуться на главную</Button>
+            <Button Click="Button_Click" Content="Авторизация" Template="{StaticResource btnStyle}" Margin="5"/>
+            <Button Name="btnBackMain" Content="На главную" Template="{StaticResource btnStyle}" Click="btnBackMain_Click"/>
         </StackPanel>
     </Grid>
 </Page>

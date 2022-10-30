@@ -12,9 +12,9 @@
         <StackPanel Grid.Row="0" Orientation="Vertical" Margin="10">
             <TextBlock HorizontalAlignment="Center" FontSize="35">Главное меню</TextBlock>
             <StackPanel Orientation="Vertical">
-                <Button x:Name="btnSeeUsers" Click="btnSeeUsers_Click"  >Пользователи</Button>
-                
-                <Button x:Name="btnExitMainMenu"   >Выйти из учетной записи</Button>
+                <Button x:Name="btnSeeUsers" Click="btnSeeUsers_Click" Content="Пользователи" Template="{StaticResource btnStyle}" Margin="10"/> 
+
+                <Button x:Name="btnExitMainMenu" Content="Выйти" Template="{StaticResource btnStyle}" Click="btnExitMainMenu_Click"/>
             </StackPanel>
         </StackPanel>
         

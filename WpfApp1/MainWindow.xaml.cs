@@ -24,11 +24,11 @@ namespace WpfApp1
         {
             PB.ToolTip = "";
             Regex presenceALL = new Regex(@"^(?=.*[a-z]){3,}(?=.*[A-Z])(?=.*\d){2,}(?=.*[@$!#№%*?&=+_-])[0-9A-Za-z@$!%*?&=+_-]{8,}$");
-            Regex presenceNum = new Regex(@"^.*\d.*\d.*$");
-            Regex presenceLowerCase = new Regex(@"^.*[a-z].*[a-z].*[a-z].*$");
-            Regex presenceHieghtCase = new Regex(@"^.*[A-Z].*$");
+            Regex presenceNum = new Regex("(?=.*[0-9].*[0-9])");
+            Regex presenceLowerCase = new Regex("(?=.*[a-z].*[a-z].*[a-z])");
+            Regex presenceHieghtCase = new Regex("(?=.*[A-Z])");
             Regex presenceSize = new Regex(@"^.{8,}$");
-            Regex presenceSymbol = new Regex(@"^.*[@$!#№%*?&=+_-].*$");
+            Regex presenceSymbol = new Regex("(?=.*[@$!#№%*?&=+_-])");
             if (presenceALL.IsMatch(PB.Password.ToString()))
             {
                 PB.ToolTip = ("Пароль подходит под все требования.");

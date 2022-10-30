@@ -33,7 +33,7 @@ namespace WpfApp1.Pages.AdminsPages
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            //Frameclass.MainFrame.Navigate(new MainMenuPage());
+            FrameClass.MainFrame.Navigate(new MainPage());
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)

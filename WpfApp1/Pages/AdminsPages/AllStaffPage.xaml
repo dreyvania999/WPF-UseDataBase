@@ -22,24 +22,30 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <TextBlock Margin="0,0,30,0">Логин:</TextBlock>
-                            <TextBox x:Name="tbLogin" Width="300"></TextBox>
+                            <TextBox x:Name="tbLogin" Width="200"></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5">
                             <TextBlock Margin="0,0,3.5,0">Фамилия:</TextBlock>
-                            <TextBox x:Name="tbSurname" Width="300"></TextBox>
+                            <TextBox x:Name="tbSurname" Width="200"></TextBox>
                         </StackPanel>
-                        <Button x:Name="btnSearch"  HorizontalAlignment="Center" Click="btnSearch_Click" Cursor="Hand">Поиск</Button>
+                        <Button x:Name="btnSearch" Content="Поиск" Template="{StaticResource btnStyle}" HorizontalAlignment="Center" Click="btnSearch_Click" Cursor="Hand"/> 
                     </StackPanel>
                     <StackPanel Width="200" Margin="10,0,0,0">
                         <TextBlock HorizontalAlignment="Center">Пол:</TextBlock>
                         <ComboBox x:Name="cbGender"/>
-                        <Button x:Name="btnFiltering"  HorizontalAlignment="Center" Click="btnFiltering_Click">Поиск</Button>
+                        <StackPanel Margin="0,15,0,0">
+                            <Button x:Name="btnFiltering" Content="Поиск" Template="{StaticResource btnStyle}" Click="btnFiltering_Click"/>
+                        </StackPanel>                        
                     </StackPanel>
-                    <StackPanel Margin="10,0,0,0">
-                        <TextBlock HorizontalAlignment="Center">Сортировка по фамилии</TextBlock>
-                        <StackPanel Orientation="Horizontal">
-                            <Button x:Name="btnSortAsc"  HorizontalAlignment="Center" Width="180" Margin="5" Click="btnSortAsc_Click">По возрастанию</Button>
-                            <Button x:Name="btnSortDesc"  HorizontalAlignment="Center" Width="180" Margin="5" Click="btnSortDesc_Click">По убыванию</Button>
+                    <StackPanel Margin="10,0,0,0" Orientation="Vertical">
+                        <StackPanel>
+                            <TextBlock HorizontalAlignment="Center">Сортировка по фамилии</TextBlock>
+                        </StackPanel>                       
+                        <StackPanel >
+                            <Button x:Name="btnSortAsc" Content="По возрастанию" Template="{StaticResource btnStyle}" HorizontalAlignment="Center" Width="218" Margin="5" Click="btnSortAsc_Click"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <Button x:Name="btnSortDesc" Content="По убыванию" Template="{StaticResource btnStyle}" HorizontalAlignment="Center" Width="218" Margin="5" Click="btnSortDesc_Click"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -57,7 +63,7 @@
             </DataGrid>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <Button x:Name="btnExit" HorizontalAlignment="Left" Click="btnExit_Click">Назад</Button>
+            <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Click="btnExit_Click">Назад</Button>
         </StackPanel>
     </Grid>
 </Page>

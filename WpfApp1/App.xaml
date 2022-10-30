@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:WpfApp1"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="wndwStyle"  TargetType ="Window">
+            <Setter Property="Background" Value="#FFF0F2" />
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        <ControlTemplate x:Key="btnStyle" TargetType="Button">
+            <Border CornerRadius="5" Background="#D8BFD8" Height="40" Width="200">
+                <ContentControl  Content="{TemplateBinding Content}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Foreground="Black" FontSize="20"/>
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

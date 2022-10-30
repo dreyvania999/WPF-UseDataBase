@@ -35,9 +35,9 @@
                         <RadioButton Name="rbWomen">Женский</RadioButton>
                     </StackPanel>
                 </GroupBox>
-                <Button Name="btnReg" Click="btnReg_Click" >Регистрация</Button>
-                <Button Name="btnBackMain">Вернуться назад</Button>
-                <Button Name="btnGoToAAutoriz">Перейти к авторизации</Button>
+                <Button Name="btnReg" Click="btnReg_Click" Content="Регистрация" Template="{StaticResource btnStyle}"/>
+                <Button Name="btnBackMain" Content="Назад" Template="{StaticResource btnStyle}" Margin="5" Click="btnBackMain_Click"/>
+                <Button Name="btnGoToAAutoriz" Content="Авторизация" Template="{StaticResource btnStyle}" Click="btnGoToAAutoriz_Click"/> 
             </StackPanel>
         </ScrollViewer>
     </Grid>
