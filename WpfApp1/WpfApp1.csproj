@@ -74,6 +74,9 @@
     <Compile Include="Pages\AdminsPages\AllStaffPage.xaml.cs">
       <DependentUpon>AllStaffPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminsPages\ListViewPage.xaml.cs">
+      <DependentUpon>ListViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\AdminsPages\AllStaffPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminsPages\ListViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
