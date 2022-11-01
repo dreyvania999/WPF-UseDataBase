@@ -92,7 +92,7 @@
           <Key>
             <PropertyRef Name="id_product_in_stock" />
           </Key>
-          <Property Name="id_product_in_stock" Type="int" Nullable="false" />
+          <Property Name="id_product_in_stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_code" Type="int" />
           <Property Name="quantity" Type="int" Nullable="false" />
           <Property Name="chemical_code" Type="int" />

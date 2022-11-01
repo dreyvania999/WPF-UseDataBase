@@ -36,8 +36,8 @@ namespace WpfApp1.Pages
                         break;
                     case "Пользователь":
                         btnSeeUsers.Visibility = Visibility.Collapsed;
-
-
+                        btnSeeSales.Visibility = Visibility.Collapsed;
+                        btnSeeStock.Visibility = Visibility.Collapsed;
                         break;
                     default:
                         MessageBox.Show("Что-то пошло не по плану");
@@ -60,6 +60,16 @@ namespace WpfApp1.Pages
         private void btnExitMainMenu_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.MainFrame.Navigate(new ActivatedPage());
+        }
+
+        private void btnSeeSales_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new ListViewSalesPage());
+        }
+
+        private void btnSeeStock_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new PageProductStock());
         }
     }
 }

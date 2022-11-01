@@ -76,14 +76,11 @@
     <Compile Include="Pages\AdminsPages\AllStaffPage.xaml.cs">
       <DependentUpon>AllStaffPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AdminsPages\ListViewChemicalsPage.xaml.cs">
-      <DependentUpon>ListViewChemicalsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\AdminsPages\ListViewHouseholdPage.xaml.cs">
-      <DependentUpon>ListViewHouseholdPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AdminsPages\ListViewSalesPage.xaml.cs">
       <DependentUpon>ListViewSalesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminsPages\PageProductStock.xaml.cs">
+      <DependentUpon>PageProductStock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -156,15 +153,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AdminsPages\ListViewChemicalsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\AdminsPages\ListViewHouseholdPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\AdminsPages\ListViewSalesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminsPages\PageProductStock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

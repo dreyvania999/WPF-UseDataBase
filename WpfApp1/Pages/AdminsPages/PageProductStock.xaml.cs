@@ -12,17 +12,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Classes;
 
 namespace WpfApp1.Pages.AdminsPages
 {
     /// <summary>
-    /// Логика взаимодействия для ListViewChemicalsPage.xaml
+    /// Логика взаимодействия для PageProductStock.xaml
     /// </summary>
-    public partial class ListViewChemicalsPage : Page
+    public partial class PageProductStock : Page
     {
-        public ListViewChemicalsPage()
+        public PageProductStock()
         {
             InitializeComponent();
+            lvListTickets.ItemsSource = DBaseClass.BD.Table_Product_Stock.ToList();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new MainPage());
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

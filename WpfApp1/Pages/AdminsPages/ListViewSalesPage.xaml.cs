@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Classes;
 
 namespace WpfApp1.Pages.AdminsPages
 {
@@ -23,6 +24,17 @@ namespace WpfApp1.Pages.AdminsPages
         public ListViewSalesPage()
         {
             InitializeComponent();
+            lvListTickets.ItemsSource = DBaseClass.BD.Table_Sales.ToList();
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new MainPage());
         }
     }
 }
