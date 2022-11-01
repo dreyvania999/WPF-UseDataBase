@@ -6,6 +6,13 @@ using WpfApp1.Pages;
 
 namespace WpfApp1
 {
+
+    //MixGol
+    //Satana121251@
+
+    //Admin
+    //Admin@113
+
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>

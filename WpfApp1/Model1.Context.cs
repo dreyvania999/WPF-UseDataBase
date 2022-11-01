@@ -41,5 +41,6 @@ namespace WpfApp1
         public virtual DbSet<Table_Sales> Table_Sales { get; set; }
         public virtual DbSet<Table_Staff> Table_Staff { get; set; }
         public virtual DbSet<Table_Suppliers> Table_Suppliers { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace WpfApp1
         public int manufacturer_code { get; set; }
         public int destination_code { get; set; }
         public double cost { get; set; }
+        public string photo_chemicals { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table_Chemicals_Delivery> Table_Chemicals_Delivery { get; set; }

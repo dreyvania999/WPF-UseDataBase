@@ -65,6 +65,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\DBaseClass.cs" />
+    <Compile Include="Classes\PartialClassSales.cs" />
+    <Compile Include="Classes\PartialClassStorageLocation.cs" />
     <Compile Include="Classes\StaffClass.cs" />
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
@@ -74,11 +76,20 @@
     <Compile Include="Pages\AdminsPages\AllStaffPage.xaml.cs">
       <DependentUpon>AllStaffPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AdminsPages\ListViewPage.xaml.cs">
-      <DependentUpon>ListViewPage.xaml</DependentUpon>
+    <Compile Include="Pages\AdminsPages\ListViewChemicalsPage.xaml.cs">
+      <DependentUpon>ListViewChemicalsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminsPages\ListViewHouseholdPage.xaml.cs">
+      <DependentUpon>ListViewHouseholdPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminsPages\ListViewSalesPage.xaml.cs">
+      <DependentUpon>ListViewSalesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Table_Chemicals_Delivery.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -145,7 +156,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AdminsPages\ListViewPage.xaml">
+    <Page Include="Pages\AdminsPages\ListViewChemicalsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminsPages\ListViewHouseholdPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminsPages\ListViewSalesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

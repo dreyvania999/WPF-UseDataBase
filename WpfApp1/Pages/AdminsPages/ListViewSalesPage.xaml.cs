@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WpfApp1.Pages.AdminsPages
 {
     /// <summary>
-    /// Логика взаимодействия для ListViewPage.xaml
+    /// Логика взаимодействия для ListViewSalesPage.xaml
     /// </summary>
-    public partial class ListViewPage : Page
+    public partial class ListViewSalesPage : Page
     {
-        public ListViewPage()
+        public ListViewSalesPage()
         {
             InitializeComponent();
         }

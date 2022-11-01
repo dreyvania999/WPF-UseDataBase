@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище DataBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Table_Chemicals_Delivery">
           <Key>
             <PropertyRef Name="id_product_in_delivery" />
@@ -48,6 +58,7 @@
           <Property Name="manufacturer_code" Type="int" Nullable="false" />
           <Property Name="destination_code" Type="int" Nullable="false" />
           <Property Name="cost" Type="float" Nullable="false" />
+          <Property Name="photo_chemicals" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Table_Household_Delivery">
           <Key>
@@ -66,6 +77,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="manufacturer_code" Type="int" Nullable="false" />
           <Property Name="cost" Type="float" Nullable="false" />
+          <Property Name="photo_household" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Table_Manufacturer">
           <Key>
@@ -378,6 +390,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище DataBaseModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Chemicals_Delivery" EntityType="Self.Table_Chemicals_Delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Contact_Persons" EntityType="Self.Table_Contact_Persons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Delivery" EntityType="Self.Table_Delivery" Schema="dbo" store:Type="Tables" />
@@ -471,8 +484,7 @@
             <End Role="Table_Suppliers" EntitySet="Table_Suppliers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -532,6 +544,7 @@
           <NavigationProperty Name="Table_Purpose_Chemistry" Relationship="Self.FK_Table_Household_Chemicals_Table_Purpose_Chemistry" FromRole="Table_Household_Chemicals" ToRole="Table_Purpose_Chemistry" />
           <NavigationProperty Name="Table_Product_Stock" Relationship="Self.FK_Table_Product_Stock_Table_Household_Chemicals" FromRole="Table_Household_Chemicals" ToRole="Table_Product_Stock" />
           <NavigationProperty Name="Table_Sale_Chemicals" Relationship="Self.FK_Table_Sale_Chemicals_Table_Household_Chemicals" FromRole="Table_Household_Chemicals" ToRole="Table_Sale_Chemicals" />
+          <Property Name="photo_chemicals" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Table_Household_Delivery">
           <Key>
@@ -556,6 +569,7 @@
           <NavigationProperty Name="Table_Manufacturer" Relationship="Self.FK_Table_Household_Goods_Table_Manufacturer" FromRole="Table_Household_Goods" ToRole="Table_Manufacturer" />
           <NavigationProperty Name="Table_Product_Stock" Relationship="Self.FK_Table_Product_Stock_Table_Household_Goods" FromRole="Table_Household_Goods" ToRole="Table_Product_Stock" />
           <NavigationProperty Name="Table_Sale_Houshould" Relationship="Self.FK_Table_Sale_Houshould_Table_Household_Goods" FromRole="Table_Household_Goods" ToRole="Table_Sale_Houshould" />
+          <Property Name="photo_household" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Table_Manufacturer">
           <Key>
@@ -979,7 +993,18 @@
             <End Role="Table_Staff" EntitySet="Table_Staff" />
             <End Role="Table_Sales" EntitySet="Table_Sales" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="DataBaseModel.sysdiagrams" />
         </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1027,6 +1052,7 @@
           <EntitySetMapping Name="Table_Household_Chemicals">
             <EntityTypeMapping TypeName="DataBaseModel.Table_Household_Chemicals">
               <MappingFragment StoreEntitySet="Table_Household_Chemicals">
+                <ScalarProperty Name="photo_chemicals" ColumnName="photo_chemicals" />
                 <ScalarProperty Name="id_chemicals" ColumnName="id_chemicals" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="manufacturer_code" ColumnName="manufacturer_code" />
@@ -1048,6 +1074,7 @@
           <EntitySetMapping Name="Table_Household_Goods">
             <EntityTypeMapping TypeName="DataBaseModel.Table_Household_Goods">
               <MappingFragment StoreEntitySet="Table_Household_Goods">
+                <ScalarProperty Name="photo_household" ColumnName="photo_household" />
                 <ScalarProperty Name="id_household_goods" ColumnName="id_household_goods" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="manufacturer_code" ColumnName="manufacturer_code" />
@@ -1143,6 +1170,17 @@
                 <ScalarProperty Name="name_supplier" ColumnName="name_supplier" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="code_contact_person" ColumnName="code_contact_person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DataBaseModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

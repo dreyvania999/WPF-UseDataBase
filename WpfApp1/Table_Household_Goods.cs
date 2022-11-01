@@ -26,6 +26,7 @@ namespace WpfApp1
         public string name { get; set; }
         public int manufacturer_code { get; set; }
         public double cost { get; set; }
+        public string photo_household { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table_Household_Delivery> Table_Household_Delivery { get; set; }

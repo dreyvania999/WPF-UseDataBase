@@ -40,6 +40,7 @@
         <AssociationConnector Association="DataBaseModel.FK_Table_Sale_Chemicals_Table_Sales" ManuallyRouted="false" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Sale_Houshould_Table_Sales" ManuallyRouted="false" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Sales_Table_Staff" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DataBaseModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
