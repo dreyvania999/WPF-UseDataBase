@@ -20,11 +20,11 @@ namespace WpfApp1
         {
             get
             {
-                string str = "";
+                string str = "К";
 
-                foreach (var item in Table_Sale_Houshould)
+                foreach (var item in Table_Sale_Houshould.Where(x => x.sales_code.Equals(id_sales)))
                 {
-                    str = "Колличество товара "+item.quantity+ " наименование товара " + item.Table_Household_Goods.name +" общая стоимость "+ item.quantity * item.Table_Household_Goods.cost+ "\n";
+                    str += "Колличество товара "+item.quantity+ " наименование товара " + item.Table_Household_Goods.name +" общая стоимость "+ item.quantity * item.Table_Household_Goods.cost+ "\n";
                 }
                 return str;
             }

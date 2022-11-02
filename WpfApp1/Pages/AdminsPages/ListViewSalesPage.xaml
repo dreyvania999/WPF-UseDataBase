@@ -36,14 +36,14 @@
 
                                                 <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
 
-                                                    <TextBlock Uid="{Binding SaleInform}" Name="tbArrivalPoint"/>
+                                                    <TextBlock Text="{Binding SaleInform}" Name="tbArrivalPoint"/>
                                                 </StackPanel>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal" Margin="5">
 
                                                 <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
                                                     <TextBlock Text="Дата" HorizontalAlignment="Center"/>
-                                                    <TextBlock Text="{Binding Table_Sales.date_sales, StringFormat={}dd.MM.yyyy}"/>
+                                                    <TextBlock Text="{Binding date_sales, StringFormat={}dd.MM.yyyy}"/>
                                                 </StackPanel>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal" Margin="5">
