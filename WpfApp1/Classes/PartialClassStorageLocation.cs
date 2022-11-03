@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
+using System.Windows.Media;
 
 namespace WpfApp1
 {
@@ -34,6 +36,43 @@ namespace WpfApp1
             }
         }
 
-        
+        public SolidColorBrush ColorProperty
+        {
+            get
+            {
+                SolidColorBrush propertyColor = new SolidColorBrush(Color.FromRgb(111, 111, 111));
+                if (product_code != null)
+                {
+                    propertyColor = new SolidColorBrush(Color.FromRgb(199, 240, 254));
+                    return propertyColor;
+                }
+                else if (chemical_code != null)
+                {
+                    propertyColor = new SolidColorBrush(Color.FromRgb(83, 168, 225));
+                    return propertyColor;
+                }
+                
+                return propertyColor;
+            }
+        }
+        public SolidColorBrush ColorCount
+        {
+            get
+            {
+                SolidColorBrush propertyColor = new SolidColorBrush(Color.FromRgb(111, 111, 111));
+                if (quantity > 10)
+                {
+                    propertyColor = new SolidColorBrush(Color.FromRgb(199, 240, 254));
+                    return propertyColor;
+                }
+                else
+                {
+                    propertyColor = new SolidColorBrush(Color.FromRgb(100, 11, 254));
+                    return propertyColor;
+                }
+
+                return propertyColor;
+            }
+        }
     }
 }
