@@ -34,23 +34,19 @@
                                             <TextBlock Text="Продажа" HorizontalAlignment="Center" FontSize="22" FontWeight ="Bold"/>
                                             <StackPanel Orientation="Horizontal" Margin="5">
 
-                                                <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
-
-                                                    <TextBlock Uid="{Binding SaleInform}" Name="tbArrivalPoint"/>
-                                                </StackPanel>
+                                               
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal" Margin="5">
 
                                                 <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
-                                                    <TextBlock Text="Дата" HorizontalAlignment="Center"/>
-                                                    <TextBlock Text="{Binding Table_Sales.date_sales, StringFormat={}dd.MM.yyyy}"/>
+                                                    
                                                 </StackPanel>
                                             </StackPanel>
                                             <StackPanel Orientation="Horizontal" Margin="5">
                                                 <Image Height="50" Width="50" Source="Resourses/yuterra.png" Margin="0, 0, 20, 0"/>
                                                 <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
-                                                    <TextBlock Text="Продавец" HorizontalAlignment="Center"/>
-                                                    <TextBlock Text="{Binding FullNameStaffEmployee}"/>
+                                                    <TextBlock Text="Товар" HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding ChemicalsORHouseholdGoods}"/>
                                                 </StackPanel>
 
                                             </StackPanel>

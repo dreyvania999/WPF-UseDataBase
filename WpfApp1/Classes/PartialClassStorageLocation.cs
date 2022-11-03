@@ -8,23 +8,32 @@ namespace WpfApp1
 {
     public partial class Table_Product_Stock
     {
-        public string Chemicals
+        public string ChemicalsORHouseholdGoods
         {
             get
             {
-                return Table_Household_Chemicals.Table_Purpose_Chemistry.purpose_chemistry+" "
-                + Table_Household_Chemicals.name +" от производителя "+
+                string d = "";
+                if (chemical_code==null)
+                {
+
+                        d += Table_Household_Goods.name + " от производителя " +
+                Table_Household_Goods.Table_Manufacturer.name;
+                    
+                }
+                else if (product_code==null)
+                {
+                    
+                        d+= Table_Household_Chemicals.Table_Purpose_Chemistry.purpose_chemistry + " "
+                + Table_Household_Chemicals.name + " от производителя " +
                 Table_Household_Chemicals.Table_Manufacturer.name;
+                    
+                }
+
+                return d;
+
             }
         }
 
-        public string HouseholdGoods
-        {
-            get
-            {
-                return Table_Household_Goods.name + " от производителя " + 
-                Table_Household_Goods.Table_Manufacturer.name;
-            }
-        }
+        
     }
 }
