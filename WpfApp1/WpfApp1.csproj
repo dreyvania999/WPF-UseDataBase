@@ -248,6 +248,15 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourses\Ariel.png" />
+    <Resource Include="Resourses\fary.png" />
+    <Resource Include="Resourses\Gubka.png" />
+    <Resource Include="Resourses\Shvabra.jpg" />
+    <Resource Include="Resourses\Staff_1.png" />
+    <Resource Include="Resourses\Staff_2.png" />
+    <Resource Include="Resourses\Staff_3.png" />
+    <Resource Include="Resourses\Staff_4.png" />
+    <Resource Include="Resourses\Staff_5.png" />
     <Resource Include="Resourses\yuterra.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
