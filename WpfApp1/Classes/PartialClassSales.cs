@@ -22,11 +22,18 @@ namespace WpfApp1
             get
             {
                 string str = "";
-
+                double f = 0;
                 foreach (var item in Table_Sale_Houshould.Where(x => x.sales_code.Equals(id_sales)))
                 {
-                    str += "Колличество товара "+item.quantity+ " наименование товара " + item.Table_Household_Goods.name +"\nОбщая стоимость "+ item.quantity * item.Table_Household_Goods.cost+ "\n";
+                    f += item.quantity * item.Table_Household_Goods.cost;
+                    str += "Колличество товара " + item.quantity + " наименование товара " + item.Table_Household_Goods.name + "\nОбщая стоимость " + item.quantity * item.Table_Household_Goods.cost + "\n";
                 }
+                foreach (var item in Table_Sale_Chemicals.Where(x => x.sales_code.Equals(id_sales)))
+                {
+                    f += item.quantity * item.Table_Household_Chemicals.cost;
+                    str += "Колличество товара " + item.quantity + " наименование товара " + item.Table_Household_Chemicals.name + "\nОбщая стоимость " + item.quantity * item.Table_Household_Chemicals.cost + "\n";
+                }
+                str += "\nИтого: " + f;
                 return str;
             }
         }
@@ -34,21 +41,25 @@ namespace WpfApp1
         {
             get
             {
-                double f =0;
+                double f = 0;
                 foreach (var item in Table_Sale_Houshould.Where(x => x.sales_code.Equals(id_sales)))
                 {
-                     f +=item.quantity * item.Table_Household_Goods.cost ;
+                    f += item.quantity * item.Table_Household_Goods.cost;
+                }
+                foreach (var item in Table_Sale_Chemicals.Where(x => x.sales_code.Equals(id_sales)))
+                {
+                    f += item.quantity * item.Table_Household_Chemicals.cost;
                 }
                 if (f >= 500)
                 {
-                    return new SolidColorBrush(Color.FromRgb(199, 240, 254));
+                    return Brushes.AliceBlue; ;
                 }
                 else
-                { 
-                    return new SolidColorBrush(Color.FromRgb(100, 11, 254));
+                {
+                    return Brushes.Bisque;
                 }
 
-                
+
             }
         }
     }

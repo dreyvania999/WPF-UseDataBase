@@ -24,7 +24,7 @@ namespace WpfApp1.Pages.AdminsPages
         public ListViewSalesPage()
         {
             InitializeComponent();
-            lvListTickets.ItemsSource = DBaseClass.BD.Table_Sales.ToList();
+            ListSale.ItemsSource = DBaseClass.BD.Table_Sales.ToList();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

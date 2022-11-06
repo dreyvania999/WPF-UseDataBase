@@ -8,59 +8,40 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageProductStock">
 
+    <Page.Resources>
+        <BitmapImage x:Key="defaultImage" UriSource="/Resourses/yuterra.png"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="11*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <TextBlock HorizontalAlignment="Center" FontSize="35">Список продаж</TextBlock>
-        </StackPanel>
-        <ScrollViewer Grid.Row="1">
-            <StackPanel>
-                <ListView x:Name="lvListTickets" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel HorizontalAlignment="Center"></WrapPanel>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93">
-                                <Grid Width="365" Height="350">
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                                        <StackPanel>
-                                            <TextBlock Text="Продажа" HorizontalAlignment="Center" FontSize="22" FontWeight ="Bold"/>
-                                            <StackPanel Orientation="Horizontal" Margin="5">
 
-                                               
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" Margin="5">
-
-                                                <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
-                                                    
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" Margin="5">
-                                                <Image Height="50" Width="50" Source="Resourses/yuterra.png" Margin="0, 0, 20, 0"/>
-                                                <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
-                                                    <TextBlock Text="Товар" HorizontalAlignment="Center"/>
-                                                    <TextBlock Text="{Binding ChemicalsORHouseholdGoods}"/>
-                                                </StackPanel>
-
-                                            </StackPanel>
-
-                                        </StackPanel>
-                                    </ScrollViewer>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
-        </ScrollViewer>
-        <StackPanel Grid.Row="2">
+        <ListView x:Name="ListProduct" Grid.Row="0" Height= "550" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorProperty}">
+                        <Grid Width="365" Height="350" >
+                            <StackPanel >
+                                <TextBlock Text="Продукт" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
+                                <TextBlock TextWrapping="Wrap"  Text="{Binding ChemicalsORHouseholdGoods}" Name="tbArrivalPoint"/>
+                                <StackPanel Background="{Binding ColorCount}">
+                                        <TextBlock Text="Количество" HorizontalAlignment="Center"/>
+                                        <TextBlock HorizontalAlignment="Center"  Text="{Binding quantity}"/>
+                                </StackPanel>
+                                <Image Width="100" Height="100" Source="{Binding PhotoProduct, TargetNullValue={StaticResource defaultImage}}"/>
+                                 </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="1">
             <Grid>
                 <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" Click="btnExit_Click"/>
                 <Button x:Name="btnAdd" HorizontalAlignment="Right" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAdd_Click"/>

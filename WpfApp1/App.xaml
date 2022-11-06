@@ -14,5 +14,6 @@
                 <ContentControl  Content="{TemplateBinding Content}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Foreground="Black" FontSize="20"/>
             </Border>
         </ControlTemplate>
+   
     </Application.Resources>
 </Application>

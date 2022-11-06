@@ -24,7 +24,7 @@ namespace WpfApp1.Pages.AdminsPages
         public PageProductStock()
         {
             InitializeComponent();
-            lvListTickets.ItemsSource = DBaseClass.BD.Table_Product_Stock.ToList();
+            ListProduct.ItemsSource = DBaseClass.BD.Table_Product_Stock.ToList();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

@@ -7,64 +7,40 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ListViewSalesPage">
-
+    <Page.Resources>
+        <BitmapImage x:Key="defaultImage" UriSource="/Resourses/yuterra.png"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="11*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <TextBlock HorizontalAlignment="Center" FontSize="35">Список продаж</TextBlock>
-        </StackPanel>
-        <ScrollViewer Grid.Row="1">
-            <StackPanel>
-                <ListView x:Name="lvListTickets" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel HorizontalAlignment="Center"></WrapPanel>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93">
-                                <Grid Width="365" Height="350">
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                                        <StackPanel>
-                                            <TextBlock Text="Продажа" HorizontalAlignment="Center" FontSize="22" FontWeight ="Bold"/>
-                                            <StackPanel Orientation="Horizontal" Margin="5">
 
-                                                <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
-
-                                                    <TextBlock Text="{Binding SaleInform}" Name="tbArrivalPoint"/>
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" Margin="5">
-
-                                                <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
-                                                    <TextBlock Text="Дата" HorizontalAlignment="Center"/>
-                                                    <TextBlock Text="{Binding date_sales, StringFormat={}dd.MM.yyyy}"/>
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" Margin="5">
-                                                <Image Height="50" Width="50" Source="Resourses/yuterra.png" Margin="0, 0, 20, 0"/>
-                                                <StackPanel Orientation="Vertical" Margin="0, 0, 20, 0">
-                                                    <TextBlock Text="Продавец" HorizontalAlignment="Center"/>
-                                                    <TextBlock Text="{Binding FullNameStaffEmployee}"/>
-                                                </StackPanel>
-
-                                            </StackPanel>
-
-                                        </StackPanel>
-                                    </ScrollViewer>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
-        </ScrollViewer>
-        <StackPanel Grid.Row="2">
+        <ListView x:Name="ListSale" Grid.Row="0" Height= "550" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
+                        <Grid Width="365" Height="350" >
+                            <StackPanel >
+                                <TextBlock Text="Продажа" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
+                                <TextBlock TextWrapping="Wrap"  Text="{Binding SaleInform}" Name="tbArrivalPoint"/>
+                                <TextBlock Text="Дата" HorizontalAlignment="Center"/>
+                                <TextBlock  HorizontalAlignment="Center" Text="{Binding date_sales, StringFormat={}dd.MM.yyyy}"/>
+                                <Image Width="100" Height="100" Source="{Binding Table_Staff.employee_photo, TargetNullValue={StaticResource defaultImage}}"/>
+                                <TextBlock   Text="Продавец" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding FullNameStaffEmployee}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="1">
             <Grid>
                 <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" Click="btnExit_Click"/>
                 <Button x:Name="btnAdd" HorizontalAlignment="Right" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAdd_Click"/>
