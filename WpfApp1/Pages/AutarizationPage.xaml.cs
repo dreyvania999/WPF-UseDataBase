@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfApp1.Classes;
 
 namespace WpfApp1.Pages
@@ -42,11 +32,11 @@ namespace WpfApp1.Pages
                 switch (staffMan.role)
                 {
                     case 1:
-                        
+
                         FrameClass.MainFrame.Navigate(new MainPage());
                         break;
                     case 2:
-                        
+
                         FrameClass.MainFrame.Navigate(new MainPage());
                         break;
                     default:
@@ -56,7 +46,7 @@ namespace WpfApp1.Pages
             }
             else
             {
-                 MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
+                MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
             }
         }
 

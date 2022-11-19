@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfApp1.Classes;
 
 namespace WpfApp1.Pages.AdminsPages
@@ -40,47 +29,36 @@ namespace WpfApp1.Pages.AdminsPages
         {
             if (tbLogin.Text != "")
             {
-                if (tbSurname.Text != "")
-                {
-                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname.Contains(tbSurname.Text) && x.login.Contains(tbLogin.Text ));
-                }
-                else
-                {
-                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.login.Contains(tbLogin.Text ));
-                }
+                dgUsers.ItemsSource = tbSurname.Text != ""
+                    ? DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname.Contains(tbSurname.Text) && x.login.Contains(tbLogin.Text))
+                    : (System.Collections.IEnumerable)DBaseClass.BD.Table_Staff.ToList().Where(x => x.login.Contains(tbLogin.Text));
             }
             else
             {
-                if (tbSurname.Text != "")
-                {
-                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname.Contains(tbSurname.Text));
-                }
-                else
-                {
-                    dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList();
-                    return;
-                }
+                dgUsers.ItemsSource = tbSurname.Text != ""
+                    ? DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname.Contains(tbSurname.Text))
+                    : (System.Collections.IEnumerable)DBaseClass.BD.Table_Staff.ToList();
             }
-            
+
         }
 
 
         private void btnFiltering_Click(object sender, RoutedEventArgs e)
         {
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text );
-            
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text);
+
         }
 
         private void btnSortAsc_Click(object sender, RoutedEventArgs e)
         {
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text ).OrderBy(x => x.surname);
-           
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text).OrderBy(x => x.surname);
+
         }
 
         private void btnSortDesc_Click(object sender, RoutedEventArgs e)
         {
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text ).OrderByDescending(x => x.surname);
-            
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Staff.ToList().Where(x => x.Table_Gender.gender == cbGender.Text).OrderByDescending(x => x.surname);
+
         }
 
         private void btInitialState_Click(object sender, RoutedEventArgs e)

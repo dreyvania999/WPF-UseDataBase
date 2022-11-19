@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Media3D;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace WpfApp1
 {
@@ -15,20 +9,20 @@ namespace WpfApp1
             get
             {
                 string d = "";
-                if (chemical_code==null)
+                if (chemical_code == null)
                 {
 
-                        d += Table_Household_Goods.name + " от производителя " +
-                Table_Household_Goods.Table_Manufacturer.name + "\nЦена " + Table_Household_Goods.cost;
-                    
+                    d += Table_Household_Goods.name + " от производителя " +
+            Table_Household_Goods.Table_Manufacturer.name + "\nЦена " + Table_Household_Goods.cost;
+
                 }
-                else if (product_code==null)
+                else if (product_code == null)
                 {
-                    
-                        d+= Table_Household_Chemicals.Table_Purpose_Chemistry.purpose_chemistry + " "
-                + Table_Household_Chemicals.name + " от производителя " +
-                Table_Household_Chemicals.Table_Manufacturer.name + "\nЦена " + Table_Household_Chemicals.cost;
-                    
+
+                    d += Table_Household_Chemicals.Table_Purpose_Chemistry.purpose_chemistry + " "
+            + Table_Household_Chemicals.name + " от производителя " +
+            Table_Household_Chemicals.Table_Manufacturer.name + "\nЦена " + Table_Household_Chemicals.cost;
+
                 }
 
                 return d;
@@ -40,7 +34,7 @@ namespace WpfApp1
         {
             get
             {
-                
+
                 if (chemical_code != null)
                 {
 
@@ -74,7 +68,7 @@ namespace WpfApp1
                     propertyColor = new SolidColorBrush(Color.FromRgb(83, 168, 225));
                     return propertyColor;
                 }
-                
+
                 return propertyColor;
             }
         }
@@ -82,7 +76,8 @@ namespace WpfApp1
         {
             get
             {
-                SolidColorBrush propertyColor = new SolidColorBrush(Color.FromRgb(111, 111, 111));
+                _ = new SolidColorBrush(Color.FromRgb(111, 111, 111));
+                SolidColorBrush propertyColor;
                 if (quantity > 10)
                 {
                     propertyColor = new SolidColorBrush(Color.FromRgb(199, 240, 254));
@@ -93,8 +88,6 @@ namespace WpfApp1
                     propertyColor = new SolidColorBrush(Color.FromRgb(210, 31, 60));
                     return propertyColor;
                 }
-
-                return propertyColor;
             }
         }
     }

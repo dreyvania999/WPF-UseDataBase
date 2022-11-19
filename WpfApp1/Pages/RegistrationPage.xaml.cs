@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -82,12 +81,12 @@ namespace WpfApp1.Pages
                     MessageBox.Show("Пользователь с таким логиным уже зарегистрирован!");
                     return;
                 }
-                int currentGender=1;
+                int currentGender = 1;
                 if (rbMen.IsChecked == true) currentGender = 1;
                 if (rbWomen.IsChecked == true) currentGender = 2;
                 Table_Staff staffMan = new Table_Staff()
                 {
-                    employee_photo =null,
+                    employee_photo = null,
                     surname = tboxSurname.Text,
                     name = tboxName.Text,
                     patronymic = tboxPatronymic.Text,
@@ -97,7 +96,7 @@ namespace WpfApp1.Pages
                     password = pbPassword.Password.GetHashCode(),
                     role = 2
                 };
-                
+
                 DBaseClass.BD.Table_Staff.Add(staffMan);
                 DBaseClass.BD.SaveChanges();
                 MessageBox.Show("Вы успешно зарегистрировались");
