@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Media;
 
 namespace WpfApp1
@@ -13,12 +14,23 @@ namespace WpfApp1
             {
                 string str = "";
                 double f = 0;
-                foreach (Table_Sale_Houshould item in Table_Sale_Houshould.Where(x => x.sales_code.Equals(id_sales)))
+                List<Table_Sale_Houshould> saleHoushould = Table_Sale_Houshould.Where(x => x.sales_code.Equals(id_sales)).ToList();
+
+                if (saleHoushould.Count > 0)
+                {
+                    str += "Товары для дома:\n";
+                }
+                foreach (Table_Sale_Houshould item in saleHoushould)
                 {
                     f += item.quantity * item.Table_Household_Goods.cost;
                     str += "Колличество товара " + item.quantity + " наименование товара " + item.Table_Household_Goods.name + "\nОбщая стоимость " + (item.quantity * item.Table_Household_Goods.cost) + "\n";
                 }
-                foreach (Table_Sale_Chemicals item in Table_Sale_Chemicals.Where(x => x.sales_code.Equals(id_sales)))
+                List<Table_Sale_Chemicals> saleCimicals = Table_Sale_Chemicals.Where(x => x.sales_code.Equals(id_sales)).ToList();
+                if (saleCimicals.Count > 0)
+                {
+                    str += "Товары для дома:\n";
+                }
+                foreach (Table_Sale_Chemicals item in saleCimicals)
                 {
                     f += item.quantity * item.Table_Household_Chemicals.cost;
                     str += "Колличество товара " + item.quantity + " наименование товара " + item.Table_Household_Chemicals.name + "\nОбщая стоимость " + (item.quantity * item.Table_Household_Chemicals.cost) + "\n";
@@ -31,12 +43,16 @@ namespace WpfApp1
         {
             get
             {
+                List<Table_Sale_Chemicals> saleCimicals = Table_Sale_Chemicals.Where(x => x.sales_code.Equals(id_sales)).ToList();
+
+                List<Table_Sale_Houshould> saleHoushould = Table_Sale_Houshould.Where(x => x.sales_code.Equals(id_sales)).ToList();
+
                 double f = 0;
-                foreach (Table_Sale_Houshould item in Table_Sale_Houshould.Where(x => x.sales_code.Equals(id_sales)))
+                foreach (Table_Sale_Houshould item in saleHoushould)
                 {
                     f += item.quantity * item.Table_Household_Goods.cost;
                 }
-                foreach (Table_Sale_Chemicals item in Table_Sale_Chemicals.Where(x => x.sales_code.Equals(id_sales)))
+                foreach (Table_Sale_Chemicals item in saleCimicals)
                 {
                     f += item.quantity * item.Table_Household_Chemicals.cost;
                 }

@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="id_product_in_delivery" />
           </Key>
-          <Property Name="id_product_in_delivery" Type="int" Nullable="false" />
+          <Property Name="id_product_in_delivery" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_code" Type="int" Nullable="false" />
           <Property Name="delivery_code" Type="int" Nullable="false" />
           <Property Name="quantity_goods" Type="int" Nullable="false" />
@@ -39,8 +39,9 @@
           <Key>
             <PropertyRef Name="id_delivery" />
           </Key>
-          <Property Name="id_delivery" Type="int" Nullable="false" />
+          <Property Name="id_delivery" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="provider_code" Type="int" Nullable="false" />
+          <Property Name="delivery_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Table_Gender">
           <Key>
@@ -64,7 +65,7 @@
           <Key>
             <PropertyRef Name="id_product_in_delivery" />
           </Key>
-          <Property Name="id_product_in_delivery" Type="int" Nullable="false" />
+          <Property Name="id_product_in_delivery" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_code" Type="int" Nullable="false" />
           <Property Name="delivery_code" Type="int" Nullable="false" />
           <Property Name="quantity_goods" Type="int" Nullable="false" />
@@ -115,7 +116,7 @@
           <Key>
             <PropertyRef Name="id_sale_inform" />
           </Key>
-          <Property Name="id_sale_inform" Type="int" Nullable="false" />
+          <Property Name="id_sale_inform" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sales_code" Type="int" Nullable="false" />
           <Property Name="product_code" Type="int" Nullable="false" />
           <Property Name="quantity" Type="int" Nullable="false" />
@@ -133,7 +134,7 @@
           <Key>
             <PropertyRef Name="id_sales" />
           </Key>
-          <Property Name="id_sales" Type="int" Nullable="false" />
+          <Property Name="id_sales" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="staff_code" Type="int" Nullable="false" />
           <Property Name="date_sales" Type="datetime" Nullable="false" />
         </EntityType>
@@ -521,6 +522,7 @@
           <NavigationProperty Name="Table_Chemicals_Delivery" Relationship="Self.FK_Table_Chemicals_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Chemicals_Delivery" />
           <NavigationProperty Name="Table_Suppliers" Relationship="Self.FK_Table_Delivery_Table_Suppliers" FromRole="Table_Delivery" ToRole="Table_Suppliers" />
           <NavigationProperty Name="Table_Household_Delivery" Relationship="Self.FK_Table_Household_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Household_Delivery" />
+          <Property Name="delivery_date" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Table_Gender">
           <Key>
@@ -1036,6 +1038,7 @@
           <EntitySetMapping Name="Table_Delivery">
             <EntityTypeMapping TypeName="DataBaseModel.Table_Delivery">
               <MappingFragment StoreEntitySet="Table_Delivery">
+                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
                 <ScalarProperty Name="id_delivery" ColumnName="id_delivery" />
                 <ScalarProperty Name="provider_code" ColumnName="provider_code" />
               </MappingFragment>
