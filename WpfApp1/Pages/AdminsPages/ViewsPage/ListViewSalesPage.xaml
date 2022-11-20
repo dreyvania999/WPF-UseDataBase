@@ -26,7 +26,7 @@
                 <DataTemplate>
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
                         <Grid Width="365" Height="350" >
-                            <StackPanel >
+                            <StackPanel Uid="{Binding id_sales}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
                                 <TextBlock Text="Продажа" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
                                 <TextBlock TextWrapping="Wrap"  Text="{Binding SaleInform}" Name="tbArrivalPoint"/>
                                 <TextBlock Text="Дата" HorizontalAlignment="Center"/>

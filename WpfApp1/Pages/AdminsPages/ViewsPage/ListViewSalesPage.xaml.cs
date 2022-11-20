@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -53,6 +53,15 @@ namespace WpfApp1.Pages.AdminsPages
             MessageBox.Show("Информация удалена");
 
             ListSale.ItemsSource = DBaseClass.BD.Table_Sales.ToList();
+        }
+
+        private void StackPanel_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            StackPanel stackPanel = (StackPanel)sender;
+            int id = Convert.ToInt32(stackPanel.Uid);
+            AddSalesPage.SetTable_Sales(DBaseClass.BD.Table_Sales.FirstOrDefault(x => x.id_sales == id));
+            AddSalesPage.IsEditing = true;
+            FrameClass.MainFrame.Navigate(new AddSalesPage());
         }
     }
 }
