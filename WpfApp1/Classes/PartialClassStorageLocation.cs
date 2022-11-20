@@ -30,7 +30,7 @@ namespace WpfApp1
             }
         }
 
-        public string PhotoProduct
+        public byte[] PhotoProduct
         {
             get
             {

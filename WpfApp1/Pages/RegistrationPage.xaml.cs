@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
 using WpfApp1.Classes;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace WpfApp1.Pages
 {
@@ -65,6 +68,22 @@ namespace WpfApp1.Pages
         }
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
+            byte[] Barray;
+            DialogResult result = MessageBox.Show("Хотите ли вы добавить фото сотруднику? ", "Фото", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                OpenFileDialog OFD = new OpenFileDialog();  // создаем диалоговое окно
+                OFD.ShowDialog();  // открываем диалоговое окно
+                string Path = OFD.FileName;  // считываем путь выбранного изображения
+                System.Drawing.Image SDI = System.Drawing.Image.FromFile(Path);  // создаем объект для загрузки изображения в базу
+                ImageConverter ISC = new ImageConverter();  // создаем конвертер для перевода картинки в двоичный формат
+                Barray = (byte[])ISC.ConvertTo(SDI, typeof(byte[]));  // создаем байтовый массив для хранения картинки
+
+            }
+            else
+            {
+                Barray = null;
+            }
             try
             {
                 if (!SearchValue())
@@ -84,9 +103,10 @@ namespace WpfApp1.Pages
                 int currentGender = 1;
                 if (rbMen.IsChecked == true) currentGender = 1;
                 if (rbWomen.IsChecked == true) currentGender = 2;
+
                 Table_Staff staffMan = new Table_Staff()
                 {
-                    employee_photo = null,
+                    employee_photo = Barray,
                     surname = tboxSurname.Text,
                     name = tboxName.Text,
                     patronymic = tboxPatronymic.Text,

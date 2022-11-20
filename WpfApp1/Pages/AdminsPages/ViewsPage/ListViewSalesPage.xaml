@@ -43,7 +43,7 @@
         <StackPanel Grid.Row="1">
             <Grid>
                 <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" Click="btnExit_Click"/>
-                <Button x:Name="btnAdd" HorizontalAlignment="Right" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAdd_Click"/>
+                <Button x:Name="btnAdd" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAdd_Click" Height="40" Margin="600,0,0,0" VerticalAlignment="Top"/>
             </Grid>
         </StackPanel>
     </Grid>

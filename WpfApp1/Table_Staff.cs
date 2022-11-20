@@ -26,7 +26,7 @@ namespace WpfApp1
         public string patronymic { get; set; }
         public int role { get; set; }
         public System.DateTime date_birth { get; set; }
-        public string employee_photo { get; set; }
+        public byte[] employee_photo { get; set; }
         public int gender { get; set; }
         public string login { get; set; }
         public int password { get; set; }

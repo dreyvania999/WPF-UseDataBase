@@ -5,7 +5,7 @@ namespace WpfApp1
 {
     public partial class Table_Delivery
     {
-        public string SaleInform
+        public string DeliveryInform
         {
             get
             {

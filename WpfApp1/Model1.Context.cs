@@ -25,6 +25,7 @@ namespace WpfApp1
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Table_Chemicals_Delivery> Table_Chemicals_Delivery { get; set; }
         public virtual DbSet<Table_Contact_Persons> Table_Contact_Persons { get; set; }
         public virtual DbSet<Table_Delivery> Table_Delivery { get; set; }
@@ -41,6 +42,5 @@ namespace WpfApp1
         public virtual DbSet<Table_Sales> Table_Sales { get; set; }
         public virtual DbSet<Table_Staff> Table_Staff { get; set; }
         public virtual DbSet<Table_Suppliers> Table_Suppliers { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

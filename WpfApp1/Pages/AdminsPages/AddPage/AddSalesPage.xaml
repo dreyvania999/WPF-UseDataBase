@@ -9,6 +9,58 @@
       Title="AddSalesPage">
 
     <Grid>
-        
-    </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock HorizontalAlignment="Center" FontSize="35">Продажа товара</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <GroupBox Header="Добавить товар" FontSize="20" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center">Название:</TextBlock>
+                         <TextBox x:Name="tbProdduct" TextChanged="tbProdduct_TextChanged" Width="200"></TextBox>
+                        
+                    </StackPanel>
+                    <StackPanel Width="200" Margin="15,0,0,0">
+                        <TextBlock HorizontalAlignment="Center">Товар:</TextBlock>
+                        <ComboBox x:Name="cbProduct"/>
+                        <GroupBox Header="Тип товара" FontSize="20" Margin="10">
+                            <StackPanel>
+                                <RadioButton Name="rbChimicals" IsChecked="True" Checked="rbChimicals_Checked" >Бывая химия</RadioButton>
+                                <RadioButton Name="rbGoods" Checked="rbGoods_Checked">Товары для дома</RadioButton>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center">Колличество:</TextBlock>
+                        <TextBox x:Name="tbQonity" Width="200"></TextBox>
+                        <StackPanel Margin="15,15,0,0">
+                            <Button x:Name="btnFilterin1g" Content="Добавить" Template="{StaticResource btnStyle}" Click="btnFiltering_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="15,15,0,0">
+                        <Button x:Name="btnClear" Content="Очистить" Template="{StaticResource btnStyle}" Click="btnClear_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <DataGrid x:Name="dgUsers" FontSize="18" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фото" Binding="{Binding Table_Household_Chemicals.name}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Table_Household_Chemicals.name}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Стоимость(шт)" Binding="{Binding Table_Household_Chemicals.cost}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Колличество" Binding="{Binding quantity}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Итог" Binding="{Binding Table_Household_Chemicals.cost}" Width="*"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Click="btnExit_Click">Назад</Button>
+            <Button x:Name="btnSave" HorizontalAlignment="Right" Template="{StaticResource btnStyle}" Click="btnSave_Click" >Сохранить изменения</Button>
+        </StackPanel>
+        </Grid>
 </Page>
+

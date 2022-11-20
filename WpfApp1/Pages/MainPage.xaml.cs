@@ -6,6 +6,12 @@ using WpfApp1.Pages.AdminsPages;
 
 namespace WpfApp1.Pages
 {
+    //MixGol
+    //Satana121251@
+
+    //Admin
+    //Admin@113
+
     /// <summary>
     /// Логика взаимодействия для MainPage.xaml
     /// </summary>
