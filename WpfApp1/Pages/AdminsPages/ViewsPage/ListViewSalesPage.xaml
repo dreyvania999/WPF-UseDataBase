@@ -35,6 +35,7 @@
                                 <TextBlock   Text="Продавец" HorizontalAlignment="Center"/>
                                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding FullNameStaffEmployee}"/>
                             </StackPanel>
+                            <Button Name="btnDelete" Uid="{Binding id_sales}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDelete_Click"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

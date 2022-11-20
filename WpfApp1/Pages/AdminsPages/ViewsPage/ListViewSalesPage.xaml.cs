@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.Classes;
@@ -25,6 +27,30 @@ namespace WpfApp1.Pages.AdminsPages
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.MainFrame.Navigate(new MainPage());
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Uid);
+
+            Table_Sales saling = DBaseClass.BD.Table_Sales.FirstOrDefault(x => x.id_sales == id);
+            List<Table_Sale_Chemicals> saleChemicals = DBaseClass.BD.Table_Sale_Chemicals.Where(x => x.sales_code == id).ToList();
+            List<Table_Sale_Houshould> saleHoushould = DBaseClass.BD.Table_Sale_Houshould.Where(x => x.sales_code == id).ToList();
+
+            DBaseClass.BD.Table_Sales.Remove(saling);
+
+            foreach (Table_Sale_Chemicals item in saleChemicals)
+            {
+                DBaseClass.BD.Table_Sale_Chemicals.Remove(item);
+            }
+            foreach (Table_Sale_Houshould item in saleHoushould)
+            {
+                DBaseClass.BD.Table_Sale_Houshould.Remove(item);
+            }
+
+            DBaseClass.BD.SaveChanges();
+            MessageBox.Show("Информация удалена");
         }
     }
 }

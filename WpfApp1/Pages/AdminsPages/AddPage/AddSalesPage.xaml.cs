@@ -122,7 +122,8 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             cbProduct.SelectedIndex = -1;
             tbQonity.Text = "";
             tbProdduct.Text = "";
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Sales.ToList().Where(x=>x.id_sales==CurrentSales.id_sales);
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Sale_Chemicals.ToList().Where(x=>x.sales_code == CurrentSales.id_sales);
+
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -136,7 +137,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             cbProduct.SelectedIndex =-1;
             tbQonity.Text = "";
             tbProdduct.Text = "";
-            dgUsers.ItemsSource = DBaseClass.BD.Table_Sales.ToList().Where(x => x.id_sales == CurrentSales.id_sales);
+            dgUsers.ItemsSource = DBaseClass.BD.Table_Sale_Chemicals.ToList().Where(x => x.sales_code == CurrentSales.id_sales);
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

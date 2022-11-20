@@ -8,6 +8,15 @@ namespace WpfApp1
     {
         public string FullNameStaffEmployee => Table_Staff.name + " " + Table_Staff.patronymic + " " + Table_Staff.surname;
 
+        public string ProdictOfSale
+        {
+            get
+            {
+
+                return "";
+            }
+        }
+
         public string SaleInform
         {
             get
@@ -28,7 +37,7 @@ namespace WpfApp1
                 List<Table_Sale_Chemicals> saleCimicals = Table_Sale_Chemicals.Where(x => x.sales_code.Equals(id_sales)).ToList();
                 if (saleCimicals.Count > 0)
                 {
-                    str += "Товары для дома:\n";
+                    str += "Бытовая химия:\n";
                 }
                 foreach (Table_Sale_Chemicals item in saleCimicals)
                 {
