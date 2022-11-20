@@ -51,6 +51,8 @@ namespace WpfApp1.Pages.AdminsPages
 
             DBaseClass.BD.SaveChanges();
             MessageBox.Show("Информация удалена");
+
+            ListSale.ItemsSource = DBaseClass.BD.Table_Sales.ToList();
         }
     }
 }
