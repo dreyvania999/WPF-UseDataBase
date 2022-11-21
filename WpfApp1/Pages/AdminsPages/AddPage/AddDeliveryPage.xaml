@@ -9,6 +9,101 @@
       Title="AddDeliveryPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock HorizontalAlignment="Center" FontSize="35">Продажа товара</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <GroupBox Header="Добавить товар" FontSize="20" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center">Название:</TextBlock>
+                        <TextBox x:Name="tbProdduct" TextChanged="tbProdduct_TextChanged" Width="200"></TextBox>
+
+                    </StackPanel>
+                    <StackPanel Width="200" Margin="15,0,0,0">
+                        <TextBlock HorizontalAlignment="Center">Товар:</TextBlock>
+                        <ComboBox x:Name="cbProduct"/>
+                        <GroupBox Header="Тип товара" FontSize="20" Margin="10">
+                            <StackPanel>
+                                <RadioButton Name="rbChimicals" IsChecked="True" Checked="rbChimicals_Checked" >Бывая химия</RadioButton>
+                                <RadioButton Name="rbGoods" Checked="rbGoods_Checked">Товары для дома</RadioButton>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center">Колличество:</TextBlock>
+                        <TextBox x:Name="tbQonity" Width="200"></TextBox>
+                        <StackPanel Margin="15,15,0,0">
+                            <Button x:Name="btnFilterin1g" Content="Сохранить" Template="{StaticResource btnStyle}" Click="btnFiltering_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="15,15,0,0">
+                        <Button x:Name="btnClear" Content="Очистить" Template="{StaticResource btnStyle}" Click="btnClear_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <TextBlock TextWrapping="Wrap"  Name="ListSale"/>
+            <TextBlock TextWrapping="Wrap"  Name="ListSaleRes"/>
+        </StackPanel>
+        <ListView x:Name="ListSaleChemicals" Grid.Row="2" Background="#FFF0F2"  Height= "400" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Margin="10">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
+                        <Grid Width="350" Height="350">
+                            <StackPanel Uid="{Binding id_sale_inform}" MouseLeftButtonDown="StackPanelChemicals_MouseLeftButtonDown">
+                                <TextBlock Text="Название" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
+                                <TextBlock TextWrapping="Wrap"  Text="{Binding Table_Household_Chemicals.name}" Name="tbArrivalPoint"/>
+                                <TextBlock Text="Стоимость" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Table_Household_Chemicals.cost}"/>
+                                <TextBlock   Text="Количество" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding quantity}"/>
+                            </StackPanel>
+                            <Button Name="btnDelete" Uid="{Binding id_sale_inform}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDeleteChemicals_Click"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="ListSaleHousehold" Grid.Row="2" Background="#FFF0F2" Height= "400" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" Margin="10">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
+                        <Grid Width="350" Height="350">
+                            <StackPanel Uid="{Binding id_sale_inform}" MouseLeftButtonDown="StackPanelHoushols_MouseLeftButtonDown">
+                                <TextBlock Text="Название" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
+                                <TextBlock TextWrapping="Wrap"  Text="{Binding Table_Household_Goods.name}" Name="tbArrivalPoint"/>
+                                <TextBlock Text="Стоимость" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Table_Household_Goods.cost}"/>
+                                <TextBlock   Text="Количество" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding quantity}"/>
+                            </StackPanel>
+                            <Button Name="btnDelete" Uid="{Binding id_sale_inform}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDeleteHousehold_Click"/>
+                        </Grid>
+                    </Border>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Click="btnExit_Click">Назад</Button>
+            <Button x:Name="btnSave" HorizontalAlignment="Right" Template="{StaticResource btnStyle}" Click="btnSave_Click" >Сохранить изменения</Button>
+        </StackPanel>
     </Grid>
 </Page>

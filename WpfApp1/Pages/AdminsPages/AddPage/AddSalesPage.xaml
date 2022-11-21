@@ -40,7 +40,7 @@
                         <TextBlock HorizontalAlignment="Center">Колличество:</TextBlock>
                         <TextBox x:Name="tbQonity" Width="200"></TextBox>
                         <StackPanel Margin="15,15,0,0">
-                            <Button x:Name="btnFilterin1g" Content="Добавить" Template="{StaticResource btnStyle}" Click="btnFiltering_Click"/>
+                            <Button x:Name="btnFilterin1g" Content="Сохранить" Template="{StaticResource btnStyle}" Click="btnFiltering_Click"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Margin="15,15,0,0">
@@ -61,7 +61,7 @@
                 <DataTemplate>
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
                         <Grid Width="350" Height="350">
-                            <StackPanel Uid="{Binding id_sale_inform}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
+                            <StackPanel Uid="{Binding id_sale_inform}" MouseLeftButtonDown="StackPanelChemicals_MouseLeftButtonDown">
                                 <TextBlock Text="Название" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
                                 <TextBlock TextWrapping="Wrap"  Text="{Binding Table_Household_Chemicals.name}" Name="tbArrivalPoint"/>
                                 <TextBlock Text="Стоимость" HorizontalAlignment="Center"/>
@@ -69,7 +69,7 @@
                                 <TextBlock   Text="Количество" HorizontalAlignment="Center"/>
                                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding quantity}"/>
                             </StackPanel>
-                            <Button Name="btnDelete" Uid="{Binding id_sale_inform}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDelete_Click"/>
+                            <Button Name="btnDelete" Uid="{Binding id_sale_inform}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDeleteChemicals_Click"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -86,7 +86,7 @@
                     
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
                         <Grid Width="350" Height="350">
-                            <StackPanel Uid="{Binding id_sale_inform}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
+                            <StackPanel Uid="{Binding id_sale_inform}" MouseLeftButtonDown="StackPanelHoushols_MouseLeftButtonDown">
                                 <TextBlock Text="Название" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
                                 <TextBlock TextWrapping="Wrap"  Text="{Binding Table_Household_Goods.name}" Name="tbArrivalPoint"/>
                                 <TextBlock Text="Стоимость" HorizontalAlignment="Center"/>
@@ -94,7 +94,7 @@
                                 <TextBlock   Text="Количество" HorizontalAlignment="Center"/>
                                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding quantity}"/>
                             </StackPanel>
-                            <Button Name="btnDelete" Uid="{Binding id_sale_inform}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDelete_Click"/>
+                            <Button Name="btnDelete" Uid="{Binding id_sale_inform}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDeleteHousehold_Click"/>
                         </Grid>
                     </Border>
                     
