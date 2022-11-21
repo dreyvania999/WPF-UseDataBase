@@ -42,6 +42,7 @@
           <Property Name="id_delivery" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="provider_code" Type="int" Nullable="false" />
           <Property Name="delivery_date" Type="datetime" Nullable="false" />
+          <Property Name="employee_code" Type="int" />
         </EntityType>
         <EntityType Name="Table_Gender">
           <Key>
@@ -628,6 +629,7 @@
           <NavigationProperty Name="Table_Chemicals_Delivery" Relationship="DataBaseModel.FK_Table_Chemicals_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Chemicals_Delivery" />
           <NavigationProperty Name="Table_Suppliers" Relationship="DataBaseModel.FK_Table_Delivery_Table_Suppliers" FromRole="Table_Delivery" ToRole="Table_Suppliers" />
           <NavigationProperty Name="Table_Household_Delivery" Relationship="DataBaseModel.FK_Table_Household_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Household_Delivery" />
+          <Property Name="employee_code" Type="Int32" />
         </EntityType>
         <EntityType Name="Table_Gender">
           <Key>
@@ -1049,6 +1051,7 @@
           <EntitySetMapping Name="Table_Delivery">
             <EntityTypeMapping TypeName="DataBaseModel.Table_Delivery">
               <MappingFragment StoreEntitySet="Table_Delivery">
+                <ScalarProperty Name="employee_code" ColumnName="employee_code" />
                 <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
                 <ScalarProperty Name="provider_code" ColumnName="provider_code" />
                 <ScalarProperty Name="id_delivery" ColumnName="id_delivery" />

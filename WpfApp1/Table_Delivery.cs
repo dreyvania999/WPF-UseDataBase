@@ -24,6 +24,7 @@ namespace WpfApp1
         public int id_delivery { get; set; }
         public int provider_code { get; set; }
         public System.DateTime delivery_date { get; set; }
+        public Nullable<int> employee_code { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table_Chemicals_Delivery> Table_Chemicals_Delivery { get; set; }
