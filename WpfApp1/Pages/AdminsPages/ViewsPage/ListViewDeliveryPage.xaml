@@ -13,11 +13,11 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="ListSale" Grid.Row="0" Height= "550" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+        <ListView x:Name="ListDelivery" Grid.Row="0" Height= "600" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>
@@ -27,16 +27,15 @@
                 <DataTemplate>
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
                         <Grid Width="365" Height="350" >
-                            <StackPanel Uid="{Binding id_sales}" >
-                                <TextBlock Text="Продажа" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
-                                <TextBlock TextWrapping="Wrap"  Text="{Binding DeliveryInform}" Name="tbArrivalPoint"/>
-                                <TextBlock Text="Дата" HorizontalAlignment="Center"/>
-                                <TextBlock  HorizontalAlignment="Center" Text="{Binding delivery_date, StringFormat={}dd.MM.yyyy}"/>
-                                <Image Width="100" Height="100" Source="{Binding Table_Staff.employee_photo, TargetNullValue={StaticResource defaultImage}}"/>
-                                <TextBlock   Text="Продавец" HorizontalAlignment="Center"/>
-                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding FullNameStaffEmployee}"/>
+                            <StackPanel>
+                                <StackPanel Uid="{Binding id_delivery}" >
+                                    <TextBlock Text="Поставка" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
+                                    <TextBlock TextWrapping="Wrap"  Text="{Binding DeliveryInform}" Name="tbArrivalPoint"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Button Name="btnDelete" Uid="{Binding id_delivery}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" />
+                                </StackPanel>
                             </StackPanel>
-                            <Button Name="btnDelete" Uid="{Binding id_sales}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" />
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -44,8 +43,8 @@
         </ListView>
         <StackPanel Grid.Row="1">
             <Grid>
-                <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" />
-                <Button x:Name="btnAdd" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Добавить"  Height="40" Margin="600,0,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" Click="btnExit_Click" />
+                <Button x:Name="btnAdd" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Добавить" Margin="600,0,0,0" Click="btnAdd_Click"/>
             </Grid>
         </StackPanel>
     </Grid>

@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.Classes;
 using WpfApp1.Pages.AdminsPages;
+using WpfApp1.Pages.AdminsPages.ViewsPage;
 
 namespace WpfApp1.Pages
 {
@@ -65,6 +66,11 @@ namespace WpfApp1.Pages
         private void btnSeeStock_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.MainFrame.Navigate(new PageProductStock());
+        }
+
+        private void btnSeeDelivery_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new ListViewDeliveryPage());
         }
     }
 }

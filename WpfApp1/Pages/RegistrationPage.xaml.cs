@@ -110,7 +110,7 @@ namespace WpfApp1.Pages
                     OpenFileDialog OFD = new OpenFileDialog();  // создаем диалоговое окно
                     OFD.ShowDialog();  // открываем диалоговое окно
                     string Path = OFD.FileName;  // считываем путь выбранного изображения
-                    Images.AddPhoto(Path, staffMan.id_staff);
+                    Images.ImageEmploe.AddPhoto(Path, staffMan.id_staff);
 
                 }
 

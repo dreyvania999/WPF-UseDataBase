@@ -63,7 +63,9 @@
             </DataGrid>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Click="btnExit_Click">Назад</Button>
-        </StackPanel>
+            <Grid>
+                <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Click="btnExit_Click">Назад</Button>
+            </Grid>
+         </StackPanel>
     </Grid>
 </Page>

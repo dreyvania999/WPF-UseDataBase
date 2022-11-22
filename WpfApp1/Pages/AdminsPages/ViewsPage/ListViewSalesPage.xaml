@@ -12,8 +12,8 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <ListView x:Name="ListSale" Grid.Row="0" Height= "550" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">

@@ -39,7 +39,7 @@ namespace WpfApp1.Pages.PageForUsers
                 photo = null;
             }
 
-            imgPhoto.Source = Images.GetBitmapImage(photo);
+            imgPhoto.Source = Images.ImageEmploe.GetBitmapImage(photo);
             imgPhoto.Stretch = Stretch.Uniform;
 
 
@@ -51,7 +51,7 @@ namespace WpfApp1.Pages.PageForUsers
             ofd.ShowDialog();
             if (ofd.FileName != "")
             {
-                if (Images.AddPhoto(ofd.FileName,  StaffClass.CurrentStaffEmploe.id_staff))
+                if (Images.ImageEmploe.AddPhoto(ofd.FileName,  StaffClass.CurrentStaffEmploe.id_staff))
                 {
                     FrameClass.MainFrame.Navigate(new AcountPage());
                     MessageBox.Show("Фото успешно добавлено", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -94,7 +94,7 @@ namespace WpfApp1.Pages.PageForUsers
 
                 photo = ListPhoto[IdCurrentPhoto];
             }
-            imgPhoto.Source = Images.GetBitmapImage(photo);
+            imgPhoto.Source = Images.ImageEmploe.GetBitmapImage(photo);
         }
 
         private void BtnChangePhoto_Click(object sender, RoutedEventArgs e)
@@ -139,7 +139,7 @@ namespace WpfApp1.Pages.PageForUsers
 
             if (photo != null)
             {
-                imgPhoto.Source = Images.GetBitmapImage(photo);
+                imgPhoto.Source = Images.ImageEmploe.GetBitmapImage(photo);
             }
 
             if (IdCurrentPhoto == 0)
@@ -157,7 +157,7 @@ namespace WpfApp1.Pages.PageForUsers
 
             if (photo != null)
             {
-                imgPhoto.Source = Images.GetBitmapImage(photo);
+                imgPhoto.Source = Images.ImageEmploe.GetBitmapImage(photo);
             }
 
             if (IdCurrentPhoto == ListPhoto.Count - 1)
@@ -192,7 +192,7 @@ namespace WpfApp1.Pages.PageForUsers
 
                 foreach (string path in ofd.FileNames)
                 {
-                    if (!Images.AddPhoto(path,  StaffClass.CurrentStaffEmploe.id_staff))
+                    if (!Images.ImageEmploe.AddPhoto(path,  StaffClass.CurrentStaffEmploe.id_staff))
                     {
                         check = true;
                     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace WpfApp1
@@ -36,5 +37,13 @@ namespace WpfApp1
                 return str;
             }
         }
+        //public string DeliveryDate
+        //{
+        //    set
+        //    {
+        //        DateTime today = DateTime.Now;
+        //    }
+        
+        //}    
     }
 }

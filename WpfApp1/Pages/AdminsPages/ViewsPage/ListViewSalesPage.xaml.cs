@@ -12,7 +12,7 @@ namespace WpfApp1.Pages.AdminsPages
     /// Логика взаимодействия для ListViewSalesPage.xaml
     /// </summary>
     public partial class ListViewSalesPage : Page
-    {
+    {        
         public ListViewSalesPage()
         {
             InitializeComponent();

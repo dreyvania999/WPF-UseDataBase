@@ -10,59 +10,150 @@ namespace WpfApp1.Classes
     /// </summary>
     internal class Images
     {
-        /// <summary>
-        /// Преобразует байтовый массив в изображение
-        /// </summary>
-        /// <param name="photo">Байтовый массив (объект типа Photos)</param>
-        /// <returns>Объект типа BitmapImage (изображение)</returns>
-        public static BitmapImage GetBitmapImage(Table_Employee_Photo photo)
+        public class ImageEmploe
         {
-            if (photo != null)
+            public static BitmapImage GetBitmapImage(Table_Employee_Photo photo)
             {
-                byte[] array = photo.binary_photo;
-                BitmapImage image = new BitmapImage();
-
-                using (MemoryStream ms = new MemoryStream(array))
+                if (photo != null)
                 {
-                    image.BeginInit();
-                    image.StreamSource = ms;
-                    image.CacheOption = BitmapCacheOption.OnLoad;
-                    image.EndInit();
+                    byte[] array = photo.binary_photo;
+                    BitmapImage image = new BitmapImage();
+
+                    using (MemoryStream ms = new MemoryStream(array))
+                    {
+                        image.BeginInit();
+                        image.StreamSource = ms;
+                        image.CacheOption = BitmapCacheOption.OnLoad;
+                        image.EndInit();
+                    }
+
+                    return image;
                 }
 
-                return image;
+                return new BitmapImage(new Uri("\\Resources\\Staff_1.png", UriKind.RelativeOrAbsolute));
             }
 
-            return new BitmapImage(new Uri("\\Resources\\yuterra.png", UriKind.RelativeOrAbsolute));
+
+            public static bool AddPhoto(string path, int id)
+            {
+                try
+                {
+                    Table_Employee_Photo photo = new Table_Employee_Photo();
+                    photo.id_staff = id;
+
+                    Image sdi = Image.FromFile(path);
+                    ImageConverter ic = new ImageConverter();
+
+                    byte[] array = (byte[])ic.ConvertTo(sdi, typeof(byte[]));
+                    photo.binary_photo = array;
+
+                    DBaseClass.BD.Table_Employee_Photo.Add(photo);
+                    DBaseClass.BD.SaveChanges();
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
         }
 
-        /// <summary>
-        /// Добавляет фото в базу данных
-        /// </summary>
-        /// <param name="path">Путь к фото</param>
-        /// <param name="id">Код </param>
-        /// <returns>true, если добавление прошло удачно, иначе - false</returns>
-        public static bool AddPhoto(string path, int id)
+        public class ImageChemicals
         {
-            try
+            public static BitmapImage GetBitmapImage(Table_Chemicals_Photo photo)
             {
-                Table_Employee_Photo photo = new Table_Employee_Photo();
-                photo.id_staff = id;
+                if (photo != null)
+                {
+                    byte[] array = photo.binary_photo;
+                    BitmapImage image = new BitmapImage();
 
-                Image sdi = Image.FromFile(path);
-                ImageConverter ic = new ImageConverter();
+                    using (MemoryStream ms = new MemoryStream(array))
+                    {
+                        image.BeginInit();
+                        image.StreamSource = ms;
+                        image.CacheOption = BitmapCacheOption.OnLoad;
+                        image.EndInit();
+                    }
 
-                byte[] array = (byte[])ic.ConvertTo(sdi, typeof(byte[]));
-                photo.binary_photo = array;
+                    return image;
+                }
 
-                DBaseClass.BD.Table_Employee_Photo.Add(photo);
-                DBaseClass.BD.SaveChanges();
-
-                return true;
+                return new BitmapImage(new Uri("\\Resources\\Ariel.png", UriKind.RelativeOrAbsolute));
             }
-            catch
+
+
+            public static bool AddPhoto(string path, int id)
             {
-                return false;
+                try
+                {
+                    Table_Chemicals_Photo photo = new Table_Chemicals_Photo();
+                    photo.id_chemicals = id;
+
+                    Image sdi = Image.FromFile(path);
+                    ImageConverter ic = new ImageConverter();
+
+                    byte[] array = (byte[])ic.ConvertTo(sdi, typeof(byte[]));
+                    photo.binary_photo = array;
+
+                    DBaseClass.BD.Table_Chemicals_Photo.Add(photo);
+                    DBaseClass.BD.SaveChanges();
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        public class ImageHoushold
+        {
+            public static BitmapImage GetBitmapImage(Table_Houshold_Photo photo)
+            {
+                if (photo != null)
+                {
+                    byte[] array = photo.binary_photo;
+                    BitmapImage image = new BitmapImage();
+
+                    using (MemoryStream ms = new MemoryStream(array))
+                    {
+                        image.BeginInit();
+                        image.StreamSource = ms;
+                        image.CacheOption = BitmapCacheOption.OnLoad;
+                        image.EndInit();
+                    }
+
+                    return image;
+                }
+
+                return new BitmapImage(new Uri("\\Resources\\Gubka.png", UriKind.RelativeOrAbsolute));
+            }
+
+
+            public static bool AddPhoto(string path, int id)
+            {
+                try
+                {
+                    Table_Houshold_Photo photo = new Table_Houshold_Photo();
+                    photo.id_houshold = id;
+
+                    Image sdi = Image.FromFile(path);
+                    ImageConverter ic = new ImageConverter();
+
+                    byte[] array = (byte[])ic.ConvertTo(sdi, typeof(byte[]));
+                    photo.binary_photo = array;
+
+                    DBaseClass.BD.Table_Houshold_Photo.Add(photo);
+                    DBaseClass.BD.SaveChanges();
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
     }
