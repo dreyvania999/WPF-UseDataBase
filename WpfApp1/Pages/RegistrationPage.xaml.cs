@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,22 +67,9 @@ namespace WpfApp1.Pages
         }
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            byte[] Barray;
-            DialogResult result = MessageBox.Show("Хотите ли вы добавить фото сотруднику? ", "Фото", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                OpenFileDialog OFD = new OpenFileDialog();  // создаем диалоговое окно
-                OFD.ShowDialog();  // открываем диалоговое окно
-                string Path = OFD.FileName;  // считываем путь выбранного изображения
-                System.Drawing.Image SDI = System.Drawing.Image.FromFile(Path);  // создаем объект для загрузки изображения в базу
-                ImageConverter ISC = new ImageConverter();  // создаем конвертер для перевода картинки в двоичный формат
-                Barray = (byte[])ISC.ConvertTo(SDI, typeof(byte[]));  // создаем байтовый массив для хранения картинки
 
-            }
-            else
-            {
-                Barray = null;
-            }
+
+
             try
             {
                 if (!SearchValue())
@@ -106,7 +92,6 @@ namespace WpfApp1.Pages
 
                 Table_Staff staffMan = new Table_Staff()
                 {
-                    employee_photo = Barray,
                     surname = tboxSurname.Text,
                     name = tboxName.Text,
                     patronymic = tboxPatronymic.Text,
@@ -119,6 +104,16 @@ namespace WpfApp1.Pages
 
                 DBaseClass.BD.Table_Staff.Add(staffMan);
                 DBaseClass.BD.SaveChanges();
+                DialogResult result = MessageBox.Show("Хотите ли вы добавить фото сотруднику? ", "Фото", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    OpenFileDialog OFD = new OpenFileDialog();  // создаем диалоговое окно
+                    OFD.ShowDialog();  // открываем диалоговое окно
+                    string Path = OFD.FileName;  // считываем путь выбранного изображения
+                    Images.AddPhoto(Path, staffMan.id_staff);
+
+                }
+
                 MessageBox.Show("Вы успешно зарегистрировались");
                 FrameClass.MainFrame.Navigate(new AutarizationPage());
             }

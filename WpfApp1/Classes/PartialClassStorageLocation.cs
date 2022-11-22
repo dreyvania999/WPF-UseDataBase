@@ -30,28 +30,7 @@ namespace WpfApp1
             }
         }
 
-        public byte[] PhotoProduct
-        {
-            get
-            {
 
-                if (chemical_code != null)
-                {
-
-                    return Table_Household_Chemicals.photo_chemicals;
-
-                }
-                else if (product_code != null)
-                {
-
-                    return Table_Household_Goods.photo_household;
-
-                }
-
-                return null;
-
-            }
-        }
 
         public SolidColorBrush ColorProperty
         {

@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfApp1.Classes;
+using WpfApp1.Pages.PageForUsers;
 
 namespace WpfApp1.Pages
 {
@@ -25,11 +26,11 @@ namespace WpfApp1.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int p = pbRassword.Password.GetHashCode();
-            Table_Staff staffMan = DBaseClass.BD.Table_Staff.FirstOrDefault(x => x.login == tboxLogin.Text && x.password == p);
-            if (staffMan != null)
+            StaffClass.CurrentStaffEmploe = DBaseClass.BD.Table_Staff.FirstOrDefault(x => x.login == tboxLogin.Text && x.password == p);
+            if (StaffClass.CurrentStaffEmploe != null)
             {
-                StaffClass.CurrentStaffEmploe = staffMan;
-                switch (staffMan.role)
+
+                switch (StaffClass.CurrentStaffEmploe.role)
                 {
                     case 1:
 
@@ -37,7 +38,7 @@ namespace WpfApp1.Pages
                         break;
                     case 2:
 
-                        FrameClass.MainFrame.Navigate(new MainPage());
+                        FrameClass.MainFrame.Navigate(new AcountPage());
                         break;
                     default:
                         MessageBox.Show("Произошла не предвиденная ситуация, повторите ввод логина и пароля");

@@ -1,0 +1,48 @@
+﻿<Page x:Class="WpfApp1.Pages.PageForUsers.AcountPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Pages.PageForUsers"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AcountPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Name="spSize" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="btnBackPhoto" Content="◄ "  MinWidth="50" Visibility="Hidden" Click="BtnBackPhoto_Click"/>
+                <Image Name="imgPhoto" Source="\Resourses\yuterra.png" Width="100" Margin="30 10 30 30"/>
+                <Button Name="btnNextPhoto" Content="  ►"  MinWidth="50" Visibility="Hidden" Click="BtnNextPhoto_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Name="btnChangePhoto" Content="Изменить"  Margin="0 0 5 0" Click="BtnChangePhoto_Click"/>
+                <Button Name="btnAddPhoto" Content="Добавить"  Margin="5 0 0 0" Click="BtnAddPhoto_Click"/>
+            </StackPanel>
+            <Button Name="btnAddSomePhotos" Content="Добавить несколько"  Margin="0 0 0 10" Click="BtnAddSomePhotos_Click"/>
+            <Button Name="btnDelPhoto" Content="Удалить"  Margin="0" Click="BtnDelPhoto_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <TextBlock Name="tbFullName" Text="Ф.И.О: "  Margin="5"/>
+                <TextBlock Name="tbBirthdate" Text="Дата рождения: "  Margin="5"/>
+                <TextBlock Name="tbLogin" Text="Логин: " Margin="5"/>
+                <TextBlock Name="tbRole" Text="Роль: "  Margin="5"/>
+            </StackPanel>
+            <StackPanel>
+                <Button Name="btnChangePersonal" Content="Изменить данные"  Margin="0 30 0 0" Click="BtnChangePersonal_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
+            <Button Name="btnChangeAccount" Content="Изменить данные учётной записи" Margin="5" Click="BtnChangeAccount_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

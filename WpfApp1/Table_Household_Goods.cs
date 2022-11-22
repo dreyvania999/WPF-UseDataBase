@@ -18,6 +18,7 @@ namespace WpfApp1
         public Table_Household_Goods()
         {
             this.Table_Household_Delivery = new HashSet<Table_Household_Delivery>();
+            this.Table_Houshold_Photo = new HashSet<Table_Houshold_Photo>();
             this.Table_Product_Stock = new HashSet<Table_Product_Stock>();
             this.Table_Sale_Houshould = new HashSet<Table_Sale_Houshould>();
         }
@@ -26,11 +27,12 @@ namespace WpfApp1
         public string name { get; set; }
         public int manufacturer_code { get; set; }
         public double cost { get; set; }
-        public byte[] photo_household { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table_Household_Delivery> Table_Household_Delivery { get; set; }
         public virtual Table_Manufacturer Table_Manufacturer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Table_Houshold_Photo> Table_Houshold_Photo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table_Product_Stock> Table_Product_Stock { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

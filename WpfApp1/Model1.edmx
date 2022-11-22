@@ -24,6 +24,15 @@
           <Property Name="delivery_code" Type="int" Nullable="false" />
           <Property Name="quantity_goods" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Table_Chemicals_Photo">
+          <Key>
+            <PropertyRef Name="id_photo" />
+          </Key>
+          <Property Name="id_photo" Type="int" Nullable="false" />
+          <Property Name="id_chemicals" Type="int" />
+          <Property Name="binary_photo" Type="varbinary(max)" />
+          <Property Name="path_photo" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Table_Contact_Persons">
           <Key>
             <PropertyRef Name="id_contact_person" />
@@ -44,6 +53,15 @@
           <Property Name="delivery_date" Type="datetime" Nullable="false" />
           <Property Name="employee_code" Type="int" />
         </EntityType>
+        <EntityType Name="Table_Employee_Photo">
+          <Key>
+            <PropertyRef Name="id_photo" />
+          </Key>
+          <Property Name="id_photo" Type="int" Nullable="false" />
+          <Property Name="id_staff" Type="int" />
+          <Property Name="binary_photo" Type="varbinary(max)" />
+          <Property Name="path_photo" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Table_Gender">
           <Key>
             <PropertyRef Name="id_gender" />
@@ -60,7 +78,6 @@
           <Property Name="manufacturer_code" Type="int" Nullable="false" />
           <Property Name="destination_code" Type="int" Nullable="false" />
           <Property Name="cost" Type="float" Nullable="false" />
-          <Property Name="photo_chemicals" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Table_Household_Delivery">
           <Key>
@@ -79,7 +96,15 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="manufacturer_code" Type="int" Nullable="false" />
           <Property Name="cost" Type="float" Nullable="false" />
-          <Property Name="photo_household" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Table_Houshold_Photo">
+          <Key>
+            <PropertyRef Name="id_photo" />
+          </Key>
+          <Property Name="id_photo" Type="int" Nullable="false" />
+          <Property Name="binary_photo" Type="varbinary(max)" />
+          <Property Name="path_photo" Type="nvarchar(max)" />
+          <Property Name="id_houshold" Type="int" />
         </EntityType>
         <EntityType Name="Table_Manufacturer">
           <Key>
@@ -149,7 +174,6 @@
           <Property Name="patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="role" Type="int" Nullable="false" />
           <Property Name="date_birth" Type="date" Nullable="false" />
-          <Property Name="employee_photo" Type="varbinary(max)" />
           <Property Name="gender" Type="int" Nullable="false" />
           <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="int" Nullable="false" />
@@ -187,6 +211,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Table_Chemicals_Photo_Table_Household_Chemicals">
+          <End Role="Table_Household_Chemicals" Type="Self.Table_Household_Chemicals" Multiplicity="0..1" />
+          <End Role="Table_Chemicals_Photo" Type="Self.Table_Chemicals_Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Chemicals">
+              <PropertyRef Name="id_chemicals" />
+            </Principal>
+            <Dependent Role="Table_Chemicals_Photo">
+              <PropertyRef Name="id_chemicals" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Table_Delivery_Table_Suppliers">
           <End Role="Table_Suppliers" Type="Self.Table_Suppliers" Multiplicity="1" />
           <End Role="Table_Delivery" Type="Self.Table_Delivery" Multiplicity="*" />
@@ -196,6 +232,18 @@
             </Principal>
             <Dependent Role="Table_Delivery">
               <PropertyRef Name="provider_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Employee_Photo_Table_Staff">
+          <End Role="Table_Staff" Type="Self.Table_Staff" Multiplicity="0..1" />
+          <End Role="Table_Employee_Photo" Type="Self.Table_Employee_Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Staff">
+              <PropertyRef Name="id_staff" />
+            </Principal>
+            <Dependent Role="Table_Employee_Photo">
+              <PropertyRef Name="id_staff" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -256,6 +304,18 @@
             </Principal>
             <Dependent Role="Table_Household_Goods">
               <PropertyRef Name="manufacturer_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Houshold_Photo_Table_Household_Goods">
+          <End Role="Table_Household_Goods" Type="Self.Table_Household_Goods" Multiplicity="0..1" />
+          <End Role="Table_Houshold_Photo" Type="Self.Table_Houshold_Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Goods">
+              <PropertyRef Name="id_household_goods" />
+            </Principal>
+            <Dependent Role="Table_Houshold_Photo">
+              <PropertyRef Name="id_houshold" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -394,12 +454,15 @@
         <EntityContainer Name="Хранилище DataBaseModelContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Chemicals_Delivery" EntityType="Self.Table_Chemicals_Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Chemicals_Photo" EntityType="Self.Table_Chemicals_Photo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Contact_Persons" EntityType="Self.Table_Contact_Persons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Delivery" EntityType="Self.Table_Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Employee_Photo" EntityType="Self.Table_Employee_Photo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Gender" EntityType="Self.Table_Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Household_Chemicals" EntityType="Self.Table_Household_Chemicals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Household_Delivery" EntityType="Self.Table_Household_Delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Household_Goods" EntityType="Self.Table_Household_Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Houshold_Photo" EntityType="Self.Table_Houshold_Photo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Manufacturer" EntityType="Self.Table_Manufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Product_Stock" EntityType="Self.Table_Product_Stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table_Purpose_Chemistry" EntityType="Self.Table_Purpose_Chemistry" Schema="dbo" store:Type="Tables" />
@@ -417,9 +480,17 @@
             <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
             <End Role="Table_Chemicals_Delivery" EntitySet="Table_Chemicals_Delivery" />
           </AssociationSet>
+          <AssociationSet Name="FK_Table_Chemicals_Photo_Table_Household_Chemicals" Association="Self.FK_Table_Chemicals_Photo_Table_Household_Chemicals">
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+            <End Role="Table_Chemicals_Photo" EntitySet="Table_Chemicals_Photo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Table_Delivery_Table_Suppliers" Association="Self.FK_Table_Delivery_Table_Suppliers">
             <End Role="Table_Suppliers" EntitySet="Table_Suppliers" />
             <End Role="Table_Delivery" EntitySet="Table_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Employee_Photo_Table_Staff" Association="Self.FK_Table_Employee_Photo_Table_Staff">
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+            <End Role="Table_Employee_Photo" EntitySet="Table_Employee_Photo" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Household_Chemicals_Table_Manufacturer" Association="Self.FK_Table_Household_Chemicals_Table_Manufacturer">
             <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
@@ -440,6 +511,10 @@
           <AssociationSet Name="FK_Table_Household_Goods_Table_Manufacturer" Association="Self.FK_Table_Household_Goods_Table_Manufacturer">
             <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
             <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Houshold_Photo_Table_Household_Goods" Association="Self.FK_Table_Houshold_Photo_Table_Household_Goods">
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+            <End Role="Table_Houshold_Photo" EntitySet="Table_Houshold_Photo" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Manufacturer_Table_Contact_Persons" Association="Self.FK_Table_Manufacturer_Table_Contact_Persons">
             <End Role="Table_Contact_Persons" EntitySet="Table_Contact_Persons" />
@@ -493,12 +568,15 @@
         <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="DataBaseModel.sysdiagrams" />
           <EntitySet Name="Table_Chemicals_Delivery" EntityType="DataBaseModel.Table_Chemicals_Delivery" />
+          <EntitySet Name="Table_Chemicals_Photo" EntityType="DataBaseModel.Table_Chemicals_Photo" />
           <EntitySet Name="Table_Contact_Persons" EntityType="DataBaseModel.Table_Contact_Persons" />
           <EntitySet Name="Table_Delivery" EntityType="DataBaseModel.Table_Delivery" />
+          <EntitySet Name="Table_Employee_Photo" EntityType="DataBaseModel.Table_Employee_Photo" />
           <EntitySet Name="Table_Gender" EntityType="DataBaseModel.Table_Gender" />
           <EntitySet Name="Table_Household_Chemicals" EntityType="DataBaseModel.Table_Household_Chemicals" />
           <EntitySet Name="Table_Household_Delivery" EntityType="DataBaseModel.Table_Household_Delivery" />
           <EntitySet Name="Table_Household_Goods" EntityType="DataBaseModel.Table_Household_Goods" />
+          <EntitySet Name="Table_Houshold_Photo" EntityType="DataBaseModel.Table_Houshold_Photo" />
           <EntitySet Name="Table_Manufacturer" EntityType="DataBaseModel.Table_Manufacturer" />
           <EntitySet Name="Table_Product_Stock" EntityType="DataBaseModel.Table_Product_Stock" />
           <EntitySet Name="Table_Purpose_Chemistry" EntityType="DataBaseModel.Table_Purpose_Chemistry" />
@@ -516,6 +594,10 @@
             <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
             <End Role="Table_Chemicals_Delivery" EntitySet="Table_Chemicals_Delivery" />
           </AssociationSet>
+          <AssociationSet Name="FK_Table_Chemicals_Photo_Table_Household_Chemicals" Association="DataBaseModel.FK_Table_Chemicals_Photo_Table_Household_Chemicals">
+            <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
+            <End Role="Table_Chemicals_Photo" EntitySet="Table_Chemicals_Photo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Table_Manufacturer_Table_Contact_Persons" Association="DataBaseModel.FK_Table_Manufacturer_Table_Contact_Persons">
             <End Role="Table_Contact_Persons" EntitySet="Table_Contact_Persons" />
             <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
@@ -531,6 +613,10 @@
           <AssociationSet Name="FK_Table_Household_Delivery_Table_Delivery" Association="DataBaseModel.FK_Table_Household_Delivery_Table_Delivery">
             <End Role="Table_Delivery" EntitySet="Table_Delivery" />
             <End Role="Table_Household_Delivery" EntitySet="Table_Household_Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Employee_Photo_Table_Staff" Association="DataBaseModel.FK_Table_Employee_Photo_Table_Staff">
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+            <End Role="Table_Employee_Photo" EntitySet="Table_Employee_Photo" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Staff_Table_Gender" Association="DataBaseModel.FK_Table_Staff_Table_Gender">
             <End Role="Table_Gender" EntitySet="Table_Gender" />
@@ -559,6 +645,10 @@
           <AssociationSet Name="FK_Table_Household_Goods_Table_Manufacturer" Association="DataBaseModel.FK_Table_Household_Goods_Table_Manufacturer">
             <End Role="Table_Manufacturer" EntitySet="Table_Manufacturer" />
             <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Houshold_Photo_Table_Household_Goods" Association="DataBaseModel.FK_Table_Houshold_Photo_Table_Household_Goods">
+            <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
+            <End Role="Table_Houshold_Photo" EntitySet="Table_Houshold_Photo" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_Product_Stock_Table_Household_Goods" Association="DataBaseModel.FK_Table_Product_Stock_Table_Household_Goods">
             <End Role="Table_Household_Goods" EntitySet="Table_Household_Goods" />
@@ -606,6 +696,16 @@
           <NavigationProperty Name="Table_Delivery" Relationship="DataBaseModel.FK_Table_Chemicals_Delivery_Table_Delivery" FromRole="Table_Chemicals_Delivery" ToRole="Table_Delivery" />
           <NavigationProperty Name="Table_Household_Chemicals" Relationship="DataBaseModel.FK_Table_Chemicals_Delivery_Table_Household_Chemicals" FromRole="Table_Chemicals_Delivery" ToRole="Table_Household_Chemicals" />
         </EntityType>
+        <EntityType Name="Table_Chemicals_Photo">
+          <Key>
+            <PropertyRef Name="id_photo" />
+          </Key>
+          <Property Name="id_photo" Type="Int32" Nullable="false" />
+          <Property Name="id_chemicals" Type="Int32" />
+          <Property Name="binary_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="path_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Table_Household_Chemicals" Relationship="DataBaseModel.FK_Table_Chemicals_Photo_Table_Household_Chemicals" FromRole="Table_Chemicals_Photo" ToRole="Table_Household_Chemicals" />
+        </EntityType>
         <EntityType Name="Table_Contact_Persons">
           <Key>
             <PropertyRef Name="id_contact_person" />
@@ -626,10 +726,20 @@
           <Property Name="id_delivery" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="provider_code" Type="Int32" Nullable="false" />
           <Property Name="delivery_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="employee_code" Type="Int32" />
           <NavigationProperty Name="Table_Chemicals_Delivery" Relationship="DataBaseModel.FK_Table_Chemicals_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Chemicals_Delivery" />
           <NavigationProperty Name="Table_Suppliers" Relationship="DataBaseModel.FK_Table_Delivery_Table_Suppliers" FromRole="Table_Delivery" ToRole="Table_Suppliers" />
           <NavigationProperty Name="Table_Household_Delivery" Relationship="DataBaseModel.FK_Table_Household_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Household_Delivery" />
-          <Property Name="employee_code" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Table_Employee_Photo">
+          <Key>
+            <PropertyRef Name="id_photo" />
+          </Key>
+          <Property Name="id_photo" Type="Int32" Nullable="false" />
+          <Property Name="id_staff" Type="Int32" />
+          <Property Name="binary_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="path_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Table_Staff" Relationship="DataBaseModel.FK_Table_Employee_Photo_Table_Staff" FromRole="Table_Employee_Photo" ToRole="Table_Staff" />
         </EntityType>
         <EntityType Name="Table_Gender">
           <Key>
@@ -648,8 +758,8 @@
           <Property Name="manufacturer_code" Type="Int32" Nullable="false" />
           <Property Name="destination_code" Type="Int32" Nullable="false" />
           <Property Name="cost" Type="Double" Nullable="false" />
-          <Property Name="photo_chemicals" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Table_Chemicals_Delivery" Relationship="DataBaseModel.FK_Table_Chemicals_Delivery_Table_Household_Chemicals" FromRole="Table_Household_Chemicals" ToRole="Table_Chemicals_Delivery" />
+          <NavigationProperty Name="Table_Chemicals_Photo" Relationship="DataBaseModel.FK_Table_Chemicals_Photo_Table_Household_Chemicals" FromRole="Table_Household_Chemicals" ToRole="Table_Chemicals_Photo" />
           <NavigationProperty Name="Table_Manufacturer" Relationship="DataBaseModel.FK_Table_Household_Chemicals_Table_Manufacturer" FromRole="Table_Household_Chemicals" ToRole="Table_Manufacturer" />
           <NavigationProperty Name="Table_Purpose_Chemistry" Relationship="DataBaseModel.FK_Table_Household_Chemicals_Table_Purpose_Chemistry" FromRole="Table_Household_Chemicals" ToRole="Table_Purpose_Chemistry" />
           <NavigationProperty Name="Table_Product_Stock" Relationship="DataBaseModel.FK_Table_Product_Stock_Table_Household_Chemicals" FromRole="Table_Household_Chemicals" ToRole="Table_Product_Stock" />
@@ -674,11 +784,21 @@
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="manufacturer_code" Type="Int32" Nullable="false" />
           <Property Name="cost" Type="Double" Nullable="false" />
-          <Property Name="photo_household" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Table_Household_Delivery" Relationship="DataBaseModel.FK_Table_Household_Delivery_Table_Household_Goods" FromRole="Table_Household_Goods" ToRole="Table_Household_Delivery" />
           <NavigationProperty Name="Table_Manufacturer" Relationship="DataBaseModel.FK_Table_Household_Goods_Table_Manufacturer" FromRole="Table_Household_Goods" ToRole="Table_Manufacturer" />
+          <NavigationProperty Name="Table_Houshold_Photo" Relationship="DataBaseModel.FK_Table_Houshold_Photo_Table_Household_Goods" FromRole="Table_Household_Goods" ToRole="Table_Houshold_Photo" />
           <NavigationProperty Name="Table_Product_Stock" Relationship="DataBaseModel.FK_Table_Product_Stock_Table_Household_Goods" FromRole="Table_Household_Goods" ToRole="Table_Product_Stock" />
           <NavigationProperty Name="Table_Sale_Houshould" Relationship="DataBaseModel.FK_Table_Sale_Houshould_Table_Household_Goods" FromRole="Table_Household_Goods" ToRole="Table_Sale_Houshould" />
+        </EntityType>
+        <EntityType Name="Table_Houshold_Photo">
+          <Key>
+            <PropertyRef Name="id_photo" />
+          </Key>
+          <Property Name="id_photo" Type="Int32" Nullable="false" />
+          <Property Name="binary_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="path_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_houshold" Type="Int32" />
+          <NavigationProperty Name="Table_Household_Goods" Relationship="DataBaseModel.FK_Table_Houshold_Photo_Table_Household_Goods" FromRole="Table_Houshold_Photo" ToRole="Table_Household_Goods" />
         </EntityType>
         <EntityType Name="Table_Manufacturer">
           <Key>
@@ -762,10 +882,10 @@
           <Property Name="patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="role" Type="Int32" Nullable="false" />
           <Property Name="date_birth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="employee_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="gender" Type="Int32" Nullable="false" />
           <Property Name="login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Employee_Photo" Relationship="DataBaseModel.FK_Table_Employee_Photo_Table_Staff" FromRole="Table_Staff" ToRole="Table_Employee_Photo" />
           <NavigationProperty Name="Table_Gender" Relationship="DataBaseModel.FK_Table_Staff_Table_Gender" FromRole="Table_Staff" ToRole="Table_Gender" />
           <NavigationProperty Name="Table_Role" Relationship="DataBaseModel.FK_Table_Staff_Table_Role" FromRole="Table_Staff" ToRole="Table_Role" />
           <NavigationProperty Name="Table_Sales" Relationship="DataBaseModel.FK_Table_Sales_Table_Staff" FromRole="Table_Staff" ToRole="Table_Sales" />
@@ -802,6 +922,18 @@
             </Principal>
             <Dependent Role="Table_Chemicals_Delivery">
               <PropertyRef Name="product_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Chemicals_Photo_Table_Household_Chemicals">
+          <End Type="DataBaseModel.Table_Household_Chemicals" Role="Table_Household_Chemicals" Multiplicity="0..1" />
+          <End Type="DataBaseModel.Table_Chemicals_Photo" Role="Table_Chemicals_Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Chemicals">
+              <PropertyRef Name="id_chemicals" />
+            </Principal>
+            <Dependent Role="Table_Chemicals_Photo">
+              <PropertyRef Name="id_chemicals" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -850,6 +982,18 @@
             </Principal>
             <Dependent Role="Table_Household_Delivery">
               <PropertyRef Name="delivery_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Employee_Photo_Table_Staff">
+          <End Type="DataBaseModel.Table_Staff" Role="Table_Staff" Multiplicity="0..1" />
+          <End Type="DataBaseModel.Table_Employee_Photo" Role="Table_Employee_Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Staff">
+              <PropertyRef Name="id_staff" />
+            </Principal>
+            <Dependent Role="Table_Employee_Photo">
+              <PropertyRef Name="id_staff" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -937,6 +1081,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Table_Houshold_Photo_Table_Household_Goods">
+          <End Type="DataBaseModel.Table_Household_Goods" Role="Table_Household_Goods" Multiplicity="0..1" />
+          <End Type="DataBaseModel.Table_Houshold_Photo" Role="Table_Houshold_Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Household_Goods">
+              <PropertyRef Name="id_household_goods" />
+            </Principal>
+            <Dependent Role="Table_Houshold_Photo">
+              <PropertyRef Name="id_houshold" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Table_Product_Stock_Table_Household_Goods">
           <End Type="DataBaseModel.Table_Household_Goods" Role="Table_Household_Goods" Multiplicity="0..1" />
           <End Type="DataBaseModel.Table_Product_Stock" Role="Table_Product_Stock" Multiplicity="*" />
@@ -1009,7 +1165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1036,6 +1192,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Table_Chemicals_Photo">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Chemicals_Photo">
+              <MappingFragment StoreEntitySet="Table_Chemicals_Photo">
+                <ScalarProperty Name="path_photo" ColumnName="path_photo" />
+                <ScalarProperty Name="binary_photo" ColumnName="binary_photo" />
+                <ScalarProperty Name="id_chemicals" ColumnName="id_chemicals" />
+                <ScalarProperty Name="id_photo" ColumnName="id_photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Table_Contact_Persons">
             <EntityTypeMapping TypeName="DataBaseModel.Table_Contact_Persons">
               <MappingFragment StoreEntitySet="Table_Contact_Persons">
@@ -1058,6 +1224,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Table_Employee_Photo">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Employee_Photo">
+              <MappingFragment StoreEntitySet="Table_Employee_Photo">
+                <ScalarProperty Name="path_photo" ColumnName="path_photo" />
+                <ScalarProperty Name="binary_photo" ColumnName="binary_photo" />
+                <ScalarProperty Name="id_staff" ColumnName="id_staff" />
+                <ScalarProperty Name="id_photo" ColumnName="id_photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Table_Gender">
             <EntityTypeMapping TypeName="DataBaseModel.Table_Gender">
               <MappingFragment StoreEntitySet="Table_Gender">
@@ -1069,7 +1245,6 @@
           <EntitySetMapping Name="Table_Household_Chemicals">
             <EntityTypeMapping TypeName="DataBaseModel.Table_Household_Chemicals">
               <MappingFragment StoreEntitySet="Table_Household_Chemicals">
-                <ScalarProperty Name="photo_chemicals" ColumnName="photo_chemicals" />
                 <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="destination_code" ColumnName="destination_code" />
                 <ScalarProperty Name="manufacturer_code" ColumnName="manufacturer_code" />
@@ -1091,11 +1266,20 @@
           <EntitySetMapping Name="Table_Household_Goods">
             <EntityTypeMapping TypeName="DataBaseModel.Table_Household_Goods">
               <MappingFragment StoreEntitySet="Table_Household_Goods">
-                <ScalarProperty Name="photo_household" ColumnName="photo_household" />
                 <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="manufacturer_code" ColumnName="manufacturer_code" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id_household_goods" ColumnName="id_household_goods" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Houshold_Photo">
+            <EntityTypeMapping TypeName="DataBaseModel.Table_Houshold_Photo">
+              <MappingFragment StoreEntitySet="Table_Houshold_Photo">
+                <ScalarProperty Name="id_houshold" ColumnName="id_houshold" />
+                <ScalarProperty Name="path_photo" ColumnName="path_photo" />
+                <ScalarProperty Name="binary_photo" ColumnName="binary_photo" />
+                <ScalarProperty Name="id_photo" ColumnName="id_photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1170,7 +1354,6 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="employee_photo" ColumnName="employee_photo" />
                 <ScalarProperty Name="date_birth" ColumnName="date_birth" />
                 <ScalarProperty Name="role" ColumnName="role" />
                 <ScalarProperty Name="patronymic" ColumnName="patronymic" />

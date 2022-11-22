@@ -27,7 +27,7 @@
                 <DataTemplate>
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
                         <Grid Width="365" Height="350" >
-                            <StackPanel Uid="{Binding id_sales}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
+                            <StackPanel Uid="{Binding id_sales}" >
                                 <TextBlock Text="Продажа" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
                                 <TextBlock TextWrapping="Wrap"  Text="{Binding DeliveryInform}" Name="tbArrivalPoint"/>
                                 <TextBlock Text="Дата" HorizontalAlignment="Center"/>
@@ -36,7 +36,7 @@
                                 <TextBlock   Text="Продавец" HorizontalAlignment="Center"/>
                                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding FullNameStaffEmployee}"/>
                             </StackPanel>
-                            <Button Name="btnDelete" Uid="{Binding id_sales}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDelete_Click"/>
+                            <Button Name="btnDelete" Uid="{Binding id_sales}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" />
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -44,8 +44,8 @@
         </ListView>
         <StackPanel Grid.Row="1">
             <Grid>
-                <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" Click="btnExit_Click"/>
-                <Button x:Name="btnAdd" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAdd_Click" Height="40" Margin="600,0,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" />
+                <Button x:Name="btnAdd" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Добавить"  Height="40" Margin="600,0,0,0" VerticalAlignment="Top"/>
             </Grid>
         </StackPanel>
     </Grid>

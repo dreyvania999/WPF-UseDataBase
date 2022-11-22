@@ -4,11 +4,11 @@
     {
         public static Table_Staff CurrentStaffEmploe;
 
-        public static string StaffEmploeFullName 
-        { 
-            get 
+        public static string StaffEmploeFullName
+        {
+            get
             {
-                return CurrentStaffEmploe.name+" "+CurrentStaffEmploe.surname+" "+CurrentStaffEmploe.patronymic;
+                return CurrentStaffEmploe.name + " " + CurrentStaffEmploe.surname + " " + CurrentStaffEmploe.patronymic;
             }
         }
     }

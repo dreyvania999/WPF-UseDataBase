@@ -17,6 +17,7 @@ namespace WpfApp1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Table_Staff()
         {
+            this.Table_Employee_Photo = new HashSet<Table_Employee_Photo>();
             this.Table_Sales = new HashSet<Table_Sales>();
         }
     
@@ -26,11 +27,12 @@ namespace WpfApp1
         public string patronymic { get; set; }
         public int role { get; set; }
         public System.DateTime date_birth { get; set; }
-        public byte[] employee_photo { get; set; }
         public int gender { get; set; }
         public string login { get; set; }
         public int password { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Table_Employee_Photo> Table_Employee_Photo { get; set; }
         public virtual Table_Gender Table_Gender { get; set; }
         public virtual Table_Role Table_Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

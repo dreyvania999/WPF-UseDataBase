@@ -27,12 +27,15 @@ namespace WpfApp1
     
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Table_Chemicals_Delivery> Table_Chemicals_Delivery { get; set; }
+        public virtual DbSet<Table_Chemicals_Photo> Table_Chemicals_Photo { get; set; }
         public virtual DbSet<Table_Contact_Persons> Table_Contact_Persons { get; set; }
         public virtual DbSet<Table_Delivery> Table_Delivery { get; set; }
+        public virtual DbSet<Table_Employee_Photo> Table_Employee_Photo { get; set; }
         public virtual DbSet<Table_Gender> Table_Gender { get; set; }
         public virtual DbSet<Table_Household_Chemicals> Table_Household_Chemicals { get; set; }
         public virtual DbSet<Table_Household_Delivery> Table_Household_Delivery { get; set; }
         public virtual DbSet<Table_Household_Goods> Table_Household_Goods { get; set; }
+        public virtual DbSet<Table_Houshold_Photo> Table_Houshold_Photo { get; set; }
         public virtual DbSet<Table_Manufacturer> Table_Manufacturer { get; set; }
         public virtual DbSet<Table_Product_Stock> Table_Product_Stock { get; set; }
         public virtual DbSet<Table_Purpose_Chemistry> Table_Purpose_Chemistry { get; set; }

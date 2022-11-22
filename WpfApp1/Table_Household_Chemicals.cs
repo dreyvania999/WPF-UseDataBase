@@ -18,6 +18,7 @@ namespace WpfApp1
         public Table_Household_Chemicals()
         {
             this.Table_Chemicals_Delivery = new HashSet<Table_Chemicals_Delivery>();
+            this.Table_Chemicals_Photo = new HashSet<Table_Chemicals_Photo>();
             this.Table_Product_Stock = new HashSet<Table_Product_Stock>();
             this.Table_Sale_Chemicals = new HashSet<Table_Sale_Chemicals>();
         }
@@ -27,10 +28,11 @@ namespace WpfApp1
         public int manufacturer_code { get; set; }
         public int destination_code { get; set; }
         public double cost { get; set; }
-        public byte[] photo_chemicals { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Table_Chemicals_Delivery> Table_Chemicals_Delivery { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Table_Chemicals_Photo> Table_Chemicals_Photo { get; set; }
         public virtual Table_Manufacturer Table_Manufacturer { get; set; }
         public virtual Table_Purpose_Chemistry Table_Purpose_Chemistry { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
