@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using WpfApp1.Classes;
 
@@ -62,16 +63,26 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
         {
             try
             {
+                Regex r1 = new Regex(@"^8 9\d{2} \d{3}-\d{2}-\d{2}$");
+                Regex r2 = new Regex(@"^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$");
                 if (IsEditing == false)
                 {
                     CP = new Table_Contact_Persons();
                 }
 
-                CP.surname = tboxSurname.Text.ToString();
-                CP.name = tboxName.Text.ToString();
-                CP.patronymic = tboxPatronymic.Text.ToString();
-                CP.phone = tboxPhone.Text.ToString();
-                CP.email = tboxEmail.Text.ToString();
+                if (r1.IsMatch(tboxPhone.Text) == true)
+                {
+                    if (r2.IsMatch(tboxEmail.Text) == true)
+                    {
+                        CP.surname = tboxSurname.Text.ToString();
+                        CP.name = tboxName.Text.ToString();
+                        CP.patronymic = tboxPatronymic.Text.ToString();
+                        CP.phone = tboxPhone.Text.ToString();
+                        CP.email = tboxEmail.Text.ToString();
+                    }
+                    else MessageBox.Show("Некорректно введена почта! Повторите попытку");
+                }
+                else MessageBox.Show("Некорректно введен телефон! Повторите попытку");
 
                 if (IsEditing == false)
                 {
