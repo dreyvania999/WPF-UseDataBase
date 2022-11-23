@@ -30,7 +30,7 @@
                                 <TextBlock Text="Продажа" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
                                 <TextBlock TextWrapping="Wrap"  Text="{Binding SaleInform}" Name="tbArrivalPoint"/>
                                 <TextBlock Text="Дата" HorizontalAlignment="Center"/>
-                                <TextBlock  HorizontalAlignment="Center" Text="{Binding date_sales, StringFormat={}dd.MM.yyyy}"/>
+                                <TextBlock  HorizontalAlignment="Center" Text="{Binding date_sales}"/>
                                 <Image Width="100" Height="100" Source="{Binding Table_Staff.employee_photo, TargetNullValue={StaticResource defaultImage}}"/>
                                 <TextBlock   Text="Продавец" HorizontalAlignment="Center"/>
                                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding FullNameStaffEmployee}"/>

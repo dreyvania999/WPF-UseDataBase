@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.Classes;
 using WpfApp1.Pages.AdminsPages;
+using WpfApp1.Pages.AdminsPages.AddPage;
 using WpfApp1.Pages.AdminsPages.ViewsPage;
 
 namespace WpfApp1.Pages
@@ -71,6 +72,11 @@ namespace WpfApp1.Pages
         private void btnSeeDelivery_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.MainFrame.Navigate(new ListViewDeliveryPage());
+        }
+
+        private void btnAddGoods_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new AddProductPage());
         }
     }
 }

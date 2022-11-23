@@ -80,6 +80,9 @@
     <Compile Include="Pages\AdminsPages\AddPage\AddDeliveryPage.xaml.cs">
       <DependentUpon>AddDeliveryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminsPages\AddPage\AddManufactererPage.xaml.cs">
+      <DependentUpon>AddManufactererPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdminsPages\AddPage\AddProductPage.xaml.cs">
       <DependentUpon>AddProductPage.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\AdminsPages\AddPage\AddDeliveryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminsPages\AddPage\AddManufactererPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,7 +16,7 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <TextBlock HorizontalAlignment="Center" FontSize="35">Продажа товара</TextBlock>
+            <TextBlock HorizontalAlignment="Center" FontSize="35">Поставка товара</TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <GroupBox Header="Добавить товар" FontSize="20" Margin="10">
@@ -51,7 +51,7 @@
             <TextBlock TextWrapping="Wrap"  Name="ListSale"/>
             <TextBlock TextWrapping="Wrap"  Name="ListSaleRes"/>
         </StackPanel>
-        <ListView x:Name="ListSaleChemicals" Grid.Row="2" Background="#FFF0F2"  Height= "400" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Margin="10">
+        <ListView x:Name="ListDeliveryChemicals" Grid.Row="2" Background="#FFF0F2"  Height= "400" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Margin="10">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>
@@ -75,7 +75,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView x:Name="ListSaleHousehold" Grid.Row="2" Background="#FFF0F2" Height= "400" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" Margin="10">
+        <ListView x:Name="ListDeliveryHousehold" Grid.Row="2" Background="#FFF0F2" Height= "400" Width="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" Margin="10">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>
@@ -104,6 +104,7 @@
         <StackPanel Grid.Row="3">
             <Grid>
                 <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Click="btnExit_Click">Назад</Button>
+                <Button x:Name="btnAddGood" HorizontalAlignment="Center" Template="{StaticResource btnStyle}" Click="btnAddGood_Click">Добавить товар</Button>
                 <Button x:Name="btnSave" HorizontalAlignment="Right" Template="{StaticResource btnStyle}" Click="btnSave_Click" >Сохранить изменения</Button>
             </Grid>
         </StackPanel>

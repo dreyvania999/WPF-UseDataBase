@@ -9,6 +9,77 @@
       Title="AddProductPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock HorizontalAlignment="Center" FontSize="35">Добавление товара</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <GroupBox Header="Добавить товар" FontSize="20" Margin="10">
+                <StackPanel Orientation="Horizontal">                    
+                    <StackPanel Width="200" Margin="15,0,0,0">
+                        <GroupBox Header="Тип товара" FontSize="20" Margin="10">
+                            <StackPanel>
+                                <RadioButton Name="rbChimicals" Checked="rbChimicals_Checked" >Бывая химия</RadioButton>
+                                <RadioButton Name="rbGoods" Checked="rbGoods_Checked">Товары для дома</RadioButton>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center">Производитель</TextBlock>
+                            <ComboBox x:Name="cbManufacturer" Width="200"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="20, 20, 0, 0">
+                            <Button x:Name="btnAddManufacterer" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAddManufacterer_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <StackPanel x:Name="spChemicals" Visibility="Collapsed">
+                <GroupBox Header="Бытовая химия" FontSize="20" Margin="5">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Margin="5">
+                            <TextBlock HorizontalAlignment="Center">Название:</TextBlock>
+                            <TextBox x:Name="tbProductChecimal"  Width="200"></TextBox>
+                        </StackPanel >
+                        <StackPanel Margin="5">
+                            <TextBlock HorizontalAlignment="Center">Назначение:</TextBlock>
+                            <ComboBox x:Name="cbChecimalDestination" Width="200"/>
+                        </StackPanel>
+                        <StackPanel Margin="5">
+                            <TextBlock HorizontalAlignment="Center">Цена:</TextBlock>
+                            <TextBox x:Name="tbChemicalCost"  Width="200"></TextBox>
+                        </StackPanel>
+                    </StackPanel>     
+                </GroupBox>
+            </StackPanel>
+            <StackPanel x:Name="Goods" Visibility="Collapsed">
+                <GroupBox Header="Товары для дома" FontSize="20" Margin="5">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Margin="5">
+                            <TextBlock HorizontalAlignment="Center">Название:</TextBlock>
+                            <TextBox x:Name="tbProductGoods" Width="200"></TextBox>
+                        </StackPanel>
+                        <StackPanel Margin="5">
+                            <TextBlock HorizontalAlignment="Center">Цена:</TextBlock>
+                            <TextBox x:Name="tbGoodsCost"  Width="200"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <Grid>
+                <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Click="btnExit_Click">Назад</Button>
+                <Button x:Name="btnSave" HorizontalAlignment="Right" Template="{StaticResource btnStyle}" Click="btnSave_Click" >Сохранить изменения</Button>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

@@ -51,7 +51,7 @@ namespace WpfApp1.Pages.PageForUsers
             ofd.ShowDialog();
             if (ofd.FileName != "")
             {
-                if (Images.ImageEmploe.AddPhoto(ofd.FileName,  StaffClass.CurrentStaffEmploe.id_staff))
+                if (Images.ImageEmploe.AddPhoto(ofd.FileName, StaffClass.CurrentStaffEmploe.id_staff))
                 {
                     FrameClass.MainFrame.Navigate(new AcountPage());
                     MessageBox.Show("Фото успешно добавлено", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -192,7 +192,7 @@ namespace WpfApp1.Pages.PageForUsers
 
                 foreach (string path in ofd.FileNames)
                 {
-                    if (!Images.ImageEmploe.AddPhoto(path,  StaffClass.CurrentStaffEmploe.id_staff))
+                    if (!Images.ImageEmploe.AddPhoto(path, StaffClass.CurrentStaffEmploe.id_staff))
                     {
                         check = true;
                     }

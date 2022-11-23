@@ -9,11 +9,24 @@
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="24"/>
         </Style>
+        <Style x:Key="txtStyle"  TargetType ="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
         <ControlTemplate x:Key="btnStyle" TargetType="Button">
             <Border CornerRadius="5" Background="#D8BFD8" Height="40" Width="200">
                 <ContentControl  Content="{TemplateBinding Content}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Foreground="Black" FontSize="20"/>
             </Border>
         </ControlTemplate>
-   
+        <ControlTemplate x:Key="btnPersonPage" TargetType="Button">
+            <Border CornerRadius="5" Background="#D8BFD8" Height="20" Width="250">
+                <ContentControl  Content="{TemplateBinding Content}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Foreground="Black" FontSize="14"/>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate x:Key="btnLKPage" TargetType="Button">
+            <Border CornerRadius="5" Background="#D8BFD8" Height="20" Width="150">
+                <ContentControl  Content="{TemplateBinding Content}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Foreground="Black" FontSize="14"/>
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

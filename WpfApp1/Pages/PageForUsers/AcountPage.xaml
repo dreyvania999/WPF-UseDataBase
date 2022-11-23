@@ -21,12 +21,12 @@
                 <Image Name="imgPhoto" Source="\Resourses\yuterra.png" Width="100" Margin="30 10 30 30"/>
                 <Button Name="btnNextPhoto" Content="  ►"  MinWidth="50" Visibility="Hidden" Click="BtnNextPhoto_Click"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Name="btnChangePhoto" Content="Изменить"  Margin="0 0 5 0" Click="BtnChangePhoto_Click"/>
-                <Button Name="btnAddPhoto" Content="Добавить"  Margin="5 0 0 0" Click="BtnAddPhoto_Click"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
+                <Button Name="btnChangePhoto" Content="Изменить" Template="{StaticResource btnLKPage}"  Margin="10" Click="BtnChangePhoto_Click"/>
+                <Button Name="btnAddPhoto" Content="Добавить" Template="{StaticResource btnLKPage}"  Click="BtnAddPhoto_Click"/>
             </StackPanel>
-            <Button Name="btnAddSomePhotos" Content="Добавить несколько"  Margin="0 0 0 10" Click="BtnAddSomePhotos_Click"/>
-            <Button Name="btnDelPhoto" Content="Удалить"  Margin="0" Click="BtnDelPhoto_Click"/>
+            <Button Name="btnAddSomePhotos" Content="Добавить несколько" Template="{StaticResource btnPersonPage}" Margin="0 0 0 10" Click="BtnAddSomePhotos_Click"/>
+            <Button Name="btnDelPhoto" Content="Удалить" Template="{StaticResource btnPersonPage}" Margin="0" Click="BtnDelPhoto_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -37,12 +37,12 @@
                 <TextBlock Name="tbRole" Text="Роль: "  Margin="5"/>
             </StackPanel>
             <StackPanel>
-                <Button Name="btnChangePersonal" Content="Изменить данные"  Margin="0 30 0 0" Click="BtnChangePersonal_Click"/>
+                <Button Name="btnChangePersonal" Content="Изменить данные" Template="{StaticResource btnLKPage}" Margin="0 30 0 0" Click="BtnChangePersonal_Click"/>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
-            <Button Name="btnChangeAccount" Content="Изменить данные учётной записи" Margin="5" Click="BtnChangeAccount_Click"/>
+            <Button Name="btnChangeAccount" Content="Изменить данные учётной записи" Template="{StaticResource btnPersonPage}" Margin="5" Click="BtnChangeAccount_Click"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -27,15 +27,15 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             {
                 CurrentDelivery = new Table_Delivery() { delivery_date = DateTime.Now };
                 DBaseClass.BD.Table_Delivery.Add(CurrentDelivery);
-                ListSaleChemicals.Visibility = Visibility.Collapsed;
-                ListSaleHousehold.Visibility = Visibility.Collapsed;
+                ListDeliveryChemicals.Visibility = Visibility.Collapsed;
+                ListDeliveryHousehold.Visibility = Visibility.Collapsed;
             }
             else
             {
                 ListSale.Visibility = Visibility.Collapsed;
                 ListSaleRes.Visibility = Visibility.Collapsed;
-                ListSaleChemicals.ItemsSource = DBaseClass.BD.Table_Chemicals_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
-                ListSaleHousehold.ItemsSource = DBaseClass.BD.Table_Household_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
+                ListDeliveryChemicals.ItemsSource = DBaseClass.BD.Table_Chemicals_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
+                ListDeliveryHousehold.ItemsSource = DBaseClass.BD.Table_Household_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
             }
 
 
@@ -116,8 +116,8 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
                     return;
                 }
 
-                ListSaleChemicals.ItemsSource = DBaseClass.BD.Table_Chemicals_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
-                ListSaleHousehold.ItemsSource = DBaseClass.BD.Table_Household_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
+                ListDeliveryChemicals.ItemsSource = DBaseClass.BD.Table_Chemicals_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
+                ListDeliveryHousehold.ItemsSource = DBaseClass.BD.Table_Household_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
                 DBaseClass.BD.SaveChanges();
             }
             else
@@ -230,7 +230,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             DBaseClass.BD.SaveChanges();
             MessageBox.Show("Информация удалена");
 
-            ListSaleChemicals.ItemsSource = DBaseClass.BD.Table_Chemicals_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
+            ListDeliveryChemicals.ItemsSource = DBaseClass.BD.Table_Chemicals_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
 
         }
         private void btnDeleteHousehold_Click(object sender, RoutedEventArgs e)
@@ -245,7 +245,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             DBaseClass.BD.SaveChanges();
             MessageBox.Show("Информация удалена");
 
-            ListSaleHousehold.ItemsSource = DBaseClass.BD.Table_Household_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
+            ListDeliveryHousehold.ItemsSource = DBaseClass.BD.Table_Household_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
 
         }
 
@@ -282,6 +282,11 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             tbProdduct.Text = "";
             EditingHoushouldDelivery = null;
 
+        }
+
+        private void btnAddGood_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new AddProductPage());
         }
     }
 }

@@ -21,22 +21,22 @@
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel >
-                <TextBlock Text="Фамилия" />
-                <TextBox Name="tboxSurname" />
+                <TextBlock Text="Фамилия"  Style="{StaticResource txtStyle}"/>
+                <TextBox Name="tboxSurname" Height="30"/>
             </StackPanel>
             <StackPanel >
-                <TextBlock Text="Имя" />
-                <TextBox Name="tboxName" />
+                <TextBlock Text="Имя"  Style="{StaticResource txtStyle}"/>
+                <TextBox Name="tboxName" Height="30"/>
             </StackPanel>
             <StackPanel >
-                <TextBlock Text="Отчество" />
-                <TextBox Name="tboxPatronymic" />
+                <TextBlock Text="Отчество"  Style="{StaticResource txtStyle}"/>
+                <TextBox Name="tboxPatronymic" Height="30"/>
             </StackPanel>
-            <StackPanel >
-                <TextBlock Text="Дата рождения" />
-                <DatePicker Name="dpBirthdate" />
+            <StackPanel>
+                <TextBlock Text="Дата рождения"  Style="{StaticResource txtStyle}"/>
+                <DatePicker Name="dpBirthdate" FontSize="20"/>
             </StackPanel>
         </StackPanel>
-        <Button Name="btnSave" Content="Сохранить" Grid.Row="2" Grid.ColumnSpan="3"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" Click="btnSave_Click"/>
+        <Button Name="btnSave" Content="Сохранить" Grid.Row="2" Grid.ColumnSpan="3" Template="{StaticResource btnStyle}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" Click="btnSave_Click"/>
     </Grid>
 </Window>
