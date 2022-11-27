@@ -137,12 +137,12 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
                 else
                 {
                     MessageBox.Show("Не удалось найти товар! повторите выбор товара");
-                    return;
+                   
                 }
 
                 ListSaleChemicals.ItemsSource = DBaseClass.BD.Table_Sale_Chemicals.ToList().Where(x => x.sales_code == CurrentSales.id_sales);
                 ListSaleHousehold.ItemsSource = DBaseClass.BD.Table_Sale_Houshould.ToList().Where(x => x.sales_code == CurrentSales.id_sales);
-                DBaseClass.BD.SaveChanges();
+                
             }
             else
             {
