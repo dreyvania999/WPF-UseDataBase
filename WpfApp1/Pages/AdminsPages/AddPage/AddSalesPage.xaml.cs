@@ -283,9 +283,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
             DBaseClass.BD.SaveChanges();
             MessageBox.Show("Информация удалена");
-
             ListSaleHousehold.ItemsSource = DBaseClass.BD.Table_Sale_Houshould.ToList().Where(x => x.sales_code == CurrentSales.id_sales);
-
         }
 
 
