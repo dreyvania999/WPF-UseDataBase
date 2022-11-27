@@ -82,10 +82,9 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    
+                <DataTemplate>                    
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
-                        <Grid Width="350" Height="350">
+                        <Grid Width="350" Height="300">
                             <StackPanel Uid="{Binding id_sale_inform}" MouseLeftButtonDown="StackPanelHoushols_MouseLeftButtonDown">
                                 <TextBlock Text="Название" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
                                 <TextBlock TextWrapping="Wrap"  Text="{Binding Table_Household_Goods.name}" Name="tbArrivalPoint"/>

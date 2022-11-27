@@ -23,7 +23,7 @@ namespace WpfApp1.Pages.AdminsPages
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            FrameClass.MainFrame.Navigate(new MainPage());
         }
     }
 }

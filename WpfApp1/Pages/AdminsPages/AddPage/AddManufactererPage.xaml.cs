@@ -64,7 +64,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             try
             {
                 Regex r1 = new Regex(@"^8 9\d{2} \d{3}-\d{2}-\d{2}$");
-                Regex r2 = new Regex(@"^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$");
+                Regex r2 = new Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+.[A-Za-z]{2,4}$");
                 if (IsEditing == false)
                 {
                     CP = new Table_Contact_Persons();
@@ -91,6 +91,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
                 DBaseClass.BD.SaveChanges();
                 MessageBox.Show("Информация о контактном лице добавлена");
+                FrameClass.MainFrame.Navigate(new AddManufactererPage());
             }
             catch
             {

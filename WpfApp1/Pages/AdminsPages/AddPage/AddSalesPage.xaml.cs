@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.Classes;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace WpfApp1.Pages.AdminsPages.AddPage
 {
@@ -45,9 +48,18 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
         }
 
-        public static void SetTable_Sales(Table_Sales sales)
+        public AddSalesPage(Table_Sales currentSales)
         {
-            CurrentSales = sales;
+            InitializeComponent();
+            CurrentSales = currentSales;
+            ListSale.Visibility = Visibility.Collapsed;
+            ListSaleRes.Visibility = Visibility.Collapsed;
+            ListSaleChemicals.ItemsSource = DBaseClass.BD.Table_Sale_Chemicals.ToList().Where(x => x.sales_code == CurrentSales.id_sales);
+            ListSaleHousehold.ItemsSource = DBaseClass.BD.Table_Sale_Houshould.ToList().Where(x => x.sales_code == CurrentSales.id_sales);
+            
+
+            IsEditing = true;
+            
         }
 
         private void rbChimicals_Checked(object sender, RoutedEventArgs e)
@@ -227,6 +239,12 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if(IsEditing==true)
+            {
+            EditingChemicalsSales.product_code = Convert.ToInt32(cbProduct.SelectedValue.ToString());
+            EditingChemicalsSales.quantity = Convert.ToInt32(tbQonity.Text.ToString());
+            }
+            
             ListSale.Text = "";
             ListSaleRes.Text = "";
             DBaseClass.BD.SaveChanges();
@@ -293,15 +311,6 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             StackPanel stackPanel = (StackPanel)sender;
             int id = Convert.ToInt32(stackPanel.Uid);
             EditingChemicalsSales = DBaseClass.BD.Table_Sale_Chemicals.FirstOrDefault(x => x.id_sale_inform == id && x.sales_code == CurrentSales.id_sales);
-
-            cbProduct.ItemsSource = DBaseClass.BD.Table_Household_Chemicals.Where(x => x.name.Contains(tbProdduct.Text)).ToList();
-            cbProduct.SelectedValuePath = "id_chemicals";
-            cbProduct.DisplayMemberPath = "name";
-
-            cbProduct.SelectedValue = EditingChemicalsSales.product_code;
-            tbQonity.Text = EditingChemicalsSales.quantity.ToString();
-            tbProdduct.Text = "";
-            EditingHoushouldSales = null;
 
         }
     }

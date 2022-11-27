@@ -33,7 +33,7 @@
                                     <TextBlock TextWrapping="Wrap"  Text="{Binding DeliveryInform}" Name="tbArrivalPoint"/>
                                 </StackPanel>
                                 <StackPanel>
-                                    <Button Name="btnDelete" Uid="{Binding id_delivery}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" />
+                                    <Button Name="btnDelete" Uid="{Binding id_delivery}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDelete_Click"/>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>

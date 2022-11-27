@@ -207,8 +207,6 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            ListSale.Text = "";
-            ListSaleRes.Text = "";
             DBaseClass.BD.SaveChanges();
             MessageBox.Show("Изменения были успешно внесены");
             CurrentDelivery = new Table_Delivery()

@@ -13,6 +13,7 @@ namespace WpfApp1.Pages.AdminsPages
     /// </summary>
     public partial class ListViewSalesPage : Page
     {
+        Table_Sales TS;
         public ListViewSalesPage()
         {
             InitializeComponent();
@@ -59,9 +60,8 @@ namespace WpfApp1.Pages.AdminsPages
         {
             StackPanel stackPanel = (StackPanel)sender;
             int id = Convert.ToInt32(stackPanel.Uid);
-            AddSalesPage.SetTable_Sales(DBaseClass.BD.Table_Sales.FirstOrDefault(x => x.id_sales == id));
             AddSalesPage.IsEditing = true;
-            FrameClass.MainFrame.Navigate(new AddSalesPage());
+            FrameClass.MainFrame.Navigate(new AddSalesPage(DBaseClass.BD.Table_Sales.FirstOrDefault(x => x.id_sales == id)), TS);
         }
     }
 }
