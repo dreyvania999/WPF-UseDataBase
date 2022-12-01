@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using WpfApp1.Classes;
 
 namespace WpfApp1.Pages.AdminsPages
 {
@@ -22,23 +21,18 @@ namespace WpfApp1.Pages.AdminsPages
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new MainPage());
+             FrameClass.MainFrame.Navigate(new MainPage());
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            if (tbLogin.Text != "")
-            {
-                dgUsers.ItemsSource = tbSurname.Text != ""
+            dgUsers.ItemsSource = tbLogin.Text != ""
+                ? tbSurname.Text != ""
                     ? DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname.Contains(tbSurname.Text) && x.login.Contains(tbLogin.Text))
-                    : (System.Collections.IEnumerable)DBaseClass.BD.Table_Staff.ToList().Where(x => x.login.Contains(tbLogin.Text));
-            }
-            else
-            {
-                dgUsers.ItemsSource = tbSurname.Text != ""
+                    : (System.Collections.IEnumerable)DBaseClass.BD.Table_Staff.ToList().Where(x => x.login.Contains(tbLogin.Text))
+                : tbSurname.Text != ""
                     ? DBaseClass.BD.Table_Staff.ToList().Where(x => x.surname.Contains(tbSurname.Text))
                     : (System.Collections.IEnumerable)DBaseClass.BD.Table_Staff.ToList();
-            }
 
         }
 

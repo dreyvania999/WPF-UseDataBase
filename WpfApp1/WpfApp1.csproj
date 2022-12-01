@@ -71,9 +71,10 @@
     </ApplicationDefinition>
     <Compile Include="Classes\DBaseClass.cs" />
     <Compile Include="Classes\Images.cs" />
-    <Compile Include="Classes\PartialClassDelivery.cs" />
-    <Compile Include="Classes\PartialClassSales.cs" />
-    <Compile Include="Classes\PartialClassStorageLocation.cs" />
+    <Compile Include="Classes\Pagination.cs" />
+    <Compile Include="Classes\Partials\PartialClassDelivery.cs" />
+    <Compile Include="Classes\Partials\PartialClassSales.cs" />
+    <Compile Include="Classes\Partials\PartialClassStorageLocation.cs" />
     <Compile Include="Classes\StaffClass.cs" />
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>

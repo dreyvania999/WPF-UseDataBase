@@ -22,13 +22,13 @@ namespace WpfApp1.Pages.PageForUsers
 
                 try
                 {
-                    DBaseClass.BD.SaveChanges();
+                     DBaseClass.BD.SaveChanges();
                     Close();
-                    MessageBox.Show("Данные успешно сохранены", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
+                     MessageBox.Show("Данные успешно сохранены", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch
                 {
-                    MessageBox.Show("Возникла ошибка! Данные не были обновлены", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
+                     MessageBox.Show("Возникла ошибка! Данные не были обновлены", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
@@ -39,12 +39,12 @@ namespace WpfApp1.Pages.PageForUsers
 
             if (tboxLogin.Text.Length == 0)
             {
-                MessageBox.Show("Введите логин", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
+                 MessageBox.Show("Введите логин", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             else if (StaffClass.CurrentStaffEmploe != null && StaffClass.CurrentStaffEmploe.id_staff != employees.id_staff)
             {
-                MessageBox.Show("Пользователь с таким логином уже зарегистрирован", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
+                 MessageBox.Show("Пользователь с таким логином уже зарегистрирован", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
             else if (MainWindow.PasswordCheck(pbPassword))
@@ -53,7 +53,7 @@ namespace WpfApp1.Pages.PageForUsers
             }
             else if (pbPassword.Password != pbRepeatPassword.Password)
             {
-                MessageBox.Show("Пароли не совпадают", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
+                 MessageBox.Show("Пароли не совпадают", "Учётная запись", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
@@ -62,11 +62,11 @@ namespace WpfApp1.Pages.PageForUsers
 
         private void pbPassword_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            MainWindow.PasswordCheck(pbPassword);
+             MainWindow.PasswordCheck(pbPassword);
         }
         private void pbRepeatPassword_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            MainWindow.PasswordCheck(pbRepeatPassword);
+             MainWindow.PasswordCheck(pbRepeatPassword);
         }
     }
 }

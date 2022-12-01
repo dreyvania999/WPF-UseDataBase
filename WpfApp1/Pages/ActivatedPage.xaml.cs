@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using WpfApp1.Classes;
 
 namespace WpfApp1.Pages
 {
@@ -15,12 +14,12 @@ namespace WpfApp1.Pages
         }
         private void btnAuto_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new AutarizationPage());
+             FrameClass.MainFrame.Navigate(new AutarizationPage());
         }
 
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new RegistrationPage());
+             FrameClass.MainFrame.Navigate(new RegistrationPage());
         }
     }
 }

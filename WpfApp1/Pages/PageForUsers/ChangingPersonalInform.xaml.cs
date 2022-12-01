@@ -34,13 +34,13 @@ namespace WpfApp1.Pages.PageForUsers
 
                 try
                 {
-                    DBaseClass.BD.SaveChanges();
+                     DBaseClass.BD.SaveChanges();
                     Close();
-                    MessageBox.Show("Данные успешно сохранены", "Персональные данные", MessageBoxButton.OK, MessageBoxImage.Information);
+                     MessageBox.Show("Данные успешно сохранены", "Персональные данные", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch
                 {
-                    MessageBox.Show("Возникла ошибка! Данные не были обновлены", "Персональные данные", MessageBoxButton.OK, MessageBoxImage.Information);
+                     MessageBox.Show("Возникла ошибка! Данные не были обновлены", "Персональные данные", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
@@ -50,7 +50,7 @@ namespace WpfApp1.Pages.PageForUsers
 
             if (dpBirthdate.SelectedDate.Value == DateTime.Today)
             {
-                MessageBox.Show("Выберите дату рождения", "Изменение личных данных", MessageBoxButton.OK, MessageBoxImage.Information);
+                 MessageBox.Show("Выберите дату рождения", "Изменение личных данных", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 

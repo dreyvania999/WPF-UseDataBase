@@ -38,8 +38,10 @@ namespace WpfApp1.Classes
             {
                 try
                 {
-                    Table_Employee_Photo photo = new Table_Employee_Photo();
-                    photo.id_staff = id;
+                    Table_Employee_Photo photo = new Table_Employee_Photo
+                    {
+                        id_staff = id
+                    };
 
                     Image sdi = Image.FromFile(path);
                     ImageConverter ic = new ImageConverter();
@@ -47,8 +49,8 @@ namespace WpfApp1.Classes
                     byte[] array = (byte[])ic.ConvertTo(sdi, typeof(byte[]));
                     photo.binary_photo = array;
 
-                    DBaseClass.BD.Table_Employee_Photo.Add(photo);
-                    DBaseClass.BD.SaveChanges();
+                     DBaseClass.BD.Table_Employee_Photo.Add(photo);
+                     DBaseClass.BD.SaveChanges();
 
                     return true;
                 }
@@ -87,8 +89,10 @@ namespace WpfApp1.Classes
             {
                 try
                 {
-                    Table_Chemicals_Photo photo = new Table_Chemicals_Photo();
-                    photo.id_chemicals = id;
+                    Table_Chemicals_Photo photo = new Table_Chemicals_Photo
+                    {
+                        id_chemicals = id
+                    };
 
                     Image sdi = Image.FromFile(path);
                     ImageConverter ic = new ImageConverter();
@@ -96,8 +100,8 @@ namespace WpfApp1.Classes
                     byte[] array = (byte[])ic.ConvertTo(sdi, typeof(byte[]));
                     photo.binary_photo = array;
 
-                    DBaseClass.BD.Table_Chemicals_Photo.Add(photo);
-                    DBaseClass.BD.SaveChanges();
+                     DBaseClass.BD.Table_Chemicals_Photo.Add(photo);
+                     DBaseClass.BD.SaveChanges();
 
                     return true;
                 }
@@ -136,8 +140,10 @@ namespace WpfApp1.Classes
             {
                 try
                 {
-                    Table_Houshold_Photo photo = new Table_Houshold_Photo();
-                    photo.id_houshold = id;
+                    Table_Houshold_Photo photo = new Table_Houshold_Photo
+                    {
+                        id_houshold = id
+                    };
 
                     Image sdi = Image.FromFile(path);
                     ImageConverter ic = new ImageConverter();
@@ -145,8 +151,8 @@ namespace WpfApp1.Classes
                     byte[] array = (byte[])ic.ConvertTo(sdi, typeof(byte[]));
                     photo.binary_photo = array;
 
-                    DBaseClass.BD.Table_Houshold_Photo.Add(photo);
-                    DBaseClass.BD.SaveChanges();
+                     DBaseClass.BD.Table_Houshold_Photo.Add(photo);
+                     DBaseClass.BD.SaveChanges();
 
                     return true;
                 }

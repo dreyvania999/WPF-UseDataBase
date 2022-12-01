@@ -15,12 +15,12 @@ namespace WpfApp1.Pages
         public AutarizationPage()
         {
             InitializeComponent();
-            MainWindow.PasswordCheck(pbRassword);
+             MainWindow.PasswordCheck(pbRassword);
         }
 
         public void TextInPasswordBox(object sender, TextCompositionEventArgs e)
         {
-            MainWindow.PasswordCheck(pbRassword);
+             MainWindow.PasswordCheck(pbRassword);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,26 +34,26 @@ namespace WpfApp1.Pages
                 {
                     case 1:
 
-                        FrameClass.MainFrame.Navigate(new MainPage());
+                         FrameClass.MainFrame.Navigate(new MainPage());
                         break;
                     case 2:
 
-                        FrameClass.MainFrame.Navigate(new AcountPage());
+                         FrameClass.MainFrame.Navigate(new AcountPage());
                         break;
                     default:
-                        MessageBox.Show("Произошла не предвиденная ситуация, повторите ввод логина и пароля");
+                         MessageBox.Show("Произошла не предвиденная ситуация, повторите ввод логина и пароля");
                         break;
                 }
             }
             else
             {
-                MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
+                 MessageBox.Show("Пользователь с таким логиным и паролем не найден!");
             }
         }
 
         private void btnBackMain_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new ActivatedPage());
+             FrameClass.MainFrame.Navigate(new ActivatedPage());
         }
     }
 }

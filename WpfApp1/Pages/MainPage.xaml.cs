@@ -37,46 +37,46 @@ namespace WpfApp1.Pages
                         btnSeeStock.Visibility = Visibility.Collapsed;
                         break;
                     default:
-                        MessageBox.Show("Что-то пошло не по плану");
+                         MessageBox.Show("Что-то пошло не по плану");
                         break;
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Что-то пошло не по плану");
-                FrameClass.MainFrame.Navigate(new ActivatedPage());
+                 MessageBox.Show("Что-то пошло не по плану");
+                 FrameClass.MainFrame.Navigate(new ActivatedPage());
             }
 
         }
 
         private void btnSeeUsers_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new AllStaffPage());
+             FrameClass.MainFrame.Navigate(new AllStaffPage());
         }
 
         private void btnExitMainMenu_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new ActivatedPage());
+             FrameClass.MainFrame.Navigate(new ActivatedPage());
         }
 
         private void btnSeeSales_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new ListViewSalesPage());
+             FrameClass.MainFrame.Navigate(new ListViewSalesPage());
         }
 
         private void btnSeeStock_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new PageProductStock());
+             FrameClass.MainFrame.Navigate(new PageProductStock());
         }
 
         private void btnSeeDelivery_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new ListViewDeliveryPage());
+             FrameClass.MainFrame.Navigate(new ListViewDeliveryPage());
         }
 
         private void btnAddGoods_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new AddProductPage());
+             FrameClass.MainFrame.Navigate(new AddProductPage());
         }
     }
 }

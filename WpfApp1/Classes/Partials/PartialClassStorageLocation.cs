@@ -55,7 +55,7 @@ namespace WpfApp1
         {
             get
             {
-                _ = new SolidColorBrush(Color.FromRgb(111, 111, 111));
+                 new SolidColorBrush(Color.FromRgb(111, 111, 111));
                 SolidColorBrush propertyColor;
                 if (quantity > 10)
                 {

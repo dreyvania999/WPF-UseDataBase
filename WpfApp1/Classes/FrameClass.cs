@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace WpfApp1.Classes
+namespace WpfApp1
 {
     internal class FrameClass
     {

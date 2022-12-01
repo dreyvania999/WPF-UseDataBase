@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using WpfApp1.Classes;
 
 namespace WpfApp1.Pages.AdminsPages.AddPage
 {
@@ -12,8 +11,8 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
     public partial class AddProductPage : Page
     {
         public static bool IsEditing = false;
-        Table_Household_Chemicals HC;
-        Table_Household_Goods HG;
+        private Table_Household_Chemicals HC;
+        private Table_Household_Goods HG;
 
         public AddProductPage()
         {
@@ -32,12 +31,12 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             IsEditing = false;
-            FrameClass.MainFrame.Navigate(new MainPage());
+             FrameClass.MainFrame.Navigate(new MainPage());
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            DBaseClass.BD.SaveChanges();
-            MessageBox.Show("Изменения были успешно внесены");
+             DBaseClass.BD.SaveChanges();
+             MessageBox.Show("Изменения были успешно внесены");
         }
 
         private void rbChimicals_Checked(object sender, RoutedEventArgs e)
@@ -58,15 +57,15 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
                 if (IsEditing == false)
                 {
-                    DBaseClass.BD.Table_Household_Chemicals.Add(HC);
+                     DBaseClass.BD.Table_Household_Chemicals.Add(HC);
                 }
 
-                DBaseClass.BD.SaveChanges();
-                MessageBox.Show("Информация о товаре добавлена");
+                 DBaseClass.BD.SaveChanges();
+                 MessageBox.Show("Информация о товаре добавлена");
             }
             catch
             {
-                MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
+                 MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
             }
         }
 
@@ -87,21 +86,21 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
                 if (IsEditing == false)
                 {
-                    DBaseClass.BD.Table_Household_Goods.Add(HG);
+                     DBaseClass.BD.Table_Household_Goods.Add(HG);
                 }
 
-                DBaseClass.BD.SaveChanges();
-                MessageBox.Show("Информация о товаре добавлена");
+                 DBaseClass.BD.SaveChanges();
+                 MessageBox.Show("Информация о товаре добавлена");
             }
             catch
             {
-                MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
+                 MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
             }
         }
 
         private void btnAddManufacterer_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new AddManufactererPage());
+             FrameClass.MainFrame.Navigate(new AddManufactererPage());
         }
     }
 }

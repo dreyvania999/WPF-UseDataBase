@@ -12,11 +12,56 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="ListSale" Grid.Row="0" Height= "550" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+        <GroupBox Header="Поиск и сортировка" Grid.Row="0" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Вариант поиска" FontSize="22"/>
+                    <ComboBox Name="cmbSearcher" Width="200" Margin="10, 0, 0, 0" SelectionChanged="cmbSearcher_SelectionChanged">
+                        <ComboBoxItem>Нет</ComboBoxItem>
+                        <ComboBoxItem>Фамилия</ComboBoxItem>
+                        <ComboBoxItem>Имя</ComboBoxItem>
+                        <ComboBoxItem>Отчество</ComboBoxItem>
+                        <ComboBoxItem>Бытовая химия</ComboBoxItem>
+                        <ComboBoxItem>Товар для дома</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Сортировка"/>
+                    <ComboBox Name="cbSort"   Width="200" HorizontalAlignment="Left" SelectionChanged="CbSortSotr_SelectionChanged">
+                        <ComboBoxItem>Нет</ComboBoxItem>
+                        <ComboBoxItem>Фамилия↑</ComboBoxItem>
+                        <ComboBoxItem>Фамилия↓</ComboBoxItem>
+                        <ComboBoxItem>Имя↑</ComboBoxItem>
+                        <ComboBoxItem>Имя↓</ComboBoxItem>
+                        <ComboBoxItem>Отчество↑</ComboBoxItem>
+                        <ComboBoxItem>Отчество↓</ComboBoxItem>
+                        
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Поиск" FontSize="22"/>
+                    <TextBox Name="tbSearch" Width="200" Margin="10, 0, 0, 0" MaxLength="50" TextChanged="tbSearch_TextChanged"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <TextBlock Text="Только положительные продажы" FontSize="22"/>
+                    <CheckBox Name="cbPlassSales" Click="cbPlassSales_Click"></CheckBox>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <ListView x:Name="ListSale" Grid.Row="1" Height= "550" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>
@@ -25,26 +70,65 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
-                        <Grid Width="365" Height="350" >
-                            <StackPanel Uid="{Binding id_sales}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
-                                <TextBlock Text="Продажа" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
-                                <TextBlock TextWrapping="Wrap"  Text="{Binding SaleInform}" Name="tbArrivalPoint"/>
-                                <TextBlock Text="Дата" HorizontalAlignment="Center"/>
-                                <TextBlock  HorizontalAlignment="Center" Text="{Binding date_sales}"/>
-                                <Image Width="100" Height="100" Source="{Binding Table_Staff.employee_photo, TargetNullValue={StaticResource defaultImage}}"/>
-                                <TextBlock   Text="Продавец" HorizontalAlignment="Center"/>
-                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding FullNameStaffEmployee}"/>
-                            </StackPanel>
-                            <Button Name="btnDelete" Uid="{Binding id_sales}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDelete_Click"/>
+                        <Grid Width="400" Height="350">
+                            <ScrollViewer>
+                                <StackPanel>
+                                    <StackPanel Uid="{Binding id_sales}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
+                                        <TextBlock Text="Продажа" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
+                                        <TextBlock TextWrapping="Wrap"  Text="{Binding SaleInform}" Name="tbArrivalPoint"/>
+                                        <TextBlock Text="Дата" HorizontalAlignment="Center"/>
+                                        <TextBlock  HorizontalAlignment="Center" Text="{Binding date_sales}"/>
+                                        <Image Width="100" Height="100" Source="{Binding Table_Staff.employee_photo, TargetNullValue={StaticResource defaultImage}}"/>
+                                        <TextBlock   Text="Продавец" HorizontalAlignment="Center"/>
+                                        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding FullNameStaffEmployee}"/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Button Name="btnDelete" Uid="{Binding id_sales}" Content="Удалить" Template="{StaticResource btnStyle}" Margin="0 0 0 10" Click="btnDelete_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Row="1">
+
+        <StackPanel Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Left" >
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                    <TextBlock Text="Записей на странице" />
+                    <TextBox Name="tboxPageCount" Width="50" TextChanged="tboxPageCount_TextChanged"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal"  Margin="5,5,5,5">
+                    <TextBlock Name="tboxFirst" Uid="first" Text="&lt;&lt; "  Margin="0 0 5 0" MouseDown="EditingCurrentPage_MouseDown"/>
+                    <TextBlock Name="tboxPrev" Uid="back" Text=" &lt; "  Margin="0 0 5 0" MouseDown="EditingCurrentPage_MouseDown"/>
+                    <TextBlock Name="tboxPrev1" Uid="1" Text="{Binding  Path = NPage[0]}" Visibility="{Binding Visible[0]}"   Margin="0 0 5 0" Foreground="{Binding Gray[0]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                    <TextBlock Name="tboxPrev2" Uid="2" Text="{Binding  Path = NPage[1]}" Visibility="{Binding Visible[1]}"   Margin="0 0 5 0" Foreground="{Binding Gray[1]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                    <TextBlock Name="tboxPrev3" Uid="3" Text="{Binding  Path = NPage[2]}" Visibility="{Binding Visible[2]}"   Margin="0 0 5 0" Foreground="{Binding Gray[2]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                    <TextBlock Name="tboxPrev4" Uid="4" Text="{Binding  Path = NPage[3]}" Visibility="{Binding Visible[3]}"   Margin="0 0 5 0" Foreground="{Binding Gray[3]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                    <TextBlock Name="tboxPrev5" Uid="5" Text="{Binding  Path = NPage[4]}" Visibility="{Binding Visible[4]}"   Margin="0 0 5 0" Foreground="{Binding Gray[4]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                    <TextBlock Name="tboxPrevNext" Uid="next" Text=" &gt; "  MouseDown="EditingCurrentPage_MouseDown"/>
+                    <TextBlock Name="tboxPrevLast" Uid="last" Text=" &gt;&gt;"   MouseDown="EditingCurrentPage_MouseDown"/>
+                </StackPanel >
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3">
             <Grid>
-                <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" Click="btnExit_Click"/>
-                <Button x:Name="btnAdd" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAdd_Click" Height="40" Margin="600,0,0,0" VerticalAlignment="Top"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180*"/>
+                    <ColumnDefinition Width="95*"/>
+                    <ColumnDefinition Width="177*"/>
+                    <ColumnDefinition Width="44*"/>
+                    <ColumnDefinition Width="54*"/>
+                    <ColumnDefinition Width="250*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" Click="btnExit_Click" Grid.ColumnSpan="2"/>
+                <Button x:Name="btnAdd" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAdd_Click" Grid.Column="5" Margin="50,0,0,0" />
             </Grid>
         </StackPanel>
     </Grid>

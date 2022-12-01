@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Windows;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
-using WpfApp1.Classes;
 
 namespace WpfApp1.Pages.AdminsPages.AddPage
 {
@@ -13,8 +12,8 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
     public partial class AddManufactererPage : Page
     {
         public static bool IsEditing = false;
-        Table_Manufacturer TM;
-        Table_Contact_Persons CP;
+        private Table_Manufacturer TM;
+        private Table_Contact_Persons CP;
         public AddManufactererPage()
         {
             InitializeComponent();
@@ -25,7 +24,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new AddProductPage());
+             FrameClass.MainFrame.Navigate(new AddProductPage());
         }
 
         private void btnAddPerson_Click(object sender, RoutedEventArgs e)
@@ -48,15 +47,15 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
                 if (IsEditing == false)
                 {
-                    DBaseClass.BD.Table_Manufacturer.Add(TM);
+                     DBaseClass.BD.Table_Manufacturer.Add(TM);
                 }
 
-                DBaseClass.BD.SaveChanges();
-                MessageBox.Show("Информация о производителе добавлена");
+                 DBaseClass.BD.SaveChanges();
+                 MessageBox.Show("Информация о производителе добавлена");
             }
             catch
             {
-                MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
+                 MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
             }
         }
         private void btnSavePerson_Click(object sender, RoutedEventArgs e)
@@ -80,22 +79,28 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
                         CP.phone = tboxPhone.Text.ToString();
                         CP.email = tboxEmail.Text.ToString();
                     }
-                    else MessageBox.Show("Некорректно введена почта! Повторите попытку");
+                    else
+                    {
+                         MessageBox.Show("Некорректно введена почта! Повторите попытку");
+                    }
                 }
-                else MessageBox.Show("Некорректно введен телефон! Повторите попытку");
+                else
+                {
+                     MessageBox.Show("Некорректно введен телефон! Повторите попытку");
+                }
 
                 if (IsEditing == false)
                 {
-                    DBaseClass.BD.Table_Contact_Persons.Add(CP);
+                     DBaseClass.BD.Table_Contact_Persons.Add(CP);
                 }
 
-                DBaseClass.BD.SaveChanges();
-                MessageBox.Show("Информация о контактном лице добавлена");
-                FrameClass.MainFrame.Navigate(new AddManufactererPage());
+                 DBaseClass.BD.SaveChanges();
+                 MessageBox.Show("Информация о контактном лице добавлена");
+                 FrameClass.MainFrame.Navigate(new AddManufactererPage());
             }
             catch
             {
-                MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
+                 MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
             }
         }
     }

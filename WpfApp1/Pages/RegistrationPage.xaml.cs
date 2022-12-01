@@ -22,45 +22,40 @@ namespace WpfApp1.Pages
 
         public void TextInPasswordBox(object sender, TextCompositionEventArgs e)
         {
-            MainWindow.PasswordCheck(pbPassword);
+             MainWindow.PasswordCheck(pbPassword);
         }
-        bool GetProverkaParol()
+
+        private bool GetProverkaParol()
         {
             Table_Staff employees = DBaseClass.BD.Table_Staff.FirstOrDefault(x => x.login == tboxLogin.Text);
-            if (employees != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return employees != null;
         }
-        bool SearchValue()
+
+        private bool SearchValue()
         {
             if (tboxSurname.Text.Replace(" ", "") == "")
             {
-                MessageBox.Show("Поле фамилия должно быть заполнено!");
+                 MessageBox.Show("Поле фамилия должно быть заполнено!");
                 return false;
             }
             if (tboxName.Text.Replace(" ", "") == "")
             {
-                MessageBox.Show("Поле имя должно быть заполнено!");
+                 MessageBox.Show("Поле имя должно быть заполнено!");
                 return false;
             }
             if (tboxPatronymic.Text.Replace(" ", "") == "")
             {
-                MessageBox.Show("Поле Отчество должно быть заполнено!");
+                 MessageBox.Show("Поле Отчество должно быть заполнено!");
                 return false;
             }
             if (dpBirthday.Text == "")
             {
-                MessageBox.Show("Поле дата рождения должно быть заполнено!");
+                 MessageBox.Show("Поле дата рождения должно быть заполнено!");
                 return false;
             }
             if (tboxLogin.Text.Replace(" ", "") == "")
             {
-                MessageBox.Show("Поле логин должно быть заполнено!");
+                 MessageBox.Show("Поле логин должно быть заполнено!");
                 return false;
             }
             return true;
@@ -78,17 +73,24 @@ namespace WpfApp1.Pages
                 }
                 if (!MainWindow.PasswordCheck(pbPassword))
                 {
-                    MessageBox.Show("Пароль не верен");
+                     MessageBox.Show("Пароль не верен");
                     return;
                 }
                 if (GetProverkaParol())
                 {
-                    MessageBox.Show("Пользователь с таким логиным уже зарегистрирован!");
+                     MessageBox.Show("Пользователь с таким логиным уже зарегистрирован!");
                     return;
                 }
                 int currentGender = 1;
-                if (rbMen.IsChecked == true) currentGender = 1;
-                if (rbWomen.IsChecked == true) currentGender = 2;
+                if (rbMen.IsChecked == true)
+                {
+                    currentGender = 1;
+                }
+
+                if (rbWomen.IsChecked == true)
+                {
+                    currentGender = 2;
+                }
 
                 Table_Staff staffMan = new Table_Staff()
                 {
@@ -102,36 +104,36 @@ namespace WpfApp1.Pages
                     role = 2
                 };
 
-                DBaseClass.BD.Table_Staff.Add(staffMan);
-                DBaseClass.BD.SaveChanges();
+                 DBaseClass.BD.Table_Staff.Add(staffMan);
+                 DBaseClass.BD.SaveChanges();
                 DialogResult result = MessageBox.Show("Хотите ли вы добавить фото сотруднику? ", "Фото", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     OpenFileDialog OFD = new OpenFileDialog();  // создаем диалоговое окно
-                    OFD.ShowDialog();  // открываем диалоговое окно
+                     OFD.ShowDialog();  // открываем диалоговое окно
                     string Path = OFD.FileName;  // считываем путь выбранного изображения
-                    Images.ImageEmploe.AddPhoto(Path, staffMan.id_staff);
+                     Images.ImageEmploe.AddPhoto(Path, staffMan.id_staff);
 
                 }
 
-                MessageBox.Show("Вы успешно зарегистрировались");
-                FrameClass.MainFrame.Navigate(new AutarizationPage());
+                 MessageBox.Show("Вы успешно зарегистрировались");
+                 FrameClass.MainFrame.Navigate(new AutarizationPage());
             }
             catch
             {
-                MessageBox.Show("При регистрации пользователя возникла ошибка!");
+                 MessageBox.Show("При регистрации пользователя возникла ошибка!");
             }
 
         }
 
         private void btnBackMain_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new ActivatedPage());
+             FrameClass.MainFrame.Navigate(new ActivatedPage());
         }
 
         private void btnGoToAAutoriz_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.MainFrame.Navigate(new AutarizationPage());
+             FrameClass.MainFrame.Navigate(new AutarizationPage());
         }
     }
 }

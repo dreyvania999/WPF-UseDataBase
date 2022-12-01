@@ -1,7 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using WpfApp1.Classes;
 using WpfApp1.Pages;
 
 namespace WpfApp1
@@ -22,7 +21,7 @@ namespace WpfApp1
         {
             InitializeComponent();
             FrameClass.MainFrame = fMain;
-            FrameClass.MainFrame.Navigate(new ActivatedPage());
+             FrameClass.MainFrame.Navigate(new ActivatedPage());
             DBaseClass.BD = new Entities1();
         }
 
@@ -38,29 +37,29 @@ namespace WpfApp1
             Regex presenceSymbol = new Regex("(?=.*[@$!#№%*?&=+_-])");
             if (presenceALL.IsMatch(PB.Password.ToString()))
             {
-                PB.ToolTip = ("Пароль подходит под все требования.");
+                PB.ToolTip = "Пароль подходит под все требования.";
             }
             else
             {
                 if (!presenceNum.IsMatch(PB.Password.ToString()))
                 {
-                    PB.ToolTip += ("Введите 2 цифры.");
+                    PB.ToolTip += "Введите 2 цифры.";
                 }
                 if (!presenceSize.IsMatch(PB.Password.ToString()))
                 {
-                    PB.ToolTip += ("Длина пароля<8 символов.");
+                    PB.ToolTip += "Длина пароля<8 символов.";
                 }
                 if (!presenceLowerCase.IsMatch(PB.Password.ToString()))
                 {
-                    PB.ToolTip += ("Недостаточно строчных букв.");
+                    PB.ToolTip += "Недостаточно строчных букв.";
                 }
                 if (!presenceHieghtCase.IsMatch(PB.Password.ToString()))
                 {
-                    PB.ToolTip += ("Недостаточно прописных букв.");
+                    PB.ToolTip += "Недостаточно прописных букв.";
                 }
                 if (!presenceSymbol.IsMatch(PB.Password.ToString()))
                 {
-                    PB.ToolTip += ("Введите символ.");
+                    PB.ToolTip += "Введите символ.";
                 }
                 return false;
             }

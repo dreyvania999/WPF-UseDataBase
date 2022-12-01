@@ -13,11 +13,13 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="ListDelivery" Grid.Row="0" Height= "600" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+        <ListView x:Name="ListDelivery" Grid.Row="1" Height= "600" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>
@@ -28,7 +30,7 @@
                     <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#445c93" Background="{Binding ColorCost}">
                         <Grid Width="365" Height="350" >
                             <StackPanel>
-                                <StackPanel Uid="{Binding id_delivery}" >
+                                <StackPanel Uid="{Binding id_delivery}" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
                                     <TextBlock Text="Поставка" HorizontalAlignment="Left" FontSize="22" FontWeight ="Bold"/>
                                     <TextBlock TextWrapping="Wrap"  Text="{Binding DeliveryInform}" Name="tbArrivalPoint"/>
                                 </StackPanel>
@@ -41,10 +43,34 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Left" >
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <TextBlock Text="Записей на странице" />
+                        <TextBox Name="tboxPageCount" Width="50" TextChanged="tboxPageCount_TextChanged"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal"  Margin="5,5,5,5">
+                        <TextBlock Name="tboxFirst" Uid="first" Text="&lt;&lt; "  Margin="0 0 5 0" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev" Uid="back" Text=" &lt; "  Margin="0 0 5 0" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev1" Uid="1" Text="{Binding  Path = NPage[0]}" Visibility="{Binding Visible[0]}"   Margin="0 0 5 0" Foreground="{Binding Gray[0]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev2" Uid="2" Text="{Binding  Path = NPage[1]}" Visibility="{Binding Visible[1]}"   Margin="0 0 5 0" Foreground="{Binding Gray[1]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev3" Uid="3" Text="{Binding  Path = NPage[2]}" Visibility="{Binding Visible[2]}"   Margin="0 0 5 0" Foreground="{Binding Gray[2]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev4" Uid="4" Text="{Binding  Path = NPage[3]}" Visibility="{Binding Visible[3]}"   Margin="0 0 5 0" Foreground="{Binding Gray[3]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev5" Uid="5" Text="{Binding  Path = NPage[4]}" Visibility="{Binding Visible[4]}"   Margin="0 0 5 0" Foreground="{Binding Gray[4]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrevNext" Uid="next" Text=" &gt; "  MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrevLast" Uid="last" Text=" &gt;&gt;"   MouseDown="EditingCurrentPage_MouseDown"/>
+                    </StackPanel >
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3">
             <Grid>
                 <Button x:Name="btnExit" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Назад" Click="btnExit_Click" />
-                <Button x:Name="btnAdd" HorizontalAlignment="Left" Template="{StaticResource btnStyle}" Content="Добавить" Margin="600,0,0,0" Click="btnAdd_Click"/>
+                <Button x:Name="btnAdd" HorizontalAlignment="Right" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAdd_Click"/>
             </Grid>
         </StackPanel>
     </Grid>

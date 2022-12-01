@@ -8,14 +8,7 @@ namespace WpfApp1
     {
         public string FullNameStaffEmployee => Table_Staff.name + " " + Table_Staff.patronymic + " " + Table_Staff.surname;
 
-        public string ProdictOfSale
-        {
-            get
-            {
-
-                return "";
-            }
-        }
+        public string ProdictOfSale => "";
 
         public string SaleInform
         {

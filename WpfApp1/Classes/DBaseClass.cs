@@ -1,4 +1,4 @@
-﻿namespace WpfApp1.Classes
+﻿namespace WpfApp1
 {
     internal class DBaseClass
     {

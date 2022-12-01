@@ -28,17 +28,7 @@ namespace WpfApp1.Pages.PageForUsers
 
             ListPhoto = DBaseClass.BD.Table_Employee_Photo.Where(x => x.id_staff == StaffClass.CurrentStaffEmploe.id_staff).ToList();
             IdCurrentPhoto = ListPhoto.Count - 1;
-            Table_Employee_Photo photo;
-
-            if (IdCurrentPhoto != -1)
-            {
-                photo = ListPhoto[IdCurrentPhoto];
-            }
-            else
-            {
-                photo = null;
-            }
-
+            Table_Employee_Photo photo = IdCurrentPhoto != -1 ? ListPhoto[IdCurrentPhoto] : null;
             imgPhoto.Source = Images.ImageEmploe.GetBitmapImage(photo);
             imgPhoto.Stretch = Stretch.Uniform;
 
@@ -48,17 +38,17 @@ namespace WpfApp1.Pages.PageForUsers
         private void BtnAddPhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.ShowDialog();
+             ofd.ShowDialog();
             if (ofd.FileName != "")
             {
                 if (Images.ImageEmploe.AddPhoto(ofd.FileName, StaffClass.CurrentStaffEmploe.id_staff))
                 {
-                    FrameClass.MainFrame.Navigate(new AcountPage());
-                    MessageBox.Show("Фото успешно добавлено", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
+                     FrameClass.MainFrame.Navigate(new AcountPage());
+                     MessageBox.Show("Фото успешно добавлено", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Возникла ошибка! Обратитесь к администратору", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
+                     MessageBox.Show("Возникла ошибка! Обратитесь к администратору", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
@@ -68,13 +58,13 @@ namespace WpfApp1.Pages.PageForUsers
 
             if (IdCurrentPhoto == -1)
             {
-                MessageBox.Show("Нельзя удалить стандартное изображение!", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
+                 MessageBox.Show("Нельзя удалить стандартное изображение!", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             Table_Employee_Photo photo = ListPhoto[IdCurrentPhoto];
 
-            DBaseClass.BD.Table_Employee_Photo.Remove(photo);
-            DBaseClass.BD.SaveChanges();
+             DBaseClass.BD.Table_Employee_Photo.Remove(photo);
+             DBaseClass.BD.SaveChanges();
 
             ListPhoto = DBaseClass.BD.Table_Employee_Photo.Where(x => x.id_staff == StaffClass.CurrentStaffEmploe.id_staff).ToList();
 
@@ -123,11 +113,11 @@ namespace WpfApp1.Pages.PageForUsers
                         binary_photo = photo.binary_photo,
                         path_photo = photo.path_photo
                     };
-                    DBaseClass.BD.Table_Employee_Photo.Remove(photo);
-                    DBaseClass.BD.Table_Employee_Photo.Add(newPhoto);
-                    DBaseClass.BD.SaveChanges();
+                     DBaseClass.BD.Table_Employee_Photo.Remove(photo);
+                     DBaseClass.BD.Table_Employee_Photo.Add(newPhoto);
+                     DBaseClass.BD.SaveChanges();
 
-                    FrameClass.MainFrame.Navigate(new AcountPage());
+                     FrameClass.MainFrame.Navigate(new AcountPage());
                 }
             }
         }
@@ -171,20 +161,22 @@ namespace WpfApp1.Pages.PageForUsers
         private void BtnChangePersonal_Click(object sender, RoutedEventArgs e)
         {
             ChangingPersonalInform acp = new ChangingPersonalInform();
-            acp.ShowDialog();
-            FrameClass.MainFrame.Navigate(new AcountPage());
+             acp.ShowDialog();
+             FrameClass.MainFrame.Navigate(new AcountPage());
         }
 
         private void BtnChangeAccount_Click(object sender, RoutedEventArgs e)
         {
             ChangingAccount ac = new ChangingAccount();
-            ac.ShowDialog();
+             ac.ShowDialog();
         }
 
         private void BtnAddSomePhotos_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Multiselect = true;
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Multiselect = true
+            };
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -198,16 +190,11 @@ namespace WpfApp1.Pages.PageForUsers
                     }
                 }
 
-                FrameClass.MainFrame.Navigate(new AcountPage());
+                 FrameClass.MainFrame.Navigate(new AcountPage());
 
-                if (check)
-                {
-                    MessageBox.Show("Часть фото не удалось загрузить! Обратитесь к администратору", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Фото успешно добавлены", "Личный кабинет", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                _ = check
+                    ? MessageBox.Show("Фото не удалось загрузить! Обратитесь к администратору")
+                    : MessageBox.Show("Фото успешно добавлены");
             }
         }
 
