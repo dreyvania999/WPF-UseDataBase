@@ -12,9 +12,9 @@ namespace WpfApp1.Pages.AdminsPages.ViewsPage
     /// </summary>
     public partial class ListViewDeliveryPage : Page
     {
-        private readonly Pagination Pagination = new Pagination();
-        private readonly List<Table_Delivery> CurrentDeliveryList = new List<Table_Delivery>();
-        private readonly Table_Delivery TD;
+        private  Pagination Pagination = new Pagination();
+        private  List<Table_Delivery> CurrentDeliveryList = new List<Table_Delivery>();
+        private  Table_Delivery TD;
         public ListViewDeliveryPage()
         {
             InitializeComponent();
@@ -67,11 +67,7 @@ namespace WpfApp1.Pages.AdminsPages.ViewsPage
             AddSalesPage.IsEditing = true;
              FrameClass.MainFrame.Navigate(new AddDeliveryPage(DBaseClass.BD.Table_Delivery.FirstOrDefault(x => x.id_delivery == id)), TD);
         }
-        private void cbPlassSales_Click(object sender, RoutedEventArgs e)
-        {
-            Search();
-        }
-
+      
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             Search();
@@ -121,81 +117,66 @@ namespace WpfApp1.Pages.AdminsPages.ViewsPage
 
         private void Search()
         {
-            //CurrentDeliveryList.Clear();
+            CurrentDeliveryList.Clear();
 
-            //switch (cmbSearcher.SelectedIndex)
-            //{
-            //    case 1:
-            //        CurrentDeliveryList = DBaseClass.BD.Table_Delivery.Where(x => x.Table_Staff.name.Contains(tbSearch.Text)).ToList();
-            //        break;
-            //    case 2:
-            //        CurrentDeliveryList = DBaseClass.BD.Table_Delivery.Where(x => x.Table_Staff.name.Contains(tbSearch.Text)).ToList();
-            //        break;
-            //    case 3:
-            //        CurrentDeliveryList = DBaseClass.BD.Table_Delivery.Where(x => x.Table_Staff.patronymic.Contains(tbSearch.Text)).ToList();
-            //        break;
-            //    case 4:
+            switch (cmbSearcher.SelectedIndex)
+            {
+                case 1:
+                    CurrentDeliveryList = DBaseClass.BD.Table_Delivery.Where(x => x.Table_Staff.name.Contains(tbSearch.Text)).ToList();
+                    break;
+                case 2:
+                    CurrentDeliveryList = DBaseClass.BD.Table_Delivery.Where(x => x.Table_Staff.name.Contains(tbSearch.Text)).ToList();
+                    break;
+                case 3:
+                    CurrentDeliveryList = DBaseClass.BD.Table_Delivery.Where(x => x.Table_Staff.patronymic.Contains(tbSearch.Text)).ToList();
+                    break;
+                case 4:
+                    CurrentDeliveryList = DBaseClass.BD.Table_Delivery.Where(x => x.Table_Suppliers.name_supplier.Contains(tbSearch.Text)).ToList();
+                    break;
+                default:
+                    CurrentDeliveryList = DBaseClass.BD.Table_Delivery.ToList();
+                    break;
+            }
 
-            //        foreach (var item in DBaseClass.BD.Table_Sale_Chemicals.ToList())
-            //        {
-            //            if (item.Table_Household_Chemicals.name.Contains(tbSearch.Text))
-            //            {
-            //                CurrentDeliveryList.Add((Table_Delivery)DBaseClass.BD.Table_Delivery.Where(x => x.Table_Sale_Chemicals.Equals(item)));
-            //            }
-            //        }
+           
+            switch (cbSort.SelectedIndex)
+            {
+                case 1:
+                    CurrentDeliveryList.Sort((x, y) => x.Table_Staff.surname.CompareTo(y.Table_Staff.surname));
+                    break;
+                case 2:
+                    CurrentDeliveryList.Sort((x, y) => x.Table_Staff.surname.CompareTo(y.Table_Staff.surname));
+                    CurrentDeliveryList.Reverse();
 
-            //        break;
-            //    case 5:
-            //        foreach (var item in DBaseClass.BD.Table_Sale_Houshould.ToList())
-            //        {
-            //            if (item.Table_Household_Goods.name.Contains(tbSearch.Text))
-            //            {
-            //                CurrentDeliveryList.Add((Table_Delivery)DBaseClass.BD.Table_Delivery.Where(x => x.Table_Sale_Houshould.Equals(item)));
-            //            }
-            //        }
-            //        break;
-            //    default:
-            //        CurrentDeliveryList = DBaseClass.BD.Table_Delivery.ToList();
-            //        break;
-            //}
+                    break;
+                case 3:
+                    CurrentDeliveryList.Sort((x, y) => x.Table_Staff.name.CompareTo(y.Table_Staff.name));
+                    break;
+                case 4:
+                    CurrentDeliveryList.Sort((x, y) => x.Table_Staff.name.CompareTo(y.Table_Staff.name));
+                    CurrentDeliveryList.Reverse();
+                    break;
+                case 5:
+                    CurrentDeliveryList.Sort((x, y) => x.Table_Staff.patronymic.CompareTo(y.Table_Staff.patronymic));
+                    break;
+                case 6:
+                    CurrentDeliveryList.Sort((x, y) => x.Table_Staff.patronymic.CompareTo(y.Table_Staff.patronymic));
+                    CurrentDeliveryList.Reverse();
+                    break;
+                case 7:
+                    CurrentDeliveryList.Sort((x, y) => x.Table_Suppliers.name_supplier.CompareTo(y.Table_Staff.patronymic));
+                    break;
+                case 8:
+                    CurrentDeliveryList.Sort((x, y) => x.Table_Suppliers.name_supplier.CompareTo(y.Table_Staff.patronymic));
+                    CurrentDeliveryList.Reverse();
+                    break;
+            }
 
-            //if ((bool)cbPlassSales.IsChecked)
-            //{
-            //    CurrentDeliveryList = CurrentDeliveryList.Where(x => x.ColorCost == Brushes.AliceBlue).ToList();
-            //}
-
-            //switch (cbSort.SelectedIndex)
-            //{
-            //    case 1:
-            //        CurrentDeliveryList.Sort((x, y) => x.Table_Staff.surname.CompareTo(y.Table_Staff.surname));
-            //        break;
-            //    case 2:
-            //        CurrentDeliveryList.Sort((x, y) => x.Table_Staff.surname.CompareTo(y.Table_Staff.surname));
-            //        CurrentDeliveryList.Reverse();
-
-            //        break;
-            //    case 3:
-            //        CurrentDeliveryList.Sort((x, y) => x.Table_Staff.name.CompareTo(y.Table_Staff.name));
-            //        break;
-            //    case 4:
-            //        CurrentDeliveryList.Sort((x, y) => x.Table_Staff.name.CompareTo(y.Table_Staff.name));
-            //        CurrentDeliveryList.Reverse();
-            //        break;
-            //    case 5:
-            //        CurrentDeliveryList.Sort((x, y) => x.Table_Staff.patronymic.CompareTo(y.Table_Staff.patronymic));
-            //        break;
-            //    case 6:
-            //        CurrentDeliveryList.Sort((x, y) => x.Table_Staff.patronymic.CompareTo(y.Table_Staff.patronymic));
-            //        CurrentDeliveryList.Reverse();
-            //        break;
-
-            //}
-
-            //ListDelivery.ItemsSource = CurrentDeliveryList;
-            //if (CurrentDeliveryList.Count != 0)
-            //{
-            //    SetPagination();
-            //}
+            ListDelivery.ItemsSource = CurrentDeliveryList;
+            if (CurrentDeliveryList.Count != 0)
+            {
+                SetPagination();
+            }
         }
         private void SetPagination()
         {

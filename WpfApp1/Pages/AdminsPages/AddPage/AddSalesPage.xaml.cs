@@ -221,7 +221,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             EditingHoushouldSales = null;
             EditingChemicalsSales = null;
             CurrentSales = null;
-             FrameClass.MainFrame.Navigate(new MainPage());
+             FrameClass.MainFrame.Navigate(new ListViewSalesPage());
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)

@@ -17,6 +17,10 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
         public AddProductPage()
         {
             InitializeComponent();
+            cbManufacturerAd.ItemsSource = DBaseClass.BD.Table_Manufacturer.ToList();
+            cbManufacturerAd.SelectedValuePath = "id_manufacturer";
+            cbManufacturerAd.DisplayMemberPath = "name";
+
             cbManufacturer.ItemsSource = DBaseClass.BD.Table_Manufacturer.ToList();
             cbManufacturer.SelectedValuePath = "id_manufacturer";
             cbManufacturer.DisplayMemberPath = "name";
@@ -25,13 +29,14 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             cbChecimalDestination.SelectedValuePath = "id_purpose";
             cbChecimalDestination.DisplayMemberPath = "purpose_chemistry";
 
+            IsEditing = false;
         }
 
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             IsEditing = false;
-             FrameClass.MainFrame.Navigate(new MainPage());
+             FrameClass.MainFrame.Navigate(new AddDeliveryPage());
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -39,10 +44,9 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
              MessageBox.Show("Изменения были успешно внесены");
         }
 
-        private void rbChimicals_Checked(object sender, RoutedEventArgs e)
+        private void btnAddChemicals_Click(object sender, RoutedEventArgs e)
         {
-            spChemicals.Visibility = Visibility.Visible;
-            Goods.Visibility = Visibility.Collapsed;
+
             try
             {
                 if (IsEditing == false)
@@ -52,27 +56,29 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
                 HC.name = tbProductChecimal.Text.ToString();
                 HC.destination_code = Convert.ToInt32(cbChecimalDestination.SelectedValue.ToString());
-                HC.manufacturer_code = Convert.ToInt32(cbManufacturer.SelectedValue.ToString());
+                HC.manufacturer_code = Convert.ToInt32(cbManufacturerAd.SelectedValue.ToString());
                 HC.cost = Convert.ToDouble(tbChemicalCost.Text.ToString());
 
                 if (IsEditing == false)
                 {
-                     DBaseClass.BD.Table_Household_Chemicals.Add(HC);
+                    DBaseClass.BD.Table_Household_Chemicals.Add(HC);
                 }
 
-                 DBaseClass.BD.SaveChanges();
-                 MessageBox.Show("Информация о товаре добавлена");
+                DBaseClass.BD.SaveChanges();
+                MessageBox.Show("Информация о товаре добавлена");
+                
             }
-            catch
+            catch(Exception ex)
             {
-                 MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
+                MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
+               
             }
+            
         }
 
-        private void rbGoods_Checked(object sender, RoutedEventArgs e)
+        private void btnAddGoods_Click(object sender, RoutedEventArgs e)
         {
-            Goods.Visibility = Visibility.Visible;
-            spChemicals.Visibility = Visibility.Collapsed;
+            
             try
             {
                 if (IsEditing == false)
@@ -86,21 +92,36 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
                 if (IsEditing == false)
                 {
-                     DBaseClass.BD.Table_Household_Goods.Add(HG);
+                    DBaseClass.BD.Table_Household_Goods.Add(HG);
                 }
 
-                 DBaseClass.BD.SaveChanges();
-                 MessageBox.Show("Информация о товаре добавлена");
+                DBaseClass.BD.SaveChanges();
+                MessageBox.Show("Информация о товаре добавлена");
+               
             }
-            catch
+            catch (Exception ex)
             {
-                 MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
+                MessageBox.Show("Что-то пошло не так. Обратитесь к администратору или повторите попытку.");
+               
             }
         }
+   
 
         private void btnAddManufacterer_Click(object sender, RoutedEventArgs e)
         {
              FrameClass.MainFrame.Navigate(new AddManufactererPage());
+        }
+
+        private void btnVisibleChemicals_Click(object sender, RoutedEventArgs e)
+        {
+            spChemicals.Visibility = Visibility.Visible;
+            Goods.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnVisibleGoods_Click(object sender, RoutedEventArgs e)
+        {
+            Goods.Visibility = Visibility.Visible;
+            spChemicals.Visibility = Visibility.Collapsed;
         }
     }
 }

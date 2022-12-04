@@ -11,40 +11,28 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <TextBlock HorizontalAlignment="Center" FontSize="35">Добавление товара</TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <GroupBox Header="Добавить товар" FontSize="20" Margin="10">
-                <StackPanel Orientation="Horizontal">                    
-                    <StackPanel Width="200" Margin="15,0,0,0">
-                        <GroupBox Header="Тип товара" FontSize="20" Margin="10">
-                            <StackPanel>
-                                <RadioButton Name="rbChimicals" Checked="rbChimicals_Checked" >Бывая химия</RadioButton>
-                                <RadioButton Name="rbGoods" Checked="rbGoods_Checked">Товары для дома</RadioButton>
-                            </StackPanel>
-                        </GroupBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock HorizontalAlignment="Center">Производитель</TextBlock>
-                            <ComboBox x:Name="cbManufacturer" Width="200"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical" Margin="20, 20, 0, 0">
-                            <Button x:Name="btnAddManufacterer" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAddManufacterer_Click"/>
-                        </StackPanel>
-                    </StackPanel>
+            <Grid>
+                <StackPanel HorizontalAlignment="Left" Margin="10">
+                    <Button x:Name="btnVisibleChemicals" Template="{StaticResource btnStyle}" Content="Бытовая химия" Click="btnVisibleChemicals_Click"  />
                 </StackPanel>
-            </GroupBox>
+                <StackPanel HorizontalAlignment="Right" Margin="10">
+                    <Button x:Name="btnVisibleGoods" Template="{StaticResource btnStyle}" Content="Товары для дома" Click="btnVisibleGoods_Click"  />
+                </StackPanel>
+            </Grid>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <StackPanel x:Name="spChemicals" Visibility="Collapsed">
-                <GroupBox Header="Бытовая химия" FontSize="20" Margin="5">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel>
+                <GroupBox Header="Бытовая химия" FontSize="20" Margin="5"  x:Name="spChemicals" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel Margin="5">
                             <TextBlock HorizontalAlignment="Center">Название:</TextBlock>
                             <TextBox x:Name="tbProductChecimal"  Width="200"></TextBox>
@@ -57,11 +45,26 @@
                             <TextBlock HorizontalAlignment="Center">Цена:</TextBlock>
                             <TextBox x:Name="tbChemicalCost"  Width="200"></TextBox>
                         </StackPanel>
-                    </StackPanel>     
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center">Производитель</TextBlock>
+                                <ComboBox x:Name="cbManufacturerAd" Width="200"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="20, 20, 0, 0">
+                                <Button x:Name="btnAddManufacterer" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAddManufacterer_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Margin="10">
+                            <Button x:Name="btnAddChemicals" Template="{StaticResource btnStyle}" Content="Добавить товар" Click="btnAddChemicals_Click"  />
+                </StackPanel>
+                  </StackPanel>
                 </GroupBox>
+               
             </StackPanel>
-            <StackPanel x:Name="Goods" Visibility="Collapsed">
-                <GroupBox Header="Товары для дома" FontSize="20" Margin="5">
+            <StackPanel >
+                <GroupBox Header="Товары для дома" FontSize="20" Margin="5" x:Name="Goods" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel Margin="5">
                             <TextBlock HorizontalAlignment="Center">Название:</TextBlock>
@@ -71,7 +74,20 @@
                             <TextBlock HorizontalAlignment="Center">Цена:</TextBlock>
                             <TextBox x:Name="tbGoodsCost"  Width="200"></TextBox>
                         </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock HorizontalAlignment="Center">Производитель</TextBlock>
+                                <ComboBox x:Name="cbManufacturer" Width="200"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="20, 20, 0, 0">
+                                <Button x:Name="btnAddManufacter" Template="{StaticResource btnStyle}" Content="Добавить" Click="btnAddManufacterer_Click"/>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Margin="10">
+                            <Button x:Name="btnAddGoods" Template="{StaticResource btnStyle}" Content="Добавить товар" Click="btnAddGoods_Click"  />
+                        </StackPanel>
+                    </StackPanel>                    
                 </GroupBox>
             </StackPanel>
         </StackPanel>

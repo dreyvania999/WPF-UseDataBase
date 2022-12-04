@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.Pages.AdminsPages.ViewsPage;
 
 namespace WpfApp1.Pages.AdminsPages.AddPage
 {
@@ -10,7 +11,6 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
     /// </summary>
     public partial class AddDeliveryPage : Page
     {
-        private double Result;
         private static Table_Delivery CurrentDelivery;
         private static Table_Household_Delivery EditingHoushouldDelivery;
         private static Table_Chemicals_Delivery EditingChemicalsDelivery;
@@ -18,7 +18,10 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
         public AddDeliveryPage()
         {
             InitializeComponent();
-            Result = 0;
+            cbManufacturer.ItemsSource = DBaseClass.BD.Table_Suppliers.ToList();
+            cbManufacturer.SelectedValuePath = "id_suppliers";
+            cbManufacturer.DisplayMemberPath = "name_supplier";
+
             cbProduct.ItemsSource = DBaseClass.BD.Table_Household_Chemicals.ToList();
             cbProduct.SelectedValuePath = "id_chemicals";
             cbProduct.DisplayMemberPath = "name";
@@ -31,8 +34,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             }
             else
             {
-                ListSale.Visibility = Visibility.Collapsed;
-                ListSaleRes.Visibility = Visibility.Collapsed;
+               
                 ListDeliveryChemicals.ItemsSource = DBaseClass.BD.Table_Chemicals_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
                 ListDeliveryHousehold.ItemsSource = DBaseClass.BD.Table_Household_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
             }
@@ -41,8 +43,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
         {
             InitializeComponent();
             CurrentDelivery = currentDelivery;
-            ListSale.Visibility = Visibility.Collapsed;
-            ListSaleRes.Visibility = Visibility.Collapsed;
+
             ListDeliveryChemicals.ItemsSource = DBaseClass.BD.Table_Chemicals_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
             ListDeliveryHousehold.ItemsSource = DBaseClass.BD.Table_Household_Delivery.ToList().Where(x => x.delivery_code == CurrentDelivery.id_delivery);
 
@@ -92,6 +93,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
         private void btnFiltering_Click(object sender, RoutedEventArgs e)
         {
+            DBaseClass.BD.SaveChanges();
             if (IsEditing)
             {
                 if (tbQonity.Text == null || tbQonity.Text == "")
@@ -136,6 +138,12 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
                      MessageBox.Show("Вы не ввели количество товара! Повторите ввод");
                     return;
                 }
+                if(cbManufacturer==null)
+                {
+                    MessageBox.Show("Вы не указали производителя! Повторите ввод");
+                    return;
+                }
+
                 int quan = Convert.ToInt32(tbQonity.Text);
                 if ((bool)rbGoods.IsChecked && !(bool)rbChimicals.IsChecked)
                 {
@@ -150,22 +158,11 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
 
                      DBaseClass.BD.Table_Household_Delivery.Add(saleHoushould);
 
-                    double f = saleHoushould.quantity_goods * saleHoushould.Table_Household_Goods.cost;
-                    Result += f;
-                    ListSale.Text += "Колличество товара " + saleHoushould.quantity_goods + " наименование товара " + saleHoushould.Table_Household_Goods.name + "\nОбщая стоимость " + (saleHoushould.quantity_goods * saleHoushould.Table_Household_Goods.cost) + "\n";
-
+                    
                 }
                 else if (!(bool)rbGoods.IsChecked && (bool)rbChimicals.IsChecked)
                 {
-                    System.Collections.Generic.List<Table_Household_Chemicals> colvo = DBaseClass.BD.Table_Household_Chemicals.Where(x => x.id_chemicals.ToString() == cbProduct.SelectedValue.ToString()).ToList();
-                    foreach (Table_Household_Chemicals item in colvo)
-                    {
-                        if (DBaseClass.BD.Table_Product_Stock.Where(x => x.chemical_code.ToString() == item.id_chemicals.ToString() && x.quantity >= quan).ToList().Count() == 0)
-                        {
-                             MessageBox.Show("Товара на складе не достаточно");
-                            return;
-                        }
-                    }
+                    
 
                     Table_Chemicals_Delivery deliveryChemicals = new Table_Chemicals_Delivery()
                     {
@@ -175,11 +172,6 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
                     };
 
                      DBaseClass.BD.Table_Chemicals_Delivery.Add(deliveryChemicals);
-
-
-                    double f = deliveryChemicals.quantity_goods * deliveryChemicals.Table_Household_Chemicals.cost;
-                    Result += f;
-                    ListSale.Text += "Колличество товара " + deliveryChemicals.quantity_goods + " стоимость(шт) " + deliveryChemicals.Table_Household_Chemicals.cost + " наименование товара " + deliveryChemicals.Table_Household_Chemicals.name + "\nОбщая стоимость " + (deliveryChemicals.quantity_goods * deliveryChemicals.Table_Household_Chemicals.cost) + "\n";
 
                 }
                 else
@@ -191,7 +183,6 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
                 tbQonity.Text = "";
                 tbProdduct.Text = "";
 
-                ListSaleRes.Text = "Общая стоимость всех товаров:" + Result;
             }
         }
 
@@ -201,7 +192,7 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             EditingHoushouldDelivery = null;
             EditingChemicalsDelivery = null;
             CurrentDelivery = null;
-             FrameClass.MainFrame.Navigate(new MainPage());
+             FrameClass.MainFrame.Navigate(new ListViewDeliveryPage());
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -218,10 +209,10 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
         {
              DBaseClass.BD.SaveChanges();
              MessageBox.Show("Изменения были успешно внесены");
-            CurrentDelivery = new Table_Delivery()
-            {
-                delivery_date = DateTime.Now.Date
-            };
+                CurrentDelivery = new Table_Delivery()
+                {
+                    delivery_date = DateTime.Now.Date
+                };
              DBaseClass.BD.Table_Delivery.Add(CurrentDelivery);
         }
 
@@ -264,12 +255,19 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             int id = Convert.ToInt32(stackPanel.Uid);
             EditingHoushouldDelivery = DBaseClass.BD.Table_Household_Delivery.FirstOrDefault(x => x.id_product_in_delivery == id && x.delivery_code == CurrentDelivery.id_delivery);
 
+            rbGoods.IsChecked = true;
+
             cbProduct.ItemsSource = DBaseClass.BD.Table_Household_Goods.Where(x => x.name.Contains(tbProdduct.Text)).ToList();
             cbProduct.SelectedValuePath = "id_household_goods";
             cbProduct.DisplayMemberPath = "name";
 
+            cbManufacturer.ItemsSource = DBaseClass.BD.Table_Suppliers.ToList();
+            cbManufacturer.SelectedValuePath = "id_suppliers";
+            cbManufacturer.DisplayMemberPath = "name_supplier";
+
             cbProduct.SelectedValue = EditingHoushouldDelivery.product_code;
             tbQonity.Text = EditingHoushouldDelivery.quantity_goods.ToString();
+            cbManufacturer.SelectedValue=CurrentDelivery.provider_code;
             tbProdduct.Text = "";
             EditingChemicalsDelivery = null;
         }
@@ -280,12 +278,20 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
             int id = Convert.ToInt32(stackPanel.Uid);
             EditingChemicalsDelivery = DBaseClass.BD.Table_Chemicals_Delivery.FirstOrDefault(x => x.id_product_in_delivery == id && x.delivery_code == CurrentDelivery.id_delivery);
 
+            rbChimicals.IsChecked = true;
+
             cbProduct.ItemsSource = DBaseClass.BD.Table_Household_Chemicals.Where(x => x.name.Contains(tbProdduct.Text)).ToList();
             cbProduct.SelectedValuePath = "id_chemicals";
             cbProduct.DisplayMemberPath = "name";
 
+            cbManufacturer.ItemsSource = DBaseClass.BD.Table_Suppliers.ToList();
+            cbManufacturer.SelectedValuePath = "id_suppliers";
+            cbManufacturer.DisplayMemberPath = "name_supplier";
+
             cbProduct.SelectedValue = EditingChemicalsDelivery.product_code;
             tbQonity.Text = EditingChemicalsDelivery.quantity_goods.ToString();
+            cbManufacturer.SelectedValue = CurrentDelivery.provider_code;
+
             tbProdduct.Text = "";
             EditingHoushouldDelivery = null;
 
@@ -294,6 +300,12 @@ namespace WpfApp1.Pages.AdminsPages.AddPage
         private void btnAddGood_Click(object sender, RoutedEventArgs e)
         {
              FrameClass.MainFrame.Navigate(new AddProductPage());
+        }
+
+        private void cbManufacturer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CurrentDelivery.provider_code = Convert.ToInt32(cbManufacturer.SelectedValue.ToString());
+            DBaseClass.BD.SaveChanges();
         }
     }
 }

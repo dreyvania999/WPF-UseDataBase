@@ -51,7 +51,7 @@
           <Property Name="id_delivery" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="provider_code" Type="int" Nullable="false" />
           <Property Name="delivery_date" Type="datetime" Nullable="false" />
-          <Property Name="employee_code" Type="int" />
+          <Property Name="employee_code" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Table_Employee_Photo">
           <Key>
@@ -220,6 +220,18 @@
             </Principal>
             <Dependent Role="Table_Chemicals_Photo">
               <PropertyRef Name="id_chemicals" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Delivery_Table_Staff">
+          <End Role="Table_Staff" Type="Self.Table_Staff" Multiplicity="1" />
+          <End Role="Table_Delivery" Type="Self.Table_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Staff">
+              <PropertyRef Name="id_staff" />
+            </Principal>
+            <Dependent Role="Table_Delivery">
+              <PropertyRef Name="employee_code" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -484,6 +496,10 @@
             <End Role="Table_Household_Chemicals" EntitySet="Table_Household_Chemicals" />
             <End Role="Table_Chemicals_Photo" EntitySet="Table_Chemicals_Photo" />
           </AssociationSet>
+          <AssociationSet Name="FK_Table_Delivery_Table_Staff" Association="Self.FK_Table_Delivery_Table_Staff">
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+            <End Role="Table_Delivery" EntitySet="Table_Delivery" />
+          </AssociationSet>
           <AssociationSet Name="FK_Table_Delivery_Table_Suppliers" Association="Self.FK_Table_Delivery_Table_Suppliers">
             <End Role="Table_Suppliers" EntitySet="Table_Suppliers" />
             <End Role="Table_Delivery" EntitySet="Table_Delivery" />
@@ -606,6 +622,10 @@
             <End Role="Table_Contact_Persons" EntitySet="Table_Contact_Persons" />
             <End Role="Table_Suppliers" EntitySet="Table_Suppliers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Table_Delivery_Table_Staff" Association="DataBaseModel.FK_Table_Delivery_Table_Staff">
+            <End Role="Table_Staff" EntitySet="Table_Staff" />
+            <End Role="Table_Delivery" EntitySet="Table_Delivery" />
+          </AssociationSet>
           <AssociationSet Name="FK_Table_Delivery_Table_Suppliers" Association="DataBaseModel.FK_Table_Delivery_Table_Suppliers">
             <End Role="Table_Suppliers" EntitySet="Table_Suppliers" />
             <End Role="Table_Delivery" EntitySet="Table_Delivery" />
@@ -726,8 +746,9 @@
           <Property Name="id_delivery" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="provider_code" Type="Int32" Nullable="false" />
           <Property Name="delivery_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="employee_code" Type="Int32" />
+          <Property Name="employee_code" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Table_Chemicals_Delivery" Relationship="DataBaseModel.FK_Table_Chemicals_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Chemicals_Delivery" />
+          <NavigationProperty Name="Table_Staff" Relationship="DataBaseModel.FK_Table_Delivery_Table_Staff" FromRole="Table_Delivery" ToRole="Table_Staff" />
           <NavigationProperty Name="Table_Suppliers" Relationship="DataBaseModel.FK_Table_Delivery_Table_Suppliers" FromRole="Table_Delivery" ToRole="Table_Suppliers" />
           <NavigationProperty Name="Table_Household_Delivery" Relationship="DataBaseModel.FK_Table_Household_Delivery_Table_Delivery" FromRole="Table_Delivery" ToRole="Table_Household_Delivery" />
         </EntityType>
@@ -885,6 +906,7 @@
           <Property Name="gender" Type="Int32" Nullable="false" />
           <Property Name="login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Delivery" Relationship="DataBaseModel.FK_Table_Delivery_Table_Staff" FromRole="Table_Staff" ToRole="Table_Delivery" />
           <NavigationProperty Name="Table_Employee_Photo" Relationship="DataBaseModel.FK_Table_Employee_Photo_Table_Staff" FromRole="Table_Staff" ToRole="Table_Employee_Photo" />
           <NavigationProperty Name="Table_Gender" Relationship="DataBaseModel.FK_Table_Staff_Table_Gender" FromRole="Table_Staff" ToRole="Table_Gender" />
           <NavigationProperty Name="Table_Role" Relationship="DataBaseModel.FK_Table_Staff_Table_Role" FromRole="Table_Staff" ToRole="Table_Role" />
@@ -958,6 +980,18 @@
             </Principal>
             <Dependent Role="Table_Suppliers">
               <PropertyRef Name="code_contact_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Delivery_Table_Staff">
+          <End Type="DataBaseModel.Table_Staff" Role="Table_Staff" Multiplicity="1" />
+          <End Type="DataBaseModel.Table_Delivery" Role="Table_Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Staff">
+              <PropertyRef Name="id_staff" />
+            </Principal>
+            <Dependent Role="Table_Delivery">
+              <PropertyRef Name="employee_code" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

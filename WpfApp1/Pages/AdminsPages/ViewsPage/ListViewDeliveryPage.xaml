@@ -18,8 +18,46 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+        <GroupBox Header="Поиск и сортировка" Grid.Row="0" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Вариант поиска" FontSize="20"/>
+                    <ComboBox Name="cmbSearcher" Width="200" Margin="5, 0, 0, 0" SelectionChanged="cmbSearcher_SelectionChanged">
+                        <ComboBoxItem>Нет</ComboBoxItem>
+                        <ComboBoxItem>Фамилия</ComboBoxItem>
+                        <ComboBoxItem>Имя</ComboBoxItem>
+                        <ComboBoxItem>Отчество</ComboBoxItem>
+                        <ComboBoxItem>Поставщик</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Сортировка" FontSize="20"/>
+                    <ComboBox Name="cbSort"   Width="200" HorizontalAlignment="Left" SelectionChanged="CbSortSotr_SelectionChanged">
+                        <ComboBoxItem>Нет</ComboBoxItem>
+                        <ComboBoxItem>Фамилия↑</ComboBoxItem>
+                        <ComboBoxItem>Фамилия↓</ComboBoxItem>
+                        <ComboBoxItem>Имя↑</ComboBoxItem>
+                        <ComboBoxItem>Имя↓</ComboBoxItem>
+                        <ComboBoxItem>Отчество↑</ComboBoxItem>
+                        <ComboBoxItem>Отчество↓</ComboBoxItem>
+                        <ComboBoxItem>Поставщик↑</ComboBoxItem>
+                        <ComboBoxItem>Поставщик↓</ComboBoxItem>
 
-        <ListView x:Name="ListDelivery" Grid.Row="1" Height= "600" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Поиск" FontSize="22"/>
+                    <TextBox Name="tbSearch" Width="200" Margin="10, 0, 0, 0" MaxLength="50" TextChanged="tbSearch_TextChanged"></TextBox>
+                </StackPanel>                
+            </Grid>
+        </GroupBox>
+        <ListView x:Name="ListDelivery" Grid.Row="1" Height= "500" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>

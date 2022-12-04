@@ -24,9 +24,16 @@
         </StackPanel>
         <StackPanel  Margin="20,0,0,0" Grid.Row="1"  Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                 
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" FontSize="20">Название:</TextBlock>
                     <TextBox x:Name="tbProdduct" TextChanged="tbProdduct_TextChanged" Width="200" FontSize="20"></TextBox>
+                </StackPanel>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" FontSize="20">Поставщик</TextBlock>
+                        <ComboBox x:Name="cbManufacturer" Width="200" FontSize="20" SelectionChanged="cbManufacturer_SelectionChanged"/>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel  Grid.Row="1"  Grid.Column="0"  Width="220" Margin="10,0,0,0" HorizontalAlignment="Right">
                     <TextBlock HorizontalAlignment="Center" FontSize="20">Товар:</TextBlock>
@@ -39,7 +46,7 @@
                     </GroupBox>
                 </StackPanel>
             </StackPanel>
-            <TextBlock TextWrapping="Wrap"  Name="ListSale" VerticalAlignment="Top"/>
+            
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1"  HorizontalAlignment="Left">
             <StackPanel Orientation="Horizontal">
@@ -55,7 +62,7 @@
                     <Button x:Name="btnClear" Content="Очистить" Template="{StaticResource btnStyle}" Click="btnClear_Click" />
                     <Button x:Name="btnAddGood" HorizontalAlignment="Center" Template="{StaticResource btnStyle}" Margin="10" Click="btnAddGood_Click">Новый товар</Button>
                 </StackPanel>
-                <TextBlock TextWrapping="Wrap"  Name="ListSaleRes" VerticalAlignment="Bottom"/>
+               
             </StackPanel>
         </StackPanel>
 

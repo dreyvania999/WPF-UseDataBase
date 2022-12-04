@@ -5,31 +5,32 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8e535dd323a64d648895341ae8d75609" Name="Diagram1" ZoomLevel="23">
-        <EntityTypeShape EntityType="DataBaseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Chemicals_Delivery" Width="1.5" PointX="10.5" PointY="19" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Chemicals_Photo" Width="1.5" PointX="7.5" PointY="17.5" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Contact_Persons" Width="1.5" PointX="0.75" PointY="11.875" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Delivery" Width="1.5" PointX="5.25" PointY="17.75" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Employee_Photo" Width="1.5" PointX="5.25" PointY="6.625" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Gender" Width="1.5" PointX="0.75" PointY="5" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Household_Chemicals" Width="1.5" PointX="5.25" PointY="10" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Household_Delivery" Width="1.5" PointX="10.5" PointY="16" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Household_Goods" Width="1.5" PointX="5.25" PointY="14.125" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Houshold_Photo" Width="1.5" PointX="7.5" PointY="20.375" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Manufacturer" Width="1.5" PointX="3" PointY="10.375" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Product_Stock" Width="1.5" PointX="10.5" PointY="12.375" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Purpose_Chemistry" Width="1.5" PointX="3" PointY="7.75" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Role" Width="1.5" PointX="0.75" PointY="2.625" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Sale_Chemicals" Width="1.5" PointX="7.5" PointY="10.5" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Sale_Houshould" Width="1.5" PointX="7.5" PointY="14.375" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Sales" Width="1.5" PointX="5.25" PointY="3.5" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Staff" Width="1.5" PointX="3" PointY="2.875" />
-        <EntityTypeShape EntityType="DataBaseModel.Table_Suppliers" Width="1.5" PointX="3" PointY="17.875" />
+        <EntityTypeShape EntityType="DataBaseModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Chemicals_Delivery" Width="1.5" PointX="10.5" PointY="10.125" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Chemicals_Photo" Width="1.5" PointX="10.5" PointY="22.5" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Contact_Persons" Width="1.5" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Delivery" Width="1.5" PointX="5.25" PointY="10.25" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Employee_Photo" Width="1.5" PointX="5.25" PointY="6.5" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Gender" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Household_Chemicals" Width="1.5" PointX="8.25" PointY="13.125" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Household_Delivery" Width="1.5" PointX="7.5" PointY="17" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Household_Goods" Width="1.5" PointX="5.25" PointY="17.25" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Houshold_Photo" Width="1.5" PointX="7.5" PointY="23.5" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Manufacturer" Width="1.5" PointX="3" PointY="13.5" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Product_Stock" Width="1.5" PointX="10.5" PointY="17.5" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Purpose_Chemistry" Width="1.5" PointX="6" PointY="13.875" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Role" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Sale_Chemicals" Width="1.5" PointX="10.5" PointY="13.625" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Sale_Houshould" Width="1.5" PointX="7.5" PointY="20.5" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Sales" Width="1.5" PointX="8.25" PointY="9.625" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Staff" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="DataBaseModel.Table_Suppliers" Width="1.5" PointX="3" PointY="10.375" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Chemicals_Delivery_Table_Delivery" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Chemicals_Delivery_Table_Household_Chemicals" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Chemicals_Photo_Table_Household_Chemicals" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Manufacturer_Table_Contact_Persons" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Suppliers_Table_Contact_Persons" />
+        <AssociationConnector Association="DataBaseModel.FK_Table_Delivery_Table_Staff" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Delivery_Table_Suppliers" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Household_Delivery_Table_Delivery" />
         <AssociationConnector Association="DataBaseModel.FK_Table_Employee_Photo_Table_Staff" />
