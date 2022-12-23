@@ -67,6 +67,9 @@ namespace WpfApp1
             return true;
         }
 
-
+        private void btnSeeStock_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new Reclam());
+        }
     }
 }

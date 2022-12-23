@@ -117,6 +117,9 @@
     <Compile Include="Pages\PageForUsers\ChangingPersonalInform.xaml.cs">
       <DependentUpon>ChangingPersonalInform.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Reclam.xaml.cs">
+      <DependentUpon>Reclam.xaml</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -246,6 +249,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Reclam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -319,6 +326,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourses\22.png" />
     <Resource Include="Resourses\Ariel.png" />
     <Resource Include="Resourses\fary.png" />
     <Resource Include="Resourses\Gubka.png" />
